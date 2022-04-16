@@ -1,0 +1,19 @@
+{
+    "name": "erisvaldo/carrinho-de-compras",
+    "authors": [
+        {
+            "name": "Erisvaldo",
+            "email": "erisvaldosilvadesousa38@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "files": [
+            "app/helpers/pages.php"
+        ],
+        "psr-4": {
+            "app\\": "app/"
+        }
+    }
+}
