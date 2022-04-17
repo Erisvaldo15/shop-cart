@@ -52,12 +52,14 @@ $products = $cartProducts->products(new Cart);
                             <td class="text-light">
                                 R$ <?= number_format($product['price'], 2, ",", "."); ?>
                             </td>
+                            <td>
                             <form action="quantity.php" method="get">
-                                <td>
+                                
                                     <input type="number" name="qty" value="<?= $product['qty'] ?>">
-                                    <input type="hidden" value="<?= $product['id']; ?>">
-                                </td>
+                                    <input type="hidden" name="id" value="<?= $product['id']; ?>">
+                                
                             </form>
+                            </td>
                             <td class="text-light">
                                 R$ <?= number_format($product['subtotal'], 2, ',', '.') ?>
                             </td>

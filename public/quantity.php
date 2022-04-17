@@ -11,4 +11,4 @@ $quantity = filter_input(INPUT_GET, "qty", FILTER_SANITIZE_NUMBER_INT);
 
 (new Cart)->quantity($id, $quantity);
 
-header("location: index.php");
+header("location: index.php?page=cart");

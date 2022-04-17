@@ -13,8 +13,13 @@ use app\database\models\Read;
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
+                <ul class="navbar-nav align-items-end">
+                    <li class="mx-4">
+                        <h4 class="text-light text-center">
+                            Products In Cart: <?= count($productsInCart = (new Cart)->cart()); ?>
+                        </h4>
+                    </li>
+                    <li class="nav-item m-auto">
                         <a class="btn btn-light nav-link active" aria-current="page" href="?page=cart">
                             <img src="assets/img/cart.svg" alt="Image of cart">
                         </a>
@@ -24,9 +29,6 @@ use app\database\models\Read;
         </div>
     </nav>
 </header>
-<h2 class="text-light text-center">
-    Products In Cart: <?= count($productsInCart = (new Cart)->cart()); ?>
-</h2>
 <section>
     <div class="d-flex justify-content-center flex-wrap container-s">
         <?php if ($products = (new Read)->findAll('product')) : ?>

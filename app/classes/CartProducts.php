@@ -18,7 +18,7 @@ class CartProducts {
 
         foreach($productsInCart as $productId => $quantity) {
 
-            var_dump($product = $read->find($productId));
+            $product = $read->find($productId);
 
             $products[] = [
                 'id' => $productId,
