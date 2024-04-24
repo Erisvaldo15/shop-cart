@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-class HomeController extends BaseController {
+class HomeController {
 
     public string $template = 'template.php';
     public string $view = 'home.php';
@@ -14,9 +14,9 @@ class HomeController extends BaseController {
 
         $this->data = [
             "title" => "Diary - Home",
-            "thereIsNavbarCart" => $this->thereIsNavbarCart,
-            "thereIsHeader" => $this->thereIsHeader,
-            "thereIsFooter" => $this->thereIsFooter,
+            "thereIsNavbarCart" => true,
+            "thereIsHeader" => true,
+            "thereIsFooter" =>false,
         ];
     }
 

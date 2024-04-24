@@ -7,24 +7,26 @@ use app\classes\Redirect;
 use app\models\Travel;
 use Stripe\StripeClient;
 
-class CheckoutController extends BaseController {
+class CheckoutController
+{
 
-    public function checkout() {
+    public function checkout()
+    {
 
         $buyOneTravel = filter_input(INPUT_GET, "travel", FILTER_SANITIZE_SPECIAL_CHARS);
 
-        if($buyOneTravel) {
+        if ($buyOneTravel) {
 
             $travel = Travel::findyBy("slug", $buyOneTravel);
 
-            if(Cart::cart()) {
+            if (Cart::cart()) {
                 Cart::clearCart();
             }
 
             Cart::add($travel->slug);
         }
-        
-        if(!count(Cart::cart())) {
+
+        if (!count(Cart::cart())) {
             Redirect::back();
         }
 
@@ -35,11 +37,11 @@ class CheckoutController extends BaseController {
         $items = [
             "mode" => "payment",
             'allow_promotion_codes' => true,
-            "success_url" => $_ENV["BASE_URL"]."/success",
-            "cancel_url" => $_ENV["BASE_URL"]."/cancel",
+            "success_url" => $_ENV["BASE_URL"] . "/success",
+            "cancel_url" => $_ENV["BASE_URL"] . "/cancel",
         ];
 
-        if(Cart::cart()) {
+        if (Cart::cart()) {
 
             foreach (Cart::cart() as $travel) {
 
@@ -55,14 +57,11 @@ class CheckoutController extends BaseController {
 
                     "quantity" => $travel["quantity"]
                 ];
-
             }
 
             $checkout_session = $stripeInstance->checkout->sessions->create($items);
 
             return Redirect::to($checkout_session->url);
         }
-
     }
-
 }

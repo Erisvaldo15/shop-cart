@@ -1,19 +1,39 @@
-import render from "./cart/render.js"
-import add from "../js/cart/add.js"
-import slider from "./slider.js"
-import toogleNavbarCart from "./navbarCart.js"
+import render from './cart/render.js';
+import add from '../js/cart/add.js';
+import slider from './slider.js';
+import toogleNavbarCart from './navbarCart.js';
 
 window.onload = () => {
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
 
-    const travelsInCart = async () => {
-        const travels = await fetch('http://localhost:9000/cart')
-        return await travels.json()
-    }
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
 
-    render(travelsInCart)
-    slider()
-    toogleNavbarCart()
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
 
-    const buttonAddtoCart = document.querySelectorAll('.addToCart')
-    buttonAddtoCart ?  buttonAddtoCart.forEach((button) => add(button)) : ''
-}
+    // const travelsInCart = async () => {
+    //     const travels = await fetch('http://localhost:9000/cart');
+    //     return await travels.json();
+    // };
+
+    // render(travelsInCart);
+    // slider();
+    // toogleNavbarCart();
+
+    // swiper.slideNext()
+
+    // const buttonAddtoCart = document.querySelectorAll('.addToCart');
+    // buttonAddtoCart ? buttonAddtoCart.forEach((button) => add(button)) : '';
+};

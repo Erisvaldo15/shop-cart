@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-class AboutController extends BaseController {
+class AboutController  {
     
     public string $template = "template.php";
     public string $view = "about.php";
@@ -11,7 +11,10 @@ class AboutController extends BaseController {
     public function index() {
         
         $this->data = [
-            "title" => "Diary - About"
+            "title" => "Diary - About",
+            "thereIsNavbarCart" => true,
+            "thereIsHeader" => true,
+            "thereIsFooter" => true,
         ];
 
     }

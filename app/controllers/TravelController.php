@@ -5,11 +5,14 @@ namespace app\controllers;
 use app\classes\Cart;
 use app\models\Travel;
 
-class TravelController extends BaseController {
+class TravelController {
 
     public string $template = 'template.php';
     public string $view = 'travels.php';
     public array $data = [];
+    private array $imagesOfFeaturedTravels = [
+        
+    ];
 
     public function index() {
 
@@ -20,32 +23,32 @@ class TravelController extends BaseController {
         $this->data = [
             "title" => "Diary - Travels",
             "travels" => $travels,
-            "thereIsNavbarCart" => $this->thereIsNavbarCart,
-            "thereIsHeader" => $this->thereIsHeader,
-            "thereIsFooter" => $this->thereIsFooter,
+            "thereIsNavbarCart" => true,
+            "thereIsHeader" => true,
+            "thereIsFooter" => true,
             "total" => $total,
         ];
        
     }
 
-    public function show($travel) {
+    // public function show($travel) {
 
-        $this->view = "travel.php";
+    //     $this->view = "travel.php";
 
-        $travel = Travel::findyBy('slug', $travel[0]);
+    //     $travel = Travel::findyBy('slug', $travel[0]);
 
-        if(!$travel) {
-            $this->view = "travelDoesNotExist.php";
-        }
+    //     if(!$travel) {
+    //         $this->view = "travelDoesNotExist.php";
+    //     }
 
-        $this->data = [
-            "title" => $travel->slug ? "Diary - {$travel->slug}" : "Travel does not exist",
-            "thereIsNavbarCart" => $this->thereIsNavbarCart,
-            "thereIsHeader" => $this->thereIsHeader,
-            "thereIsFooter" => false,
-            "travel" => $travel,
-        ];
+    //     $this->data = [
+    //         "title" => $travel->slug ? "Diary - {$travel->slug}" : "Travel does not exist",
+    //         "thereIsNavbarCart" => $this->thereIsNavbarCart,
+    //         "thereIsHeader" => $this->thereIsHeader,
+    //         "thereIsFooter" => false,
+    //         "travel" => $travel,
+    //     ];
      
-    }
+    // }
 
 }

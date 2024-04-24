@@ -2,13 +2,15 @@
 
 namespace app\controllers;
 
-class SignupController extends BaseController {
+class SignupController
+{
 
     public string $template = "template.php";
     public string $view = "signup.php";
     public array $data = [];
 
-    public function index() {
+    public function index()
+    {
 
         $this->data = [
             "title" => "Diary - SignUp",
@@ -17,10 +19,10 @@ class SignupController extends BaseController {
             "thereIsFooter" => $this->thereIsFooter,
             "mainId" => "login",
         ];
-
     }
 
-    public function store() {
+    public function store()
+    {
         dd("sign up");
     }
 }
