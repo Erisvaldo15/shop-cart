@@ -23,6 +23,13 @@ window.onload = () => {
         },
     });
 
+    const headerElement = document.querySelector(".scroll-header") ?? null
+
+    window.addEventListener("scroll", () => {
+        if(window.scrollY > 0 && headerElement) headerElement?.classList.add("activate")
+        else headerElement.classList.remove("activate")
+    })
+
     // const travelsInCart = async () => {
     //     const travels = await fetch('http://localhost:9000/cart');
     //     return await travels.json();

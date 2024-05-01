@@ -16,7 +16,8 @@ class HomeController {
             "title" => "Diary - Home",
             "thereIsNavbarCart" => true,
             "thereIsHeader" => true,
-            "thereIsFooter" =>false,
+            "thereIsFooter" => false,
+            "scrollHeader" => true,
         ];
     }
 

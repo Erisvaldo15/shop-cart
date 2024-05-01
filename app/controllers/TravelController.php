@@ -26,6 +26,7 @@ class TravelController {
             "thereIsNavbarCart" => true,
             "thereIsHeader" => true,
             "thereIsFooter" => true,
+            "scrollHeader" => true,
             "total" => $total,
         ];
        

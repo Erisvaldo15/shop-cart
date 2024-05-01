@@ -1,5 +1,5 @@
 <section id="contact">
-    <div class="container">
+    <div id="contact-container">
         <div class="form-image">
             <img src="assets/img/contact-mail.svg" alt="image of contact">
         </div>

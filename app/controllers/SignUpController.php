@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-class SignupController
+class SignUpController
 {
 
     public string $template = "template.php";
@@ -14,9 +14,9 @@ class SignupController
 
         $this->data = [
             "title" => "Diary - SignUp",
-            "thereIsNavbarCart" => $this->thereIsNavbarCart,
-            "thereIsHeader" => $this->thereIsHeader,
-            "thereIsFooter" => $this->thereIsFooter,
+            "thereIsNavbarCart" => false,
+            "thereIsHeader" => false,
+            "thereIsFooter" => false,
             "mainId" => "login",
         ];
     }

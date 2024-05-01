@@ -6,7 +6,7 @@
         </div>
     </header>
     <div class="form-div">
-        <div id="title">
+        <div class="title">
             <img src="/assets/img/icons/log-in.svg" alt="Sign Up Icon">
             <h1> Make your registration </h1>
         </div>

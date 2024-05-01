@@ -2,8 +2,6 @@
 
 namespace app\controllers;
 
-use app\classes\Redirect;
-
 class ContactController
 {
 
@@ -16,9 +14,9 @@ class ContactController
 
         $this->data = [
             "title" => "Diary - Contact",
-            "thereIsNavbarCart" => $this->thereIsNavbarCart,
-            "thereIsHeader" => $this->thereIsHeader,
-            "thereIsFooter" => $this->thereIsFooter,
+            "thereIsNavbarCart" => true,
+            "thereIsHeader" => true,
+            "thereIsFooter" => true,
         ];
     }
 }

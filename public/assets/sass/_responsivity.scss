@@ -1,0 +1,16 @@
+@media screen and (max-width: 1440px) {
+    
+    section.image {
+        display: none;
+    }
+
+    .form-section {
+        width: 100vw !important;
+
+        .form-div {
+            padding: 2rem !important;
+            width: 90% !important;
+        }
+    }
+
+}

@@ -1,4 +1,4 @@
-<div class="travelsInCart scrollbar-personalized scrollbar-personalized-white">
+<div class="travels-in-cart scrollbar-personalized scrollbar-personalized-white">
     <div class="header">
         <i class="fa-solid fa-close" id="not-view-travel-in-cart"></i>
     </div>

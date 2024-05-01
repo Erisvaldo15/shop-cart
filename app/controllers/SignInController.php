@@ -14,9 +14,9 @@ class SigninController
 
         $this->data = [
             "title" => "Diary - Login",
-            "thereIsNavbarCart" => $this->thereIsNavbarCart,
-            "thereIsHeader" => $this->thereIsHeader,
-            "thereIsFooter" => $this->thereIsFooter,
+            "thereIsNavbarCart" => false,
+            "thereIsHeader" => false,
+            "thereIsFooter" => false,
             "mainId" => "login",
         ];
     }

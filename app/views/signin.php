@@ -6,11 +6,11 @@
         </div>
     </header>
     <div class="form-div">
-        <div id="title">
+        <div class="title">
             <img src="/assets/img/icons/log-in.svg" alt="Website logo"> 
             <h1> Login </h1>
         </div>
-        <div id="subtitle">
+        <div class="subtitle">
             <p> Enter your information registration </p>
         </div>
         <form action="/signin/store" method="post">
