@@ -54,6 +54,10 @@ span {
   font-weight: bold;
 }
 
+i {
+  cursor: pointer;
+}
+
 input {
   background: none;
   margin-top: 0.25rem;
@@ -132,6 +136,10 @@ section {
   text-align: center;
 }
 
+.cart-main, .cart-footer {
+  padding: 2rem;
+}
+
 @media screen and (max-width: 1440px) {
   section.image {
     display: none;
@@ -150,7 +158,7 @@ header {
   align-items: center;
   flex-wrap: nowrap;
   padding: 1.25rem 8rem;
-  background-color: #000000;
+  background-color: #1d1d19;
 }
 header.scroll-header {
   position: fixed;
@@ -158,7 +166,7 @@ header.scroll-header {
   width: 100%;
 }
 header.activate {
-  background-color: #282927;
+  background-color: #000000;
 }
 header nav ul#menu {
   display: flex;
@@ -185,32 +193,78 @@ header .menu-icon {
 .travels-in-cart {
   display: none;
 }
-.travels-in-cart.activated {
+.travels-in-cart.active {
   position: fixed;
   display: flex;
   flex-direction: column;
   max-width: 100%;
   width: 31.25rem;
   height: 100%;
-  background-color: #000000;
+  background-color: #1d1d19;
   color: #fff;
   right: 0;
-  z-index: 2;
+  z-index: 4;
   overflow-y: auto;
 }
-.travels-in-cart .main {
+.travels-in-cart > div {
+  width: 100%;
+}
+.travels-in-cart #cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: #000000;
+  gap: 1rem;
+  padding: 2rem;
+  border-bottom: 0.5rem solid #ffbb32;
+}
+.travels-in-cart #cart-header h3 {
+  width: 100%;
+  text-align: center;
+}
+.travels-in-cart .cart-main {
   display: grid;
   padding: 1rem;
   gap: 1rem;
   text-align: center;
+  height: 75vh;
 }
-.travels-in-cart .main #cart-travel-info img {
+.travels-in-cart .cart-main #cart-travel-info img {
   width: 15rem;
   height: 10rem;
 }
-.travels-in-cart .main #cart-travel-info .total {
+.travels-in-cart .cart-main #cart-travel-info .total {
   padding-top: 0.5rem;
   text-align: right;
+}
+.travels-in-cart #cart-footer {
+  position: absolute;
+  background-color: #000000;
+  z-index: 4;
+  bottom: 0;
+  height: 20vh;
+  padding: 2rem 4rem;
+}
+.travels-in-cart #cart-footer #cart-price {
+  display: grid;
+  gap: 1rem;
+}
+.travels-in-cart #cart-footer #cart-price .total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.travels-in-cart #cart-footer #cart-price #coupon {
+  margin-left: auto;
+  cursor: pointer;
+}
+.travels-in-cart #cart-footer #cart-price #coupon i {
+  margin-right: 0.25rem;
+}
+.travels-in-cart #cart-footer form {
+  margin-top: 2rem;
 }
 
 section#home {

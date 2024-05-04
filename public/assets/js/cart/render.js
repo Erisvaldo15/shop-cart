@@ -4,21 +4,20 @@ export default async function render(travels) {
 
     const travelsInCart = await travels()
 
-    const quantityinTheCart = travelsInCart.quantity
+    const quantityInTheCart = travelsInCart.quantity
 
     const title = document.querySelector('.title')
-    const infoProduct = document.querySelector('.travel-info');
+    const infoProduct = document.querySelector('.cart-main');
     const total = document.querySelector('.total-price')
 
     if(!title || !infoProduct || !total) {
         return
     }
 
-    if (quantityinTheCart > 0) {
+    if (quantityInTheCart > 0) {
 
         const cart = travelsInCart.cart
 
-        title.textContent = `Your cart has ${quantityinTheCart} travels`
         infoProduct.innerHTML = ""
 
         for (const key in cart) {
@@ -27,13 +26,13 @@ export default async function render(travels) {
 
                 const travel = cart[key];
 
-                const contentProduct = document.createElement('div');
+                const contentProduct = document.createElement('div')
                 const imageProductCart = document.createElement('img')
-                const name = document.createElement('div');
-                const h4 = document.createElement('h4');
-                const span = document.createElement('span');
+                const name = document.createElement('div')
+                const h4 = document.createElement('h4')
+                const span = document.createElement('span')
                 const trashIcon = document.createElement('i')
-                const input = document.createElement('input');
+                const input = document.createElement('input')
     
                 infoProduct.appendChild(contentProduct);
                 contentProduct.className = `travelInCart`;

@@ -2,4 +2,6 @@ vendor
 node_modules
 composer.lock
 todo.todo
-./public/logs.txt
+public/logs.txt
+phinx.php
+.env

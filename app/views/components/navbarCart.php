@@ -1,17 +1,20 @@
 <div class="travels-in-cart scrollbar-personalized scrollbar-personalized-white">
-    <div class="header">
+    <div id="cart-header">
+        <h3> Não há nehuma viagem no carrinho</h3>
         <i class="fa-solid fa-close" id="not-view-travel-in-cart"></i>
     </div>
-    <div class="main">
-        <h3 class="title"> Your cart has 0 travels </h3>
-        <div class="travel-info">
-            <p> No travel in the cart. </p>
+    <div class="cart-main"></div>
+    <div id="cart-footer">
+        <div id="cart-price">
+            <div class="total-price">
+                <span class="total-price"> Total: </span>
+                <p> !000 </p>
+            </div>
+            <div id="coupon">
+                <i class="fa-solid fa-tag"></i>
+                <span> Add coupon </span>
+            </div>
         </div>
-        <hr>
-        <p>
-            Total:
-            <span class="total-price"> R$ 0 </span>
-        </p>
         <form action="/checkout" method="get">
             <button type="submit" class="btn-buy-now">
                 <i class="fa-solid fa-bag-shopping"></i>

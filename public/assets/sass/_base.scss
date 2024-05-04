@@ -52,6 +52,10 @@ span {
     font-weight: bold;
 }
 
+i {
+    cursor: pointer;
+}
+
 input {
     background: none;
     margin-top: 0.25rem;
@@ -125,6 +129,10 @@ section {
     font-weight: 300;
     margin-bottom: 6rem;
     text-align: center;
+}
+
+.cart-main, .cart-footer {
+    padding: 2rem;
 }
 
 // .section-title-mainly {
