@@ -1,14 +1,14 @@
 <section id="travel">
-    <div class="content">
-        <img src="<?=$travel->image ?>" alt="Travel image">
-        <div class="travel-data">
+    <div id="travel-details-wrapper">
+        <img src="<?= $travel->image_path ?>" alt="Travel image">
+        <div class="travel-details">
             <h2> <?= $travel->name ?> </h2>
             <p id="description" class="scrollbar-personalized"> <?= $travel->description ?> </p>
+            <span class="price"> R$ <?php echo number_format($travel->price, 2, ",", ".") ?> </span>
             <div class="price-and-button">
-                <span class="price"> R$ <?php echo number_format($travel->price, 2, ",", ".") ?> </span>
                 <form action="/checkout" method="get">
                     <input type="hidden" name="travel" value="<?= $travel->slug ?>">
-                    <button type="submit" class="btn-buy-now">
+                    <button type="submit">
                         <i class="fa-solid fa-bag-shopping"></i>
                         Buy now
                     </button>

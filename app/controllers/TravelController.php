@@ -10,46 +10,46 @@ class TravelController {
     public string $template = 'template.php';
     public string $view = 'travels.php';
     public array $data = [];
-    private array $imagesOfFeaturedTravels = [
-        
-    ];
 
     public function index() {
-
-        $travels = Travel::all();
-
-        $total = Cart::total();
-
         $this->data = [
             "title" => "Diary - Travels",
-            "travels" => $travels,
+            "travels" => Travel::all(),
             "thereIsNavbarCart" => true,
             "thereIsHeader" => true,
             "thereIsFooter" => true,
             "scrollHeader" => true,
-            "total" => $total,
+            "total" => Cart::total(),
         ];
-       
     }
 
-    // public function show($travel) {
+    public function show($travel) {
 
-    //     $this->view = "travel.php";
+        $this->view = "travel.php";
 
-    //     $travel = Travel::findyBy('slug', $travel[0]);
+        $travel = Travel::findyBy('slug', $travel[0]);
 
-    //     if(!$travel) {
-    //         $this->view = "travelDoesNotExist.php";
-    //     }
+        if(!$travel) {
+            $this->view = "travelDoesNotExist.php";
+        }
 
-    //     $this->data = [
-    //         "title" => $travel->slug ? "Diary - {$travel->slug}" : "Travel does not exist",
-    //         "thereIsNavbarCart" => $this->thereIsNavbarCart,
-    //         "thereIsHeader" => $this->thereIsHeader,
-    //         "thereIsFooter" => false,
-    //         "travel" => $travel,
-    //     ];
+        $this->data = [
+            "title" => $travel->slug ? "Diary - {$travel->slug}" : "Travel does not exist",
+            "thereIsNavbarCart" => true,
+            "thereIsHeader" => true,
+            "thereIsFooter" => false,
+            "travel" => $travel,
+        ];
      
-    // }
+    }
 
+    public function getAllTravels() {
+        echo json_encode(Travel::all());
+    }
+
+    public function searchByTravel() {
+        $text = filter_var($_GET['text'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $result = Travel::like($text, ["name", "description"]);
+        echo json_encode($result);
+    }
 }

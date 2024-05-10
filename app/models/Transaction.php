@@ -11,6 +11,7 @@ class Transaction {
 
     public static function open(): void {
         self::$connection = Connection::connection();
+        self::$connection->beginTransaction();
     }
 
     public static function close(): void {
@@ -18,7 +19,7 @@ class Transaction {
         self::$connection = null;
     }
 
-    public static function getConnection(): PDO {
+    public static function getConnection(): PDO|null {
         return self::$connection;
     }
 

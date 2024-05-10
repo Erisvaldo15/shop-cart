@@ -108,7 +108,7 @@ textarea {
   padding: 0.5rem;
 }
 
-button {
+button, #view-more {
   background-color: #FFC632;
   width: 100%;
   padding: 0.85rem 2.5rem;
@@ -123,7 +123,7 @@ button:hover {
 }
 
 section {
-  max-width: 83.75rem;
+  max-width: 92.75rem;
   margin: 0 auto;
   padding: 6rem 1rem;
 }
@@ -370,6 +370,9 @@ section#travels #travels-section-header #filters {
   flex-wrap: wrap;
   gap: 1rem;
 }
+section#travels #travels-section-header #filters #search-bar input {
+  color: #000000;
+}
 section#travels #travels-section-header #filters #filter {
   display: flex;
   justify-content: center;
@@ -383,8 +386,10 @@ section#travels #travels-section-header #filters #filter {
 }
 section#travels .travels {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
+  place-items: center;
   gap: 2rem;
+  min-height: 10rem;
 }
 section#travels .travels .travel {
   position: relative;
@@ -424,14 +429,12 @@ section#travels .travels .travel .travel-content {
   width: 100%;
   color: #fff;
   padding: 1rem;
-  transform: translateY(80%);
+  transform: translateY(78%);
   transition: all 0.3s ease-in-out;
 }
-section#travels .travels .travel .travel-content p {
-  font-size: 1.2rem;
-  display: block;
-  margin-bottom: 0.5rem;
-  text-transform: capitalize;
+section#travels .travels .travel .travel-content .content {
+  min-height: 8rem;
+  word-wrap: break-word;
 }
 section#travels .travels .travel .travel-content .actions {
   display: flex;
@@ -441,11 +444,67 @@ section#travels .travels .travel .travel-content .actions {
   gap: 1rem;
   margin-top: 1rem;
 }
-section#travels .travels .travel .travel-content .actions button {
+section#travels .travels .travel .travel-content .actions button, section#travels .travels .travel .travel-content .actions a {
   width: auto;
 }
-section#travels .travels .travel .travel-content .actions button i {
+section#travels .travels .travel .travel-content .actions button i, section#travels .travels .travel .travel-content .actions a i {
   margin-left: 0.25rem;
+}
+
+section#travel #travel-details-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  height: 70vh;
+}
+section#travel #travel-details-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section#travel #travel-details-wrapper .travel-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
+}
+section#travel #travel-details-wrapper .travel-details h2 {
+  font-size: 2.5rem;
+}
+section#travel .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  gap: 1rem 2rem;
+}
+section#travel .content img {
+  height: 15rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+section#travel .content .travel-data {
+  display: grid;
+  align-content: space-around;
+  width: 24.5625rem;
+  height: 15rem;
+}
+section#travel .content #description {
+  margin: 0;
+  padding: 0.5rem;
+  text-align: justify;
+  overflow-y: auto;
+}
+section#travel .content .price-and-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 1rem;
 }
 
 section#contact {
@@ -613,39 +672,6 @@ section#facts::before {
   right: 0;
   left: 0;
   bottom: 0;
-}
-
-#travel .content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  height: 100%;
-  gap: 1rem 2rem;
-}
-#travel .content img {
-  height: 15rem;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-#travel .content .travel-data {
-  display: grid;
-  align-content: space-around;
-  width: 24.5625rem;
-  height: 15rem;
-}
-#travel .content #description {
-  margin: 0;
-  padding: 0.5rem;
-  text-align: justify;
-  overflow-y: auto;
-}
-#travel .content .price-and-button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding-top: 1rem;
 }
 
 footer#footer {

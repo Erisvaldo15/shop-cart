@@ -40,6 +40,10 @@ class MyApp implements MyAppInterface {
             $controllerInstance->$method($parameter);
         }
 
+        if(isset($_SERVER['CONTENT_TYPE']) && strtolower($_SERVER['CONTENT_TYPE']) === 'application/json') {
+            die;
+        }
+
         if(isset($controllerInstance->data)) {
             extract($controllerInstance->data);
         }

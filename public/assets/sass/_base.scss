@@ -103,7 +103,7 @@ textarea {
     padding: 0.5rem;
 }
 
-button {
+button, #view-more {
     background-color: $yellow-color;
     width: 100%;
     padding: 0.85rem 2.5rem;
@@ -118,7 +118,7 @@ button:hover {
 }
 
 section {
-    max-width: 83.75rem;
+    max-width: 92.75rem;
     margin: 0 auto;
     padding: 6rem 1rem;
 }

@@ -237,6 +237,10 @@ section#travels {
             @include flex(start, center, wrap);
             gap: 1rem;
 
+            #search-bar input {
+                color: $dark-black-color;
+            }
+
             #filter {
                 @include flex(center, center, nowrap);
                 width: 3rem;
@@ -250,8 +254,10 @@ section#travels {
 
     .travels {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
+        place-items: center;
         gap: 2rem;
+        min-height: 10rem;
 
         .travel {
             position: relative;
@@ -315,14 +321,12 @@ section#travels {
                 width: 100%;
                 color: #fff;
                 padding: 1rem;
-                transform: translateY(80%);
+                transform: translateY(78%);
                 transition: all 0.3s ease-in-out;
 
-                p {
-                    font-size: 1.2rem;
-                    display: block;
-                    margin-bottom: 0.5rem;
-                    text-transform: capitalize;
+                & .content {
+                    min-height: 8rem;
+                    word-wrap: break-word;
                 }
 
                 .actions {
@@ -330,7 +334,7 @@ section#travels {
                     gap: 1rem;
                     margin-top: 1rem;
 
-                    button {
+                    button, a {
                         width: auto;
 
                         i {
@@ -339,6 +343,66 @@ section#travels {
                     }
                 }
             }
+        }
+    }
+}
+
+section#travel {
+
+    #travel-details-wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        height: 70vh;
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.25rem;
+            object-fit: cover;
+        }
+
+        .travel-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            height: 100%;
+
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+        }
+    }
+
+    .content {
+        @include flex(center, center, wrap);
+        height: 100%;
+        gap: 1rem 2rem;
+
+        img {
+            height: 15rem;
+            object-fit: contain;
+        }
+
+        .travel-data {
+            display: grid;
+            align-content: space-around;
+            width: 24.5625rem;
+            height: 15rem;
+        }
+
+        #description {
+            margin: 0;
+            padding: 0.5rem;
+            text-align: justify;
+            overflow-y: auto;
+        }
+
+        .price-and-button {
+            @include flex(space-between, center, wrap);
+            padding-top: 1rem;
         }
     }
 }
@@ -503,38 +567,6 @@ section#facts {
         right: 0;
         left: 0;
         bottom: 0;
-    }
-}
-
-#travel {
-    .content {
-        @include flex(center, center, wrap);
-        height: 100%;
-        gap: 1rem 2rem;
-
-        img {
-            height: 15rem;
-            object-fit: contain;
-        }
-
-        .travel-data {
-            display: grid;
-            align-content: space-around;
-            width: 24.5625rem;
-            height: 15rem;
-        }
-
-        #description {
-            margin: 0;
-            padding: 0.5rem;
-            text-align: justify;
-            overflow-y: auto;
-        }
-
-        .price-and-button {
-            @include flex(space-between, center, wrap);
-            padding-top: 1rem;
-        }
     }
 }
 
