@@ -1,24 +1,24 @@
-import remove from "./remove.js";
+export default function render(travels) {
 
-export default async function render(travels) {
+    const quantityInTheCart = travels.quantity
 
-    const travelsInCart = await travels()
-
-    const quantityInTheCart = travelsInCart.quantity
-
-    const title = document.querySelector('.title')
     const infoProduct = document.querySelector('.cart-main');
     const total = document.querySelector('.total-price')
 
-    if(!title || !infoProduct || !total) {
+    if(!infoProduct || !total) {
         return
     }
 
     if (quantityInTheCart > 0) {
 
-        const cart = travelsInCart.cart
+        const moneyFormatter = new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+        });
 
-        infoProduct.innerHTML = ""
+        const cart = travels.cart
+
+        infoProduct.innerHTML = ''
 
         for (const key in cart) {
 
@@ -26,58 +26,52 @@ export default async function render(travels) {
 
                 const travel = cart[key];
 
-                const contentProduct = document.createElement('div')
+                const travelInCart = document.createElement('div')
                 const imageProductCart = document.createElement('img')
-                const name = document.createElement('div')
+                const travelData = document.createElement('div')
                 const h4 = document.createElement('h4')
-                const span = document.createElement('span')
+                const priceAndQuantity = document.createElement('div')
+                const travelPrice = document.createElement('span')
+                const decreaseQuantityIcon = document.createElement('i')
+                const quantityOfTravel = document.createElement('span')
+                const increaseQuantityIcon = document.createElement('i')
                 const trashIcon = document.createElement('i')
-                const input = document.createElement('input')
     
-                infoProduct.appendChild(contentProduct);
-                contentProduct.className = `travelInCart`;
+                infoProduct.appendChild(travelInCart);
+                travelInCart.className = `travel-in-cart`;
     
-                contentProduct.appendChild(imageProductCart)
+                travelInCart.appendChild(imageProductCart)
+                travelInCart.appendChild(travelData)
+                travelData.className = 'travel-data'
                 imageProductCart.src = travel.image
-                imageProductCart.id = 'image-travel-cart'
     
-                name.appendChild(h4)
-                h4.id = 'travel-name'
+                travelData.appendChild(h4)
                 h4.textContent = travel.name
-    
-                contentProduct.appendChild(name);
-                name.className = `travel-name`;
-    
-                name.textContent = `${travel.name[0].toUpperCase()}${travel.name.substr(1)}`
-    
-                name.appendChild(span)
-                span.id = 'price-travel-cart'
-                span.textContent = `1x - ${travel.price}`
-    
-                name.appendChild(input)
-                input.value = travel.quantity
-    
-                contentProduct.appendChild(trashIcon);
-    
-                trashIcon.classList.add('fa-solid')
-                trashIcon.classList.add('fa-trash')
-                trashIcon.id = "remove"
-    
-                trashIcon.setAttribute('data-slug', travel.slug)
-    
-                total.textContent = `R$ ${travelsInCart.total}`
 
-                const buttonDeleteFromCart = document.querySelectorAll('#remove')
-                buttonDeleteFromCart.forEach((button) => remove(button))
+                travelData.appendChild(priceAndQuantity)
+                priceAndQuantity.className = 'price-and-quantity'
+
+                priceAndQuantity.appendChild(travelPrice)
+                travelPrice.textContent = moneyFormatter.format(travel.price)
+
+                priceAndQuantity.appendChild(decreaseQuantityIcon)
+                priceAndQuantity.appendChild(quantityOfTravel)
+                priceAndQuantity.appendChild(increaseQuantityIcon)
+                priceAndQuantity.appendChild(trashIcon)
+
+                decreaseQuantityIcon.className = 'fa-solid fa-minus'
+                increaseQuantityIcon.className = 'fa-solid fa-plus'
+                quantityOfTravel.textContent = travel.quantity
+                trashIcon.classList.add('fa', 'fa-trash', 'remove')
+                trashIcon.setAttribute('data-id', travel.id)
             }
         }
 
     }
 
     else {
-        title.textContent = "Your cart is empty"
-        infoProduct.innerHTML = "No product in your cart."
-        total.textContent = "R$ 0"
+        infoProduct.innerHTML = 'No product in your cart.'
+        total.textContent = 'R$ 0'
     }
 
 }

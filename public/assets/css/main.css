@@ -171,7 +171,7 @@ header.activate {
 header nav ul#menu {
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: star;
   flex-wrap: wrap;
 }
 header nav ul#menu li {
@@ -224,15 +224,44 @@ header .menu-icon {
   text-align: center;
 }
 .travels-in-cart .cart-main {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   padding: 1rem;
   gap: 1rem;
-  text-align: center;
   height: 75vh;
 }
-.travels-in-cart .cart-main #cart-travel-info img {
-  width: 15rem;
+.travels-in-cart .cart-main .travel-in-cart {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.travels-in-cart .cart-main .travel-in-cart img {
+  width: 10rem;
   height: 10rem;
+  border-radius: 0.5rem;
+}
+.travels-in-cart .cart-main .travel-in-cart .travel-data {
+  display: grid;
+  padding: 0.75rem;
+  width: 18rem;
+  height: 100%;
+}
+.travels-in-cart .cart-main .travel-in-cart .travel-data .price-and-quantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  align-self: flex-end;
+}
+.travels-in-cart .cart-main .travel-in-cart .travel-data .price-and-quantity i {
+  transition: all 0.2s ease-in-out;
+}
+.travels-in-cart .cart-main .travel-in-cart .travel-data .price-and-quantity i:hover {
+  transform: translateY(-20%);
+  color: #FFC632;
 }
 .travels-in-cart .cart-main #cart-travel-info .total {
   padding-top: 0.5rem;
@@ -444,10 +473,12 @@ section#travels .travels .travel .travel-content .actions {
   gap: 1rem;
   margin-top: 1rem;
 }
-section#travels .travels .travel .travel-content .actions button, section#travels .travels .travel .travel-content .actions a {
+section#travels .travels .travel .travel-content .actions button,
+section#travels .travels .travel .travel-content .actions a {
   width: auto;
 }
-section#travels .travels .travel .travel-content .actions button i, section#travels .travels .travel .travel-content .actions a i {
+section#travels .travels .travel .travel-content .actions button i,
+section#travels .travels .travel .travel-content .actions a i {
   margin-left: 0.25rem;
 }
 

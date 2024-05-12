@@ -19,7 +19,7 @@ header {
     }
 
     nav ul#menu {
-        @include flex(start, center, wrap);
+        @include flex(start, star, wrap);
 
         li {
             margin-right: 0.75rem;
@@ -79,18 +79,46 @@ header {
     }
 
     .cart-main {
-        display: grid;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
         padding: 1rem;
         gap: 1rem;
-        text-align: center;
         height: 75vh;
 
-        #cart-travel-info {
+        .travel-in-cart {
+            @include flex(start, start, wrap);
+            gap: 1rem;
+
             img {
-                width: 15rem;
+                width: 10rem;
                 height: 10rem;
+                border-radius: 0.5rem;
             }
 
+            .travel-data {
+                display: grid;
+                padding: 0.75rem;
+                width: calc(28rem - 10rem);
+                height: 100%;
+
+                .price-and-quantity {
+                    @include flex(space-between, center, wrap);
+                    align-self: flex-end;
+
+                    i {
+                        transition: all 0.2s ease-in-out;
+
+                        &:hover {
+                            transform: translateY(-20%);
+                            color: $yellow-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        #cart-travel-info {
             .total {
                 padding-top: 0.5rem;
                 text-align: right;
@@ -334,7 +362,8 @@ section#travels {
                     gap: 1rem;
                     margin-top: 1rem;
 
-                    button, a {
+                    button,
+                    a {
                         width: auto;
 
                         i {
@@ -348,7 +377,6 @@ section#travels {
 }
 
 section#travel {
-
     #travel-details-wrapper {
         display: grid;
         grid-template-columns: 2fr 1fr;
@@ -372,7 +400,6 @@ section#travel {
             h2 {
                 font-size: 2.5rem;
             }
-            
         }
     }
 

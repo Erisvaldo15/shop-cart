@@ -9,10 +9,10 @@ export default function add(button) {
         const buttonSlug = button.getAttribute('data-slug')
 
         const travels = (async () => {
-            const addToCart = await fetch(`http://localhost:9000/cart/add/${buttonSlug}`)
+            const addToCart = await fetch(`http://localhost:8000/cart/add/${buttonSlug}`)
             return await addToCart.json()
         })
 
-        render(travels)
+        render(await travels())
     })
 }

@@ -14,7 +14,7 @@ export default function renderTravels(travels) {
                     <div class='content'>
                         <p> ${travel.fields.description} </p>
                         <div class='actions'>
-                        <button class="add-to-cart">
+                        <button class="add-to-cart" data-slug="${travel.fields.slug}">
                             Add to cart
                             <i class="fa-solid fa-cart-shopping"></i>
                         </button>

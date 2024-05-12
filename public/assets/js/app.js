@@ -1,6 +1,7 @@
 import swiperRender from './library/swiperSettings.js';
 import render from './cart/render.js';
-import add from '../js/cart/add.js';
+import add from './cart/add.js';
+import remove from './cart/remove.js'
 import toogleNavbarCart from './navbarCart.js';
 import renderTravels from './travel/travels.js';
 import searchTravel from './travel/searchTravel.js';
@@ -74,10 +75,15 @@ window.addEventListener('DOMContentLoaded', async () => {
         };
     }
 
-    render(travelsInCart);
+    render(await travelsInCart());
     toogleNavbarCart();
     swiperRender();
 
-    const buttonAddtoCart = document.querySelectorAll('.addToCart');
+    const buttonAddtoCart = document.querySelectorAll('.add-to-cart');
     buttonAddtoCart ? buttonAddtoCart.forEach((button) => add(button)) : '';
+
+    const buttonDeleteFromCart = document.querySelectorAll('.remove')
+    buttonDeleteFromCart.forEach((button) => remove(button))
+
+    console.log(buttonDeleteFromCart)
 });

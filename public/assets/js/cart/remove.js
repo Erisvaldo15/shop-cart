@@ -1,19 +1,19 @@
 import render from "./render.js"
 
-export default function remove(button) {
+export default async function remove(button) {
 
     button.addEventListener('click', async (event) => {
 
         event.preventDefault()
 
-        const buttonSlug = button.getAttribute('data-slug')
+        const travelId = button.getAttribute('data-id')
 
         const travels = (async () => {
-            const removeFromCart = await fetch(`http://localhost:9000/cart/remove/${buttonSlug}`)
+            const removeFromCart = await fetch(`http://localhost:8000/cart/remove/${travelId}`)
             return await removeFromCart.json()
         })
 
-        render(travels)
+        render(await travels())
     })
 
 }
