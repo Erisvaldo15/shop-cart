@@ -1,10 +1,11 @@
 import swiperRender from './library/swiperSettings.js';
 import render from './cart/render.js';
 import add from './cart/add.js';
-import remove from './cart/remove.js'
+import remove from './cart/remove.js';
 import toogleNavbarCart from './navbarCart.js';
 import renderTravels from './travel/travels.js';
 import searchTravel from './travel/searchTravel.js';
+import { increase, decrease } from './cart/edit.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const headerElement = document.querySelector('.scroll-header') ?? null;
@@ -79,11 +80,20 @@ window.addEventListener('DOMContentLoaded', async () => {
     toogleNavbarCart();
     swiperRender();
 
-    const buttonAddtoCart = document.querySelectorAll('.add-to-cart');
-    buttonAddtoCart ? buttonAddtoCart.forEach((button) => add(button)) : '';
+    const travelsDiv = document.querySelector('.travels');
+    if (travelsDiv) travelsDiv.addEventListener('click', (event) => add(event));
 
-    const buttonDeleteFromCart = document.querySelectorAll('.remove')
-    buttonDeleteFromCart.forEach((button) => remove(button))
+    function handleCartMainClick(event) {
+        increase(event);
+        decrease(event);
+        remove(event)
+    }
 
-    console.log(buttonDeleteFromCart)
+    const cartMainDiv = document.querySelector('.cart-main');
+    if (cartMainDiv) {
+        cartMainDiv.addEventListener('click', event => {
+            event.preventDefault();
+            handleCartMainClick(event);
+        });
+    }
 });

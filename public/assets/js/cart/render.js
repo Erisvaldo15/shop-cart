@@ -49,7 +49,7 @@ export default function render(travels) {
                 h4.textContent = travel.name
 
                 travelData.appendChild(priceAndQuantity)
-                priceAndQuantity.className = 'price-and-quantity'
+                priceAndQuantity.classList.add('price-and-quantity')
 
                 priceAndQuantity.appendChild(travelPrice)
                 travelPrice.textContent = moneyFormatter.format(travel.price)
@@ -59,11 +59,15 @@ export default function render(travels) {
                 priceAndQuantity.appendChild(increaseQuantityIcon)
                 priceAndQuantity.appendChild(trashIcon)
 
-                decreaseQuantityIcon.className = 'fa-solid fa-minus'
-                increaseQuantityIcon.className = 'fa-solid fa-plus'
-                quantityOfTravel.textContent = travel.quantity
-                trashIcon.classList.add('fa', 'fa-trash', 'remove')
-                trashIcon.setAttribute('data-id', travel.id)
+                increaseQuantityIcon.classList.add('fa-solid', 'fa-plus', 'increase-quantity')
+                decreaseQuantityIcon.classList.add('fa-solid', 'fa-minus', 'decrease-quantity')
+                
+                quantityOfTravel.textContent = travel.quantity;
+                trashIcon.classList.add('fa', 'fa-trash', 'remove');
+
+                [increaseQuantityIcon, decreaseQuantityIcon, trashIcon].forEach(icon => {
+                    icon.setAttribute('data-slug', travel.slug);
+                })
             }
         }
 

@@ -62,7 +62,7 @@ class Cart implements CartInterface {
 
     public static function remove($travel) {
 
-        $travel = Travel::findyBy('id', $travel, '=', 'id');
+        $travel = Travel::findyBy('slug', $travel, '=', 'slug');
 
         if(empty($travel) || !Cart::cart()) {
             return;
@@ -75,7 +75,6 @@ class Cart implements CartInterface {
             }
 
         }
-
     }
 
     public static function clearCart() {

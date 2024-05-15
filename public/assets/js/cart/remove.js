@@ -1,19 +1,30 @@
-import render from "./render.js"
+import render from './render.js';
 
-export default async function remove(button) {
+export default async function remove(event) {
 
-    button.addEventListener('click', async (event) => {
+    event.preventDefault();
 
-        event.preventDefault()
+    const button = event.target;
 
-        const travelId = button.getAttribute('data-id')
+    if (button.classList.contains('remove')) {
+        
+        const travelSlug = event.target.getAttribute('data-slug');
 
-        const travels = (async () => {
-            const removeFromCart = await fetch(`http://localhost:8000/cart/remove/${travelId}`)
-            return await removeFromCart.json()
-        })
+        try {
+            const requestSettings = new Request(
+                `http://localhost:8000/cart/remove/${travelSlug}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
 
-        render(await travels())
-    })
-
+            const removeFromCart = await fetch(requestSettings);
+            render(await removeFromCart.json());
+        } catch (error) {
+            console.log('Error to remove travel from cart', error);
+        }
+    }
 }

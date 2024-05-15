@@ -1,12 +1,12 @@
 import render from "./render.js"
 
-export default function add(button) {
+export default async function add(event) {
 
-    button.addEventListener('click', async (event) => {
+    event.preventDefault()
 
-        event.preventDefault()
+    if(event.target.classList.contains('add-to-cart')) {
 
-        const buttonSlug = button.getAttribute('data-slug')
+        const buttonSlug = event.target.getAttribute('data-slug')
 
         const travels = (async () => {
             const addToCart = await fetch(`http://localhost:8000/cart/add/${buttonSlug}`)
@@ -14,5 +14,5 @@ export default function add(button) {
         })
 
         render(await travels())
-    })
+    }
 }
