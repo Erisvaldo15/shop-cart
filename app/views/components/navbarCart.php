@@ -7,8 +7,8 @@
     <div id="cart-footer">
         <div id="cart-price">
             <div class="total-price">
-                <span class="total-price"> Total: </span>
-                <p> !000 </p>
+                <p> Total: </p>
+                <span> !000 </span>
             </div>
             <div id="coupon">
                 <i class="fa-solid fa-tag"></i>

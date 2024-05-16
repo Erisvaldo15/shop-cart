@@ -2,8 +2,10 @@ export default function render(travels) {
 
     const quantityInTheCart = travels.quantity
 
+    console.log(travels)
+
     const infoProduct = document.querySelector('.cart-main');
-    const total = document.querySelector('.total-price')
+    const total = document.querySelector('.total-price span')
 
     if(!infoProduct || !total) {
         return
@@ -68,6 +70,8 @@ export default function render(travels) {
                 [increaseQuantityIcon, decreaseQuantityIcon, trashIcon].forEach(icon => {
                     icon.setAttribute('data-slug', travel.slug);
                 })
+
+                total.textContent = `R$ ${travels.total}`
             }
         }
 

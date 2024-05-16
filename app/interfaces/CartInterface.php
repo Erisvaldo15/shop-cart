@@ -10,7 +10,7 @@ interface CartInterface {
 
     public static function getQuantity();
 
-    public static function setQuantity(int $key, int $quantity);
+    public static function setQuantity(int $key, int $quantity, string $typeOperation);
 
     public static function clearCart();
 

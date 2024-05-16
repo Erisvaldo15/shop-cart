@@ -42,7 +42,7 @@ class Cart implements CartInterface {
             foreach (Cart::cart() as $key => $travelInCart) {
 
                 if($travelInCart['id'] === $travel->id) {
-                    Cart::setQuantity($key, 1);
+                    Cart::setQuantity($key, 1, "increase");
                     $productAdded = true;
                     break;
                 }
@@ -98,7 +98,8 @@ class Cart implements CartInterface {
         return isset($_SESSION['cart']) ? count($_SESSION['cart']['products']) : 0;
     }
 
-    public static function setQuantity(int $key, int $quantity) {
-        $_SESSION['cart']['products'][$key]['quantity'] += $quantity;
+    public static function setQuantity(int $key, int $quantity, string $typeOperation) {
+        if($typeOperation === "increase") $_SESSION['cart']['products'][$key]['quantity'] += $quantity;
+        else $_SESSION['cart']['products'][$key]['quantity'] -= $quantity;
     }
 }

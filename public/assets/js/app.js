@@ -86,7 +86,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     function handleCartMainClick(event) {
         increase(event);
         decrease(event);
-        remove(event)
+        remove(event);
     }
 
     const cartMainDiv = document.querySelector('.cart-main');

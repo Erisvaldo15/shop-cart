@@ -35,7 +35,11 @@ class Routes {
                 "/send/email" => "EmailController:index",
                 "/signin/store" => "SigninController:store",
                 "/signup/store" => "SignupController:store",
-            ]
+            ],
+
+            "put" => [
+                "/travel/quantity/update" => "CartController:updateQuantity",
+            ],
 
         ];
 
