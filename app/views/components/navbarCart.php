@@ -1,6 +1,6 @@
 <div class="travels-in-cart scrollbar-personalized scrollbar-personalized-white">
     <div id="cart-header">
-        <h3> Não há nehuma viagem no carrinho</h3>
+        <h3> No travels in your cart </h3>
         <i class="fa-solid fa-close" id="not-view-travel-in-cart"></i>
     </div>
     <div class="cart-main"></div>
@@ -8,7 +8,7 @@
         <div id="cart-price">
             <div class="total-price">
                 <p> Total: </p>
-                <span> !000 </span>
+                <span> R$ 0 </span>
             </div>
             <div id="coupon">
                 <i class="fa-solid fa-tag"></i>

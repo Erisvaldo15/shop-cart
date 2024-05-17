@@ -31,7 +31,7 @@
         </nav>
         <div id="cart">
             <li>
-                <span id="count-products-in-cart"> </span>
+                <span id="total-products-in-cart"></span>
                 <i class="fa-solid fa-basket-shopping" id="view-cart"></i>
             </li>
         </div>

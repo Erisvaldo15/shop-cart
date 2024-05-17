@@ -34,6 +34,22 @@ header {
     }
 
     #cart {
+
+        position: relative;
+
+        li #total-products-in-cart {
+            font-size: 0.8rem;
+            @include flex(center, center, nowrap);
+            position: absolute;
+            background-color: $white-color;
+            width: 1rem;
+            height: 1rem;
+            top: -0.75rem;
+            left: 0.75rem;
+            clip-path: circle();
+            padding: 0.5rem;
+        }
+
         i {
             color: $white-color;
         }
@@ -85,6 +101,15 @@ header {
         padding: 1rem;
         gap: 1rem;
         height: 75vh;
+
+        &.cart-empty {
+            @include flex(center, center, wrap);
+        }
+
+        img.empty-cart-image {
+            width: 20rem;
+            height: 20rem;
+        }
 
         .travel-in-cart {
             @include flex(start, start, wrap);

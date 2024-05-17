@@ -183,6 +183,25 @@ header nav ul#menu li {
 header nav ul#menu li a {
   color: #fff;
 }
+header #cart {
+  position: relative;
+}
+header #cart li #total-products-in-cart {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: absolute;
+  background-color: #fff;
+  width: 1rem;
+  height: 1rem;
+  top: -0.75rem;
+  left: 0.75rem;
+  -webkit-clip-path: circle();
+          clip-path: circle();
+  padding: 0.5rem;
+}
 header #cart i {
   color: #fff;
 }
@@ -230,6 +249,16 @@ header .menu-icon {
   padding: 1rem;
   gap: 1rem;
   height: 75vh;
+}
+.travels-in-cart .cart-main.cart-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.travels-in-cart .cart-main img.empty-cart-image {
+  width: 20rem;
+  height: 20rem;
 }
 .travels-in-cart .cart-main .travel-in-cart {
   display: flex;

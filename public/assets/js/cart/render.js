@@ -2,16 +2,21 @@ export default function render(travels) {
 
     const quantityInTheCart = travels.quantity
 
-    console.log(travels)
-
+    const titleHeaderCart = document.querySelector('#cart-header h3')
     const infoProduct = document.querySelector('.cart-main');
+    const totalOfQuantity = document.querySelector('#total-products-in-cart');
     const total = document.querySelector('.total-price span')
+
+    totalOfQuantity.textContent = quantityInTheCart
 
     if(!infoProduct || !total) {
         return
     }
 
     if (quantityInTheCart > 0) {
+
+        titleHeaderCart.textContent = `${quantityInTheCart} travels in your cart`;
+        infoProduct.classList.remove('cart-empty');
 
         const moneyFormatter = new Intl.NumberFormat('pt-BR', {
             style: 'currency',
@@ -78,7 +83,12 @@ export default function render(travels) {
     }
 
     else {
-        infoProduct.innerHTML = 'No product in your cart.'
+        titleHeaderCart.textContent = 'No travels in your cart';
+        infoProduct.classList.add('cart-empty');
+        infoProduct.innerHTML = `
+            <h3> Empty Cart</h3>
+            <img class="empty-cart-image" src='./assets/img/empty-cart.svg'/>
+        `;
         total.textContent = 'R$ 0'
     }
 
