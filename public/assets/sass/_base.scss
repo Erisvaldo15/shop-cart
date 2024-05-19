@@ -25,7 +25,7 @@ body {
 
     &.active {
         position: fixed;
-        @include flex(start, start, nowrap);
+        @include flex(flex-start, flex-start, nowrap);
         flex-direction: column;
         max-width: 100%;
         width: 31.25rem;
@@ -39,7 +39,7 @@ body {
 }
 
 .logo {
-    @include flex(start, center, nowrap);
+    @include flex(flex-start, center, nowrap);
     gap: 0.5rem;
 
     a {

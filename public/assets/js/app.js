@@ -8,7 +8,6 @@ import searchTravel from './travel/searchTravel.js';
 import { increase, decrease } from './cart/edit.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
-    const headerElement = document.querySelector('.scroll-header') ?? null;
 
     const travelsInCart = async () => {
         try {
@@ -33,9 +32,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 0 && headerElement)
-            headerElement?.classList.add('activate');
-        else headerElement.classList.remove('activate');
+        if(document.querySelector('.scroll-header')) {
+            if (window.scrollY > 0) headerElement?.classList.add('activate');
+            else headerElement.classList.remove('activate');
+        }
     });
 
     travelsDescriptions.forEach((description) => {
