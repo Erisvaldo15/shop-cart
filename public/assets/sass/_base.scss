@@ -20,24 +20,6 @@ body {
     overflow-x: hidden;
 }
 
-.travels-in-cart {
-    display: none;
-
-    &.active {
-        position: fixed;
-        @include flex(flex-start, flex-start, nowrap);
-        flex-direction: column;
-        max-width: 100%;
-        width: 31.25rem;
-        height: 100%;
-        background-color: $black-color;
-        color: $white-color;
-        right: 0;
-        z-index: 2;
-        overflow-y: auto;
-    }
-}
-
 .logo {
     @include flex(flex-start, center, nowrap);
     gap: 0.5rem;
@@ -134,7 +116,3 @@ section {
 .cart-main, .cart-footer {
     padding: 2rem;
 }
-
-// .section-title-mainly {
-
-// }

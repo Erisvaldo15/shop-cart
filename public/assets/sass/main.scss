@@ -34,7 +34,6 @@ header {
     }
 
     #cart {
-
         position: relative;
 
         li #total-products-in-cart {
@@ -59,22 +58,24 @@ header {
         display: none;
     }
 }
+// posso tentar animação com transform.
 
 .travels-in-cart {
-    display: none;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 31.25rem;
+    height: 100%;
+    background-color: $black-color;
+    color: $white-color;
+    right: -31.25rem;
+    z-index: 4;
+    overflow-y: auto;
+    transition: all 0.5s ease-in-out;
 
     &.active {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        max-width: 100%;
-        width: 31.25rem;
-        height: 100%;
-        background-color: $black-color;
-        color: $white-color;
-        right: 0;
-        z-index: 4;
-        overflow-y: auto;
+        right: 0%;
     }
 
     & > div {

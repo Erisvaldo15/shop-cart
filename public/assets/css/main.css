@@ -18,26 +18,6 @@ body {
   overflow-x: hidden;
 }
 
-.travels-in-cart {
-  display: none;
-}
-.travels-in-cart.active {
-  position: fixed;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  max-width: 100%;
-  width: 31.25rem;
-  height: 100%;
-  background-color: #1d1d19;
-  color: #fff;
-  right: 0;
-  z-index: 2;
-  overflow-y: auto;
-}
-
 .logo {
   display: flex;
   justify-content: flex-start;
@@ -210,9 +190,6 @@ header .menu-icon {
 }
 
 .travels-in-cart {
-  display: none;
-}
-.travels-in-cart.active {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -221,9 +198,13 @@ header .menu-icon {
   height: 100%;
   background-color: #1d1d19;
   color: #fff;
-  right: 0;
+  right: -31.25rem;
   z-index: 4;
   overflow-y: auto;
+  transition: all 0.5s ease-in-out;
+}
+.travels-in-cart.active {
+  right: 0%;
 }
 .travels-in-cart > div {
   width: 100%;
