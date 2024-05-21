@@ -38,6 +38,15 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
+    const userOptions = document.querySelector('#account')
+
+    userOptions.addEventListener('click', () => {
+        const arrow = document.querySelector('.arrow');
+        const userOptionsMenu = document.querySelector('#user-options');
+        arrow.classList.toggle('fa-caret-down');
+        userOptionsMenu.classList.toggle('active');
+    })
+
     travelsDescriptions.forEach((description) => {
         let content = description.textContent;
 

@@ -21,18 +21,24 @@
                 <li>
                     <a href=<?= "/about" ?>> About </a>
                 </li>
-                <li class="user">
-                    <a href="/signup"> Sign Up </a>
-                </li>
-                <li class="user">
-                    <a href="/signin"> Sign In </a>
-                </li>
             </ul>
         </nav>
         <div id="cart">
             <li>
                 <span id="total-products-in-cart">0</span>
                 <i class="fa-solid fa-basket-shopping" id="view-cart"></i>
+            </li>
+            <li id="account">
+                <i class="fa-regular fa-user"></i>
+                <i class="arrow fa-solid fa-caret-up fa-caret-down"></i>
+                <div id="user-options">
+                    <a href="/signin"> 
+                        Sign In 
+                    </a>
+                    <a href="/signup"> 
+                        Sign Up
+                    </a>
+                </div>
             </li>
         </div>
         <div class="menu-icon">
