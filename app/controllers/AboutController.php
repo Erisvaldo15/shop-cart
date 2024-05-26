@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Testimonial;
+
 class AboutController  {
     
     public string $template = "template.php";
@@ -9,9 +11,12 @@ class AboutController  {
     public array $data = [];
 
     public function index() {
-        
+
+        $testimonials = Testimonial::all();
+
         $this->data = [
             "title" => "Diary - About",
+            "testimonials" => $testimonials,
             "thereIsNavbarCart" => true,
             "thereIsHeader" => true,
             "thereIsFooter" => true,

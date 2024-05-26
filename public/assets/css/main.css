@@ -105,7 +105,7 @@ button:hover {
 section {
   max-width: 92.75rem;
   margin: 0 auto;
-  padding: 6rem 1rem;
+  padding: 4rem 1rem;
 }
 
 .section-title {
@@ -114,6 +114,7 @@ section {
   font-weight: 300;
   margin-bottom: 6rem;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .cart-main, .cart-footer {
@@ -736,10 +737,52 @@ section#about #company-about img {
   width: 100%;
 }
 
+section#testimonials h3 {
+  margin-bottom: 0;
+}
+section#testimonials .swiper {
+  height: 30rem;
+  padding: 4rem;
+}
+section#testimonials .swiper #testimonials-wrapper {
+  display: flex;
+}
+section#testimonials .swiper #testimonials-wrapper .testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  height: 100%;
+}
+section#testimonials .swiper #testimonials-wrapper .testimonial .traveler-data {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+section#testimonials .swiper #testimonials-wrapper .testimonial .traveler-data img {
+  width: 6.25rem;
+  height: 6.25rem;
+  -webkit-clip-path: circle();
+          clip-path: circle();
+}
+section#testimonials .swiper #testimonials-wrapper .testimonial .traveler-data div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+section#testimonials .swiper .swiper-pagination {
+  margin-top: 1rem;
+}
+section#testimonials .swiper .control {
+  color: #1d1d19;
+}
+
 section#facts {
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("https://images.unsplash.com/photo-1519055548599-6d4d129508c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   max-width: 100%;
   padding: 0;
   height: 40rem;

@@ -10,7 +10,6 @@ use PDOException;
 
 abstract class Model
 {
-
     public array $fields = [];
 
     protected static string $table;

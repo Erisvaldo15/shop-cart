@@ -75,8 +75,8 @@ header {
                 padding: 0.5rem 1rem;
                 min-height: 5rem;
                 border-radius: 0.25rem;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
-                0 6px 20px rgba(0, 0, 0, 0.1); 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+                    0 6px 20px rgba(0, 0, 0, 0.1);
 
                 &.active {
                     display: flex;
@@ -642,10 +642,61 @@ section#about {
     }
 }
 
+section#testimonials {
+
+    h3 {
+        margin-bottom: 0;
+    }
+
+    .swiper {
+        height: 30rem;
+        padding: 4rem;
+
+        #testimonials-wrapper {
+            display: flex;
+
+            .testimonial {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 1.5rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                height: 100%;
+
+                .traveler-data {
+
+                    @include flex(flex-start, center, wrap);
+                    gap: 1rem;
+
+                    img {
+                        width: 6.25rem;
+                        height: 6.25rem;
+                        clip-path: circle();
+                    }
+
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1.25rem;
+                    }
+
+                }
+            }
+        }
+
+        .swiper-pagination {
+            margin-top: 1rem;
+        }
+
+        .control {
+            color: $black-color;
+        }
+    }
+}
+
 section#facts {
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('https://images.unsplash.com/photo-1519055548599-6d4d129508c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     max-width: 100%;
     padding: 0;
     height: 40rem;

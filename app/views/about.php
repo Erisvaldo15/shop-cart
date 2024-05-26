@@ -18,6 +18,35 @@
         </div>
     </div>
 </section>
+<section id="testimonials">
+    <h3 class="section-title"> TESTIMONIALS </h3>
+    <div class="swiper testimonials-slider">
+        <div id="testimonials-wrapper" class="swiper-wrapper">
+            <?php foreach($testimonials as $testimonial): ?>
+                <div class="testimonial swiper-slide">
+                    <p> <?= $testimonial->fields["feedback"]; ?> </p>
+                    <div class="traveler-data">
+                        <img src="<?= $testimonial->fields["image_profile"]; ?>" alt="Customer Photo">
+                        <div>
+                            <h3> 
+                                <?= $testimonial->fields["name"]; ?> 
+                            </h3>
+                            <p> 
+                                <?= $testimonial->fields["trip"]; ?> 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev control"></div>
+        <div class="swiper-button-next control"></div>
+    </div>
+
+</section>
 <section id="facts">
     <h3 class="section-title"> Why should you to travel with us. </h3>
     <div id="services">
