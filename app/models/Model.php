@@ -24,14 +24,14 @@ abstract class Model
         $this->fields[$name] = $value;
     }
 
-    public function insert(array $data)
+    public static function insert(array $data)
     {
 
         try {
 
             Transaction::open();
 
-            $query = "INSERT INTO {$this->table} (";
+            $query = "INSERT INTO " . static::$table .  " (";
 
             $values = "VALUES (";
 
@@ -50,11 +50,7 @@ abstract class Model
 
             $result = $insert->execute($data);
 
-            var_dump(Transaction::getConnection());
-
             Transaction::close();
-
-            var_dump(Transaction::getConnection());
 
             return $result;
         } catch (PDOException $e) {
@@ -84,7 +80,7 @@ abstract class Model
         }
     }
 
-    public static function findyBy(string $field, string $value, string $logic = "=", string $fields = '*')
+    public static function findBy(string $field, string $value, string $logic = "=", string $fields = '*')
     {
 
         try {

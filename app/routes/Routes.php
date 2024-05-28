@@ -33,8 +33,8 @@ class Routes {
 
             "post" => [
                 "/send/email" => "EmailController:index",
-                "/signin/store" => "SigninController:store",
-                "/signup/store" => "SignupController:store",
+                "/signin/store" => "SignInController:store",
+                "/signup/store" => "SignUpController:store",
             ],
 
             "put" => [

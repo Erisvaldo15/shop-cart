@@ -2,6 +2,7 @@
 
 namespace app\core;
 
+use app\classes\Redirect;
 use app\controllers\PageNotFoundController;
 use app\routes\Routes;
 use app\logs\LoggerFile;
@@ -17,8 +18,9 @@ class MyApp implements MyAppInterface {
         $actualUri = Uri::extract();
         $request = Request::extract();
 
-        if(!isset($routes[$request])) {
+        if(!isset($routes[$request][$actualUri])) {
             Log::create(new LoggerFile('Problem with request type', EnumLog::RouterError));
+            return Redirect::to("/");
         }
 
         $controllerAndMethod = Routes::filter($actualUri, $routes[$request]);
@@ -40,7 +42,7 @@ class MyApp implements MyAppInterface {
             $controllerInstance->$method($parameter);
         }
 
-        if(isset($_SERVER['CONTENT_TYPE']) && strtolower($_SERVER['CONTENT_TYPE']) === 'application/json') {
+        if(isset($_SERVER['CONTENT_TYPE']) && strtolower($_SERVER['CONTENT_TYPE']) === 'application/json' || $request !== 'get') {
             die;
         }
 
