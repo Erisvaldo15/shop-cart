@@ -1,4 +1,4 @@
-import renderTravels from "./travels.js";
+import renderTravels from './travels.js';
 
 export default async function searchTravel(value) {
     const requestSettings = new Request(
@@ -9,7 +9,7 @@ export default async function searchTravel(value) {
                 'Content-Type': 'application/json',
             },
         }
-    )
+    );
 
     // depois ver para que serve o request class.
 
@@ -17,11 +17,11 @@ export default async function searchTravel(value) {
         try {
             const travel = await fetch(requestSettings);
             const result = await travel.json();
-            renderTravels(result)
+            renderTravels(result);
         } catch (error) {
             console.log('Error to searching for travel', error);
         }
-    }
+    };
 
-    return searchedValue()
+    return searchedValue();
 }

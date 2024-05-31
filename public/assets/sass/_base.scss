@@ -85,7 +85,8 @@ textarea {
     padding: 0.5rem;
 }
 
-button, #view-more {
+button,
+#view-more {
     background-color: $yellow-color;
     width: 100%;
     padding: 0.85rem 2.5rem;
@@ -114,6 +115,7 @@ section {
     text-transform: uppercase;
 }
 
-.cart-main, .cart-footer {
+.cart-main,
+.cart-footer {
     padding: 2rem;
 }

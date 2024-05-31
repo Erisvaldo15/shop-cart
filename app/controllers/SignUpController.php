@@ -25,9 +25,9 @@ class SignUpController
     public function store()
     {
         $data = [
-            "name" => strip_tags($_POST['name']),
-            "email" => strip_tags($_POST['email']),
-            "password" => strip_tags($_POST['password']),
+            "name" => strip_tags($_POST["name"]),
+            "email" => strip_tags($_POST["email"]),
+            "password" => strip_tags($_POST["password"]),
         ];
 
         $errors = [];

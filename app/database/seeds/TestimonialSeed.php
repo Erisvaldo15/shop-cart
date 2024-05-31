@@ -55,7 +55,7 @@ class TestimonialSeed extends AbstractSeed
             ],
         ];
 
-        $table = $this->table('testimonials');
+        $table = $this->table("testimonials");
 
         $table->insert($testimonials)->saveData();
     }

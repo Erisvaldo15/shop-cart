@@ -2,15 +2,17 @@
 
 namespace app\controllers;
 
-class HomeController {
+class HomeController
+{
 
-    public string $template = 'template.php';
-    public string $view = 'home.php';
+    public string $template = "template.php";
+    public string $view = "home.php";
     public array $data = [];
 
-    public function index() {
+    public function index()
+    {
 
-        $this->view = 'home.php';
+        $this->view = "home.php";
 
         $this->data = [
             "title" => "Diary - Home",
@@ -20,5 +22,4 @@ class HomeController {
             "scrollHeader" => true,
         ];
     }
-
 }

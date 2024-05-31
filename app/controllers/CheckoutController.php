@@ -36,7 +36,7 @@ class CheckoutController
 
         $items = [
             "mode" => "payment",
-            'allow_promotion_codes' => true,
+            "allow_promotion_codes" => true,
             "success_url" => $_ENV["BASE_URL"] . "/success",
             "cancel_url" => $_ENV["BASE_URL"] . "/cancel",
         ];

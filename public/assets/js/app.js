@@ -6,9 +6,9 @@ import toogleNavbarCart from './navbarCart.js';
 import renderTravels from './travel/travels.js';
 import searchTravel from './travel/searchTravel.js';
 import { increase, decrease } from './cart/edit.js';
+import signIn from './user/signin.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
-
     const travelsInCart = async () => {
         try {
             const travels = await fetch('http://localhost:8000/cart');
@@ -32,20 +32,23 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 
     window.addEventListener('scroll', () => {
-        if(document.querySelector('.scroll-header')) {
+        const headerElement = document.querySelector('.scroll-header');
+        if (headerElement) {
             if (window.scrollY > 0) headerElement?.classList.add('activate');
-            else headerElement.classList.remove('activate');
+            else headerElement?.classList.remove('activate');
         }
     });
 
-    const userOptions = document.querySelector('#account')
+    const userOptions = document.querySelector('#account') ?? null;
 
-    userOptions.addEventListener('click', () => {
-        const arrow = document.querySelector('.arrow');
-        const userOptionsMenu = document.querySelector('#user-options');
-        arrow.classList.toggle('fa-caret-down');
-        userOptionsMenu.classList.toggle('active');
-    })
+    if (userOptions) {
+        userOptions.addEventListener('click', () => {
+            const arrow = document.querySelector('.arrow');
+            const userOptionsMenu = document.querySelector('#user-options');
+            arrow.classList.toggle('fa-caret-down');
+            userOptionsMenu.classList.toggle('active');
+        });
+    }
 
     travelsDescriptions.forEach((description) => {
         let content = description.textContent;
@@ -100,9 +103,11 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     const cartMainDiv = document.querySelector('.cart-main');
     if (cartMainDiv) {
-        cartMainDiv.addEventListener('click', event => {
+        cartMainDiv.addEventListener('click', (event) => {
             event.preventDefault();
             handleCartMainClick(event);
         });
     }
+
+    signIn();
 });

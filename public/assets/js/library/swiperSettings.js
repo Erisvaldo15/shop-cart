@@ -24,7 +24,7 @@ export default function swiperRender() {
             1440: {
                 slidesPerView: 3,
                 spaceBetween: 30,
-            }
+            },
         },
         autoplay: {
             delay: 5000,

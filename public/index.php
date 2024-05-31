@@ -19,5 +19,5 @@ try {
 } 
 
 catch (\Throwable $th) {
-    echo $th->getMessage();
+    echo "Error: {$th->getMessage()}, {$th->getFile()} File, in the line {$th->getLine()}";
 }

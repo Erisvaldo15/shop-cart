@@ -15,7 +15,10 @@ async function increase(event) {
     if (event.target.classList.contains('increase-quantity')) {
         try {
             const travelSlug = event.target.getAttribute('data-slug');
-            const requestSettings = new Request(baseUrl, extraSettings(travelSlug, 'increase'));
+            const requestSettings = new Request(
+                baseUrl,
+                extraSettings(travelSlug, 'increase')
+            );
 
             let increaseResult = await fetch(requestSettings);
             increaseResult = await increaseResult.json();
@@ -31,7 +34,10 @@ async function decrease(event) {
     if (event.target.classList.contains('decrease-quantity')) {
         try {
             const travelSlug = event.target.getAttribute('data-slug');
-            const requestSettings = new Request(baseUrl, extraSettings(travelSlug, 'decrease'));
+            const requestSettings = new Request(
+                baseUrl,
+                extraSettings(travelSlug, 'decrease')
+            );
 
             let decreaseResult = await fetch(requestSettings);
             decreaseResult = await decreaseResult.json();

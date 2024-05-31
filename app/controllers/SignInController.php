@@ -26,8 +26,8 @@ class SigninController
     public function store()
     {
         $data = [
-            "email" => strip_tags($_POST["email"]),
-            "password" => strip_tags($_POST["password"]),
+            "email" => json_decode(file_get_contents('php://input'), true)[0],
+            "password" => json_decode(file_get_contents('php://input'), true)[1],
         ];
 
         $errors = [];
@@ -57,9 +57,17 @@ class SigninController
             ]);
         }
 
+        $_SESSION["logged"] = [
+            "name" => $findUser->fields["name"], 
+        ];
+
         return jsonFormat([
             "success" => true,
             "message" => "You're logged",
         ]);
+    }
+
+    public function destroy() {
+        
     }
 }

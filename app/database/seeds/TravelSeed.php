@@ -30,14 +30,14 @@ class TravelSeed extends AbstractSeed
                 "description" => "Rio de Janeiro is a beutiful place in Brazil.",
                 "price" => "10000",
                 "image_path" => "teste",
-            ], 
+            ],
             [
                 "name" => "New York",
                 "slug" => "new-york",
                 "description" => "New York is a of places most famous in United States.",
                 "price" => "15.000",
                 "image_path" => "teste",
-            ], 
+            ],
             [
                 "name" => "Madrid",
                 "slug" => "madrid",
@@ -47,7 +47,7 @@ class TravelSeed extends AbstractSeed
             ],
         ];
 
-        $table = $this->table('travels');
+        $table = $this->table("travels");
 
         $table->insert($travels)->saveData();
     }

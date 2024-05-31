@@ -2,10 +2,11 @@
 
 namespace app\core;
 
-class Request {
+class Request
+{
 
-    public static function extract() {
-        return strtolower($_SERVER['REQUEST_METHOD']);
+    public static function extract()
+    {
+        return strtolower($_SERVER["REQUEST_METHOD"]);
     }
-    
 }

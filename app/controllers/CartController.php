@@ -30,18 +30,18 @@ class CartController
 
     public function updateQuantity()
     {
-        $dataFromRequest = json_decode(file_get_contents('php://input'));
-       
+        $dataFromRequest = json_decode(file_get_contents("php://input"));
+
         $slug = $dataFromRequest[0];
         $increaseOrDecrease = $dataFromRequest[1];
 
         foreach (Cart::cart() as $key => $travel) {
-            if ($travel['slug'] === $slug) Cart::setQuantity($key, 1, $increaseOrDecrease);
+            if ($travel["slug"] === $slug) Cart::setQuantity($key, 1, $increaseOrDecrease);
         }
 
         return jsonFormat([
-            "cart" => Cart::cart(), 
-            "total" => Cart::total(), 
+            "cart" => Cart::cart(),
+            "total" => Cart::total(),
             "quantity" => Cart::getQuantity(),
         ]);
     }

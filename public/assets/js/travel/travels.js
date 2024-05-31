@@ -1,19 +1,17 @@
 export default function renderTravels(travels) {
-
     const travelDiv = document.querySelector('.travels');
 
-    travelDiv.innerHTML = ""
+    travelDiv.innerHTML = '';
 
-    travels.forEach(travel => {
-
+    travels.forEach((travel) => {
         const travelHtml = `
-            <div class='travel shadow'> 
-                <img src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'/>
-                <div class='travel-content'>
+            <div class="travel shadow"> 
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                <div class="travel-content">
                     <h3> ${travel.fields.name} </h3>
-                    <div class='content'>
+                    <div class="content">
                         <p> ${travel.fields.description} </p>
-                        <div class='actions'>
+                        <div class="actions">
                         <button class="add-to-cart" data-slug="${travel.fields.slug}">
                             Add to cart
                             <i class="fa-solid fa-cart-shopping"></i>
@@ -28,8 +26,9 @@ export default function renderTravels(travels) {
             </div>
         `;
 
-        travelDiv.innerHTML += travelHtml
+        travelDiv.innerHTML += travelHtml;
     });
 
-    if(!travelDiv.innerHTML) travelDiv.innerHTML = "<h2> No travels found. </h2>"
+    if (!travelDiv.innerHTML)
+        travelDiv.innerHTML = '<h2> No travels found. </h2>';
 }

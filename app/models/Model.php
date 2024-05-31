@@ -59,7 +59,7 @@ abstract class Model
         }
     }
 
-    public static function all(string $fields = '*')
+    public static function all(string $fields = "*")
     {
 
         try {
@@ -80,7 +80,7 @@ abstract class Model
         }
     }
 
-    public static function findBy(string $field, string $value, string $logic = "=", string $fields = '*')
+    public static function findBy(string $field, string $value, string $logic = "=", string $fields = "*")
     {
 
         try {
@@ -114,7 +114,7 @@ abstract class Model
             $connection = Transaction::getConnection();
 
             foreach ($fieldsForSearch as $field) {
-                $query .= " {$field} LIKE CONCAT('%',:{$field},'%') OR";
+                $query .= " {$field} LIKE CONCAT(" % ",:{$field}," % ") OR";
             }
 
             $query = rtrim($query, "OR");
@@ -132,10 +132,9 @@ abstract class Model
             Transaction::close();
 
             return $result;
-
         } catch (PDOException $e) {
             Log::create(new LoggerFile($e->getMessage(), EnumLog::DatabaseError));
-            Transaction::rollback();      
+            Transaction::rollback();
         }
     }
 }

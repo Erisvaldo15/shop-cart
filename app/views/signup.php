@@ -16,7 +16,7 @@
                 <input type="text" name="name" placeholder="Type your name">           
             </div>
             <div class="fields">
-                <label> E-mail </label>
+                <label> Email </label>
                 <input type="email" name="email" placeholder="Type your e-mail">        
             </div>
             <div class="fields">

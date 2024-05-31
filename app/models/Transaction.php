@@ -5,31 +5,34 @@ namespace app\models;
 use app\database\Connection;
 use PDO;
 
-class Transaction {
+class Transaction
+{
 
-    private static ?PDO $connection = null; // '?' allow that the 'PDO' being null
+    private static ?PDO $connection = null; // "?" allow that the "PDO" being null
 
-    public static function open(): void {
+    public static function open(): void
+    {
         self::$connection = Connection::connection();
         self::$connection->beginTransaction();
     }
 
-    public static function close(): void {
+    public static function close(): void
+    {
         self::$connection->commit();
         self::$connection = null;
     }
 
-    public static function getConnection(): PDO|null {
+    public static function getConnection(): PDO|null
+    {
         return self::$connection;
     }
 
-    public static function rollback(): void {
+    public static function rollback(): void
+    {
 
-        if(self::$connection) {
+        if (self::$connection) {
             self::$connection->rollBack();
             self::$connection = null;
         }
-
     }
-
 }

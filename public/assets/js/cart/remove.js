@@ -1,13 +1,11 @@
 import render from './render.js';
 
 export default async function remove(event) {
-
     event.preventDefault();
 
     const button = event.target;
 
     if (button.classList.contains('remove')) {
-        
         const travelSlug = event.target.getAttribute('data-slug');
 
         try {

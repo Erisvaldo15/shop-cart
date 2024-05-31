@@ -61,6 +61,10 @@ header {
             gap: 0.4rem;
             cursor: pointer;
 
+            span {
+                color: $white-color;
+            }
+
             #user-options {
                 display: none;
                 flex-direction: column;
@@ -643,7 +647,6 @@ section#about {
 }
 
 section#testimonials {
-
     h3 {
         margin-bottom: 0;
     }
@@ -664,7 +667,6 @@ section#testimonials {
                 height: 100%;
 
                 .traveler-data {
-
                     @include flex(flex-start, center, wrap);
                     gap: 1rem;
 
@@ -679,7 +681,6 @@ section#testimonials {
                         flex-direction: column;
                         gap: 1.25rem;
                     }
-
                 }
             }
         }

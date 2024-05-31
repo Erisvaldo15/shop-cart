@@ -5,13 +5,15 @@ namespace app\controllers;
 use app\classes\Cart;
 use app\models\Travel;
 
-class TravelController {
+class TravelController
+{
 
-    public string $template = 'template.php';
-    public string $view = 'travels.php';
+    public string $template = "template.php";
+    public string $view = "travels.php";
     public array $data = [];
 
-    public function index() {
+    public function index()
+    {
         $this->data = [
             "title" => "Diary - Travels",
             "travels" => Travel::all(),
@@ -23,13 +25,14 @@ class TravelController {
         ];
     }
 
-    public function show($travel) {
+    public function show($travel)
+    {
 
         $this->view = "travel.php";
 
-        $travel = Travel::findyBy('slug', $travel[0]);
+        $travel = Travel::findyBy("slug", $travel[0]);
 
-        if(!$travel) {
+        if (!$travel) {
             $this->view = "travelDoesNotExist.php";
         }
 
@@ -40,15 +43,16 @@ class TravelController {
             "thereIsFooter" => false,
             "travel" => $travel,
         ];
-     
     }
 
-    public function getAllTravels() {
+    public function getAllTravels()
+    {
         echo json_encode(Travel::all());
     }
 
-    public function searchByTravel() {
-        $text = filter_var($_GET['text'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    public function searchByTravel()
+    {
+        $text = filter_var($_GET["text"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $result = Travel::like($text, ["name", "description"]);
         echo json_encode($result);
     }

@@ -29,15 +29,25 @@
                 <i class="fa-solid fa-basket-shopping" id="view-cart"></i>
             </li>
             <li id="account">
-                <i class="fa-regular fa-user"></i>
+                <?php if (!isset($_SESSION["logged"])) : ?>
+                    <i class="fa-regular fa-user"></i>
+                <?php else: ?>
+                    <span>Hello, <?= $_SESSION["logged"]["name"]; ?> </span>
+                <?php endif; ?>
                 <i class="arrow fa-solid fa-caret-up fa-caret-down"></i>
                 <div id="user-options">
-                    <a href="/signin"> 
-                        Sign In 
+                <?php if((!isset($_SESSION["logged"]))): ?>
+                    <a href="/signin">
+                        Sign In
                     </a>
-                    <a href="/signup"> 
+                    <a href="/signup">
                         Sign Up
                     </a>
+                <?php else: ?>
+                    <a href="/logout">
+                        Logout
+                    </a>
+                <?php endif; ?>
                 </div>
             </li>
         </div>

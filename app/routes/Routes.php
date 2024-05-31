@@ -6,10 +6,12 @@ use app\enums\EnumLog;
 use app\logs\Log;
 use app\logs\LoggerFile;
 
-class Routes {
+class Routes
+{
 
-    public static function extract() {
-       
+    public static function extract()
+    {
+
         return [
 
             "get" => [
@@ -42,29 +44,30 @@ class Routes {
             ],
 
         ];
-
     }
 
-    private static function staticRoute($actualUri, $routes) {
+    private static function staticRoute($actualUri, $routes)
+    {
 
-        if(array_key_exists($actualUri, $routes)) {
+        if (array_key_exists($actualUri, $routes)) {
             return $routes[$actualUri];
         }
 
         return null;
     }
 
-    private static function dynamicRoute($actualUri, $routes) {
+    private static function dynamicRoute($actualUri, $routes)
+    {
 
-       foreach ($routes as $uri => $controllerAndMethod) {
+        foreach ($routes as $uri => $controllerAndMethod) {
 
-            $regex = str_replace('/', '\/', ltrim($uri, '/'));
+            $regex = str_replace("/", "\/", ltrim($uri, "/"));
 
-            if($uri !== '/' && preg_match("/^$regex$/", ltrim($actualUri, '/'))) {
+            if ($uri !== "/" && preg_match("/^$regex$/", ltrim($actualUri, "/"))) {
                 $routerFound = $controllerAndMethod;
                 break;
-            } 
-            
+            }
+
             $routerFound = null;
         }
 
@@ -72,25 +75,24 @@ class Routes {
     }
 
 
-    public static function filter($actualUri, $routes) {
+    public static function filter($actualUri, $routes)
+    {
 
         $router = self::staticRoute($actualUri, $routes);
 
-        if($router) {
+        if ($router) {
             return $router;
         }
 
         $routerDynamic = self::dynamicRoute($actualUri, $routes);
 
-        if($routerDynamic) {
+        if ($routerDynamic) {
             return $routerDynamic;
         }
 
-        if(!array_key_exists($actualUri, $routes)) {
-            Log::create(new LoggerFile('Router does not exist', EnumLog::RouterError));
+        if (!array_key_exists($actualUri, $routes)) {
+            Log::create(new LoggerFile("Router does not exist", EnumLog::RouterError));
             return "PageNotFoundController:index";
-        } 
-
+        }
     }
-
 }

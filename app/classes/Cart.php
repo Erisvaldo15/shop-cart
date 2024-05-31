@@ -5,23 +5,26 @@ namespace app\classes;
 use app\interfaces\CartInterface;
 use app\models\Travel;
 
-class Cart implements CartInterface {
+class Cart implements CartInterface
+{
 
-    public static function init() {
-        if(!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
-            $_SESSION['cart']['products'] = [];
-            $_SESSION['cart']['total'] = 0;
+    public static function init()
+    {
+        if (!isset($_SESSION["cart"])) {
+            $_SESSION["cart"] = [];
+            $_SESSION["cart"]["products"] = [];
+            $_SESSION["cart"]["total"] = 0;
         }
     }
 
-    public static function add($travel) {
+    public static function add($travel)
+    {
 
         self::init();
 
-        $travel = Travel::findyBy('slug', $travel, '=', 'id,image_path,name,price,description,slug');
+        $travel = Travel::findyBy("slug", $travel, "=", "id,image_path,name,price,description,slug");
 
-        if(!$travel) {
+        if (!$travel) {
             return;
         }
 
@@ -35,71 +38,71 @@ class Cart implements CartInterface {
             "quantity" => 1,
         ];
 
-        if(isset($_SESSION['cart']['products'])) {
+        if (isset($_SESSION["cart"]["products"])) {
 
             $productAdded = false;
 
             foreach (Cart::cart() as $key => $travelInCart) {
 
-                if($travelInCart['id'] === $travel->id) {
+                if ($travelInCart["id"] === $travel->id) {
                     Cart::setQuantity($key, 1, "increase");
                     $productAdded = true;
                     break;
                 }
-
             }
 
-            if(!$productAdded) {
-                $_SESSION['cart']['products'][] = $formattedTravel;
-            } 
-        } 
-
-        else {
-            $_SESSION['cart']['products'][] = $formattedTravel;
+            if (!$productAdded) {
+                $_SESSION["cart"]["products"][] = $formattedTravel;
+            }
+        } else {
+            $_SESSION["cart"]["products"][] = $formattedTravel;
         }
- 
     }
 
-    public static function remove($travel) {
+    public static function remove($travel)
+    {
 
-        $travel = Travel::findyBy('slug', $travel, '=', 'slug');
+        $travel = Travel::findyBy("slug", $travel, "=", "slug");
 
-        if(empty($travel) || !Cart::cart()) {
+        if (empty($travel) || !Cart::cart()) {
             return;
         }
 
         foreach (Cart::cart() as $key => $travelInCart) {
 
-            if($travelInCart['slug'] === $travel->slug) {
-                unset($_SESSION['cart']['products'][$key]);
+            if ($travelInCart["slug"] === $travel->slug) {
+                unset($_SESSION["cart"]["products"][$key]);
             }
-
         }
     }
 
-    public static function clearCart() {
-        unset($_SESSION['cart']);
+    public static function clearCart()
+    {
+        unset($_SESSION["cart"]);
     }
 
-    public static function total() {
+    public static function total()
+    {
 
-        if(Cart::cart()) {
-            $total = array_sum(array_map(fn($value) => $value['price'] * $value['quantity'], Cart::cart()));
-            return $_SESSION['cart']['total'] = number_format($total, 2);
+        if (Cart::cart()) {
+            $total = array_sum(array_map(fn ($value) => $value["price"] * $value["quantity"], Cart::cart()));
+            return $_SESSION["cart"]["total"] = number_format($total, 2);
         }
-
     }
 
-    public static function cart() {
-       return $_SESSION['cart']['products'] ?? [];
+    public static function cart()
+    {
+        return $_SESSION["cart"]["products"] ?? [];
     }
 
-    public static function getQuantity() {
-        return isset($_SESSION['cart']) ? count($_SESSION['cart']['products']) : 0;
+    public static function getQuantity()
+    {
+        return isset($_SESSION["cart"]) ? count($_SESSION["cart"]["products"]) : 0;
     }
 
-    public static function setQuantity(int $key, int $quantity, string $typeOperation) {
-        if($typeOperation === "increase") $_SESSION['cart']['products'][$key]['quantity'] += $quantity;
-        else $_SESSION['cart']['products'][$key]['quantity'] -= $quantity;
+    public static function setQuantity(int $key, int $quantity, string $typeOperation)
+    {
+        if ($typeOperation === "increase") $_SESSION["cart"]["products"][$key]["quantity"] += $quantity;
+        else $_SESSION["cart"]["products"][$key]["quantity"] -= $quantity;
     }
 }
