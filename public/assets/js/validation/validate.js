@@ -43,16 +43,16 @@ export default class Validate {
     }
 
     #email(value) {
-        return !this.#regexForEmail.test(value) ? 'E-mail invalid' : true;
+        return !this.#regexForEmail.test(value) ? 'Email invalid' : true;
     }
 
     #password(value) {
         return value.length >= 8
             ? true
-            : 'Passoword must have at least 8 characters';
+            : 'Password must have at least 8 characters';
     }
 
     #name(value) {
-        return value >= 3 ? true : 'Name must have at least 3 characters';
+        return value.length >= 3 ? true : 'Name must have at least 3 characters';
     }
 }

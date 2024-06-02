@@ -1,10 +1,10 @@
 <section class="form-section">
-    <header class="form-header">
+    <div class="form-header">
         <div class="logo">
             <img src="/assets/img/icons/logo.svg" alt="Website icon">
             <a href="/"> Diary </a>
         </div>
-    </header>
+    </div>
     <div class="form-div">
         <div class="title">
             <img src="/assets/img/icons/log-in.svg" alt="Website logo">
@@ -23,10 +23,10 @@
                 <input type="password" name="password" placeholder="Type your password" id="passwordForSignIn">
             </div>
             <div id="help">
-                <a href=""> <span> Redeem password </span> </a>
+                <a href="#"> <span> Redeem password </span> </a>
             </div>
             <button type="submit" class="form-button"> Sign In </button>
-            <a href="/signup" class="other-link"> Don"t have account? <span> SignUp </span> </a>
+            <a href="/signup" class="other-link"> Don't have account? <span> Sign Up </span> </a>
         </form>
     </div>
 </section>

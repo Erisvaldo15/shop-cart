@@ -2,9 +2,10 @@
 
 namespace app\controllers;
 
+use app\classes\Redirect;
 use app\models\User;
 
-class SigninController
+class SignInController
 {
 
     public string $template = "template.php";
@@ -25,10 +26,7 @@ class SigninController
 
     public function store()
     {
-        $data = [
-            "email" => json_decode(file_get_contents('php://input'), true)[0],
-            "password" => json_decode(file_get_contents('php://input'), true)[1],
-        ];
+        $data = json_decode(file_get_contents('php://input'), true);
 
         $errors = [];
 
@@ -46,14 +44,14 @@ class SigninController
         if(!$findUser) {
             return jsonFormat([
                 "success" => false,
-                "error" => "Email does not exist",
+                "message" => "Email does not exist",
             ]);
         }
 
         if(!password_verify($data["password"], $findUser->fields["password"])) {
             return jsonFormat([
                 "success" => false,
-                "error" => "Password invalid",
+                "message" => "Password invalid",
             ]);
         }
 
@@ -68,6 +66,11 @@ class SigninController
     }
 
     public function destroy() {
-        
+
+        if(isset($_SESSION["logged"])) {
+            unset($_SESSION["logged"]);
+        }
+
+        return Redirect::to("/travels");
     }
 }

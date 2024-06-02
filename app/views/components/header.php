@@ -31,23 +31,23 @@
             <li id="account">
                 <?php if (!isset($_SESSION["logged"])) : ?>
                     <i class="fa-regular fa-user"></i>
-                <?php else: ?>
+                <?php else : ?>
                     <span>Hello, <?= $_SESSION["logged"]["name"]; ?> </span>
                 <?php endif; ?>
                 <i class="arrow fa-solid fa-caret-up fa-caret-down"></i>
                 <div id="user-options">
-                <?php if((!isset($_SESSION["logged"]))): ?>
-                    <a href="/signin">
-                        Sign In
-                    </a>
-                    <a href="/signup">
-                        Sign Up
-                    </a>
-                <?php else: ?>
-                    <a href="/logout">
-                        Logout
-                    </a>
-                <?php endif; ?>
+                    <?php if ((!isset($_SESSION["logged"]))) : ?>
+                        <a href="/signin">
+                            Sign In
+                        </a>
+                        <a href="/signup">
+                            Sign Up
+                        </a>
+                    <?php else : ?>
+                        <form action="/logout" method="POST">
+                            <button> Logout </button>
+                        </form>
+                    <?php endif; ?>
                 </div>
             </li>
         </div>

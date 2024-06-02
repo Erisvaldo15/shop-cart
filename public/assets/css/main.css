@@ -88,7 +88,8 @@ textarea {
   padding: 0.5rem;
 }
 
-button, #view-more {
+button,
+#view-more {
   background-color: #FFC632;
   width: 100%;
   padding: 0.85rem 2.5rem;
@@ -117,7 +118,8 @@ section {
   text-transform: uppercase;
 }
 
-.cart-main, .cart-footer {
+.cart-main,
+.cart-footer {
   padding: 2rem;
 }
 
@@ -130,6 +132,11 @@ section {
   }
   .form-section .form-div {
     padding: 2rem !important;
+    width: 90% !important;
+  }
+}
+@media screen and (max-width: 675px) {
+  section.form-section .form-header {
     width: 90% !important;
   }
 }
@@ -199,6 +206,9 @@ header #cart li#account {
   flex-wrap: wrap;
   gap: 0.4rem;
   cursor: pointer;
+}
+header #cart li#account span {
+  color: #fff;
 }
 header #cart li#account #user-options {
   display: none;
@@ -648,8 +658,8 @@ section.form-section .form-header {
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: nowrap;
-  padding: 1.25rem 2.5rem;
-  max-width: 43rem;
+  padding: 1.25rem 0;
+  width: 35.75rem;
 }
 section.form-section .form-div {
   background-color: #282927;
@@ -699,10 +709,10 @@ section.form-section .form-div form .fields input[type=text]::placeholder {
   position: relative;
   bottom: 0.05rem;
 }
-section.form-section .form-div form .fields input[type=email]::-moz-placeholder {
+section.form-section .form-div form .fields input[name=email]::-moz-placeholder {
   background-image: url(../img/icons/mail_disabled.svg);
 }
-section.form-section .form-div form .fields input[type=email]::placeholder {
+section.form-section .form-div form .fields input[name=email]::placeholder {
   background-image: url(../img/icons/mail_disabled.svg);
 }
 section.form-section .form-div form .fields input[type=password]::-moz-placeholder {

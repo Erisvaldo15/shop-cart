@@ -24,11 +24,7 @@ class SignUpController
 
     public function store()
     {
-        $data = [
-            "name" => strip_tags($_POST["name"]),
-            "email" => strip_tags($_POST["email"]),
-            "password" => strip_tags($_POST["password"]),
-        ];
+        $data = json_decode(file_get_contents('php://input'), true);
 
         $errors = [];
 
@@ -43,18 +39,29 @@ class SignUpController
         }
 
         if(User::findBy("email", $data["email"])) {
-            return jsonFormat(["email" => "Email already exists"]);
+            return jsonFormat([
+                "success" => false,
+                "message" => "Email already exists"
+            ]);
         }
 
         $data["password"] = password_hash($data["password"], PASSWORD_ARGON2I);
         
         if(User::insert($data)) {
+
+            $_SESSION["logged"] = [
+                "name" => $data["name"],
+            ];
+
             return jsonFormat([
                 "success" => true,
                 "message" => "You're registered",
             ]);
         }
 
-        return jsonFormat("Error to register");
+        return jsonFormat([
+            "success" => false,
+            "message" => "Error to register",
+        ]);
     }
 }

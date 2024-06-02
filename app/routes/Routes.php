@@ -37,6 +37,7 @@ class Routes
                 "/send/email" => "EmailController:index",
                 "/signin/store" => "SignInController:store",
                 "/signup/store" => "SignUpController:store",
+                "/logout" => "SignInController:destroy",
             ],
 
             "put" => [

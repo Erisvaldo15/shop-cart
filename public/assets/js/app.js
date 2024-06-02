@@ -7,6 +7,7 @@ import renderTravels from './travel/travels.js';
 import searchTravel from './travel/searchTravel.js';
 import { increase, decrease } from './cart/edit.js';
 import signIn from './user/signin.js';
+import signUp from './user/signup.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const travelsInCart = async () => {
@@ -110,4 +111,5 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 
     signIn();
+    signUp();
 });
