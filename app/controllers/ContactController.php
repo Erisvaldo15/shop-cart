@@ -17,6 +17,7 @@ class ContactController
             "thereIsNavbarCart" => true,
             "thereIsHeader" => true,
             "thereIsFooter" => true,
+            "scrollHeader" => true,
         ];
     }
 }

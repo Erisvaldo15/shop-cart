@@ -100,6 +100,26 @@ button:hover {
     background-color: $dark-yellow-color;
 }
 
+li a.link-menu {
+    width: 0;
+    position: relative;
+    color: $white-color;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0.15rem;
+        background-color: $yellow-color;
+        transition: 0.4s ease-in-out;
+        top: 100%;
+    }
+}
+
+li:hover a.link-menu::before {
+    width: 100%;
+}
+
 section {
     max-width: 92.75rem;
     margin: 0 auto;

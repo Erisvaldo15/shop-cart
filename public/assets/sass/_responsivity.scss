@@ -1,24 +1,75 @@
 @media screen and (max-width: 1440px) {
-    
     section.image {
         display: none;
     }
 
     .form-section {
-        width: 100vw !important;
+        width: 100vw;
 
         .form-div {
-            padding: 2rem !important;
-            width: 90% !important;
+            padding: 2rem;
+            width: 90%;
         }
     }
+}
 
+@media screen and (max-width: 768px) {
+    header {
+        padding: 1.25rem 2rem;
+
+        nav {
+            ul#menu {
+                display: none;
+            }
+        }
+
+        .user-actions {
+            display: none;
+        }
+
+        #menu-icon {
+            display: block;
+        }
+
+        #menu-mobile {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $dark-black-color;
+            width: 100vw;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+            z-index: 2;
+            transition: 0.5s ease-in-out;
+
+            &.activate {
+                height: 100vh;
+                visibility: visible;
+                transition: 0.5s ease-in-out;
+            }
+
+            ul {
+                @include flex(center);
+                flex-direction: column;
+                height: 100%;
+                gap: 4rem;
+
+                hr {
+                    width: 5rem;
+                }
+
+                .user-actions {
+                    display: flex;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 675px) {
-
     section.form-section .form-header {
-        width: 90% !important;
+        width: 90%;
     }
-
 }

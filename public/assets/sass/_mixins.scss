@@ -4,3 +4,19 @@
     align-items: $align-items;
     flex-wrap: $wrap;
 }
+
+@mixin close-animation() {
+    .line:nth-child(1) {
+        transform: translateY(0.4rem) rotate(-50deg);
+        transition: all 0.1s ease-in-out;
+    }
+
+    .line:nth-child(2) {
+        display: none;
+    }
+
+    .line:nth-child(3) {
+        transform: translateY(0rem) rotate(45deg);
+        transition: all 0.2s ease-in-out;
+    }
+}

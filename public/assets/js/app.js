@@ -8,6 +8,7 @@ import searchTravel from './travel/searchTravel.js';
 import { increase, decrease } from './cart/edit.js';
 import signIn from './user/signin.js';
 import signUp from './user/signup.js';
+import dropdownUserOptions from './dropdownUserOptions.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const travelsInCart = async () => {
@@ -35,21 +36,11 @@ window.addEventListener('DOMContentLoaded', async () => {
     window.addEventListener('scroll', () => {
         const headerElement = document.querySelector('.scroll-header');
         if (headerElement) {
+            console.log('hereee');
             if (window.scrollY > 0) headerElement?.classList.add('activate');
             else headerElement?.classList.remove('activate');
         }
     });
-
-    const userOptions = document.querySelector('#account') ?? null;
-
-    if (userOptions) {
-        userOptions.addEventListener('click', () => {
-            const arrow = document.querySelector('.arrow');
-            const userOptionsMenu = document.querySelector('#user-options');
-            arrow.classList.toggle('fa-caret-down');
-            userOptionsMenu.classList.toggle('active');
-        });
-    }
 
     travelsDescriptions.forEach((description) => {
         let content = description.textContent;
@@ -110,6 +101,17 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    const buttonMenuMobile = document.querySelector('#menu-icon') ?? null;
+    const menuMobile = document.querySelector('#menu-mobile') ?? null;
+
+    if (buttonMenuMobile && menuMobile) {
+        buttonMenuMobile.addEventListener('click', () => {
+            buttonMenuMobile.classList.toggle('activate');
+            menuMobile.classList.toggle('activate');
+        });
+    }
+
     signIn();
     signUp();
+    dropdownUserOptions();
 });

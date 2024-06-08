@@ -16,6 +16,7 @@ class AboutController  {
 
         $this->data = [
             "title" => "Diary - About",
+            "scrollHeader" => true,
             "testimonials" => $testimonials,
             "thereIsNavbarCart" => true,
             "thereIsHeader" => true,
