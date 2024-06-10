@@ -129,7 +129,7 @@ section {
 }
 
 .section-title {
-  font-size: 19.2px;
+  font-size: 1.2rem;
   color: gray;
   font-weight: 300;
   margin-bottom: 6rem;
@@ -847,11 +847,48 @@ section#testimonials .swiper .control {
 }
 
 section#facts {
-  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://ahoyclub.com/ix/charter-destinations/bahamas/assets/region_bahamas-2-scaled.jpg") center/cover no-repeat;
+  background-position: bottom;
   background-repeat: no-repeat;
   max-width: 100%;
   padding: 0;
-  height: 40rem;
+  min-height: 90vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  color: #fff;
+  text-transform: uppercase;
+  gap: 2rem;
+}
+section#facts h3 {
+  font-size: 1.4rem;
+}
+section#facts h2 {
+  font-size: 2rem;
+}
+section#facts #highlights {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  margin-top: 4rem;
+  gap: 5rem;
+}
+section#facts #highlights .highlight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 1rem;
+}
+section#facts #highlights .highlight i {
+  font-size: 3rem;
 }
 
 footer#footer {

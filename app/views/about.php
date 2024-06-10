@@ -22,17 +22,17 @@
     <h3 class="section-title"> TESTIMONIALS </h3>
     <div class="swiper testimonials-slider">
         <div id="testimonials-wrapper" class="swiper-wrapper">
-            <?php foreach($testimonials as $testimonial): ?>
+            <?php foreach ($testimonials as $testimonial) : ?>
                 <div class="testimonial swiper-slide">
                     <p> <?= $testimonial->fields["feedback"]; ?> </p>
                     <div class="traveler-data">
                         <img src="<?= $testimonial->fields["image_profile"]; ?>" alt="Customer Photo">
                         <div>
-                            <h3> 
-                                <?= $testimonial->fields["name"]; ?> 
+                            <h3>
+                                <?= $testimonial->fields["name"]; ?>
                             </h3>
-                            <p> 
-                                <?= $testimonial->fields["trip"]; ?> 
+                            <p>
+                                <?= $testimonial->fields["trip"]; ?>
                             </p>
                         </div>
                     </div>
@@ -48,8 +48,29 @@
 
 </section>
 <section id="facts">
-    <h3 class="section-title"> Why should you to travel with us. </h3>
-    <div id="services">
+    <h3> Why should you to travel with us. </h3>
+    <h2> Facts </h2>
+    <div id="highlights">
+        <div class="highlight">
+            <i class="fa-solid fa-money-bills"></i>
+            <h2> Test </h2>
+            <p> This is a example of test</p>
+        </div>
+        <div class="highlight">
+            <i class="fa-solid fa-star"></i>
 
+            <h2> Test </h2>
+            <p> This is a example of test</p>
+        </div>
+        <div class="highlight">
+            <i class="fa-solid fa-ranking-star"></i>
+            <h2> Test </h2>
+            <p> This is a example of test</p>
+        </div>
+        <div class="highlight">
+            <i class="fa-solid fa-headset"></i>
+            <h2> Test </h2>
+            <p> This is a example of test</p>
+        </div>
     </div>
 </section>

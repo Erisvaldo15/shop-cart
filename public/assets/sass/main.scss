@@ -683,6 +683,7 @@ section.image {
 }
 
 section#about {
+
     #company-about {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -692,6 +693,7 @@ section#about {
             width: 100%;
         }
     }
+
 }
 
 section#testimonials {
@@ -744,11 +746,44 @@ section#testimonials {
 }
 
 section#facts {
-    background-position: center;
+    @include flex(center, center);
+    flex-direction: column;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://ahoyclub.com/ix/charter-destinations/bahamas/assets/region_bahamas-2-scaled.jpg") center/cover no-repeat;
+    background-position: bottom;
     background-repeat: no-repeat;
     max-width: 100%;
     padding: 0;
-    height: 40rem;
+    min-height: 90vh;
+    object-fit: cover;
+    color: $white-color;
+    text-transform: uppercase;
+    gap: 2rem;
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+   
+    #highlights {
+        @include flex(center, center);
+        gap: 0.5rem;
+        margin-top: 4rem;
+        gap: 5rem;
+
+        .highlight {
+            @include flex(center, center);
+            flex-direction: column;
+            gap: 1rem;
+
+            i {
+                font-size: 3rem;
+            }
+        }
+    }
+    
 }
 
 footer#footer {
