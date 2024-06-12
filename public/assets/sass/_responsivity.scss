@@ -72,4 +72,27 @@
     section.form-section .form-header {
         width: 90%;
     }
+
+    section#testimonials .swiper {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    :root {
+        font-size: 90%;
+    }
+
+    section#about #company-about {
+        grid-template-columns: repeat(1, 1fr);
+
+        img {
+            height: 100%;
+        }
+    }
+
+    section#about #company-about img {
+        height: 100%;
+    }
 }

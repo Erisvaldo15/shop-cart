@@ -1,14 +1,14 @@
 <section id="about">
     <h3 class="section-title"> KNOW ABOUT SOME PLACES BEFORE YOUR TRAVEL </h3>
     <div id="travels-section-header">
-        <h2 class="section-title-mainly">
+        <!-- <h2 class="section-title-mainly">
             About our us.
-        </h2>
+        </h2> -->
     </div>
     <div id="company-about">
         <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
         <div id="history">
-            <h3> Mais testes</h3>
+            <h2> 10 years of successful travels</h2>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae vitae sed aperiam qui repudiandae earum voluptatem. Modi at inventore omnis veniam necessitatibus exercitationem vel nesciunt delectus ex officiis, culpa doloremque odit illo saepe placeat. Delectus consequuntur reprehenderit omnis accusantium officiis!
             </p>
@@ -39,13 +39,10 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="swiper-pagination"></div>
-
-        <!-- If we need navigation buttons -->
         <div class="swiper-button-prev control"></div>
         <div class="swiper-button-next control"></div>
     </div>
-
+    <div class="swiper-pagination"></div>
 </section>
 <section id="facts">
     <h3> Why should you to travel with us. </h3>
@@ -53,24 +50,31 @@
     <div id="highlights">
         <div class="highlight">
             <i class="fa-solid fa-money-bills"></i>
-            <h2> Test </h2>
-            <p> This is a example of test</p>
+            <h2> Competitive Princing </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quo, totam repellat velit, dignissimos sequi error a minima architecto fugit nisi dolorum repellendus?
+            </p>
         </div>
         <div class="highlight">
             <i class="fa-solid fa-star"></i>
-
-            <h2> Test </h2>
-            <p> This is a example of test</p>
+            <h2> Quality </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quo, totam repellat velit, dignissimos sequi error a minima architecto fugit nisi dolorum repellendus?
+            </p>
         </div>
         <div class="highlight">
             <i class="fa-solid fa-ranking-star"></i>
-            <h2> Test </h2>
-            <p> This is a example of test</p>
+            <h2> very well ranked </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quo, totam repellat velit, dignissimos sequi error a minima architecto fugit nisi dolorum repellendus?
+            </p>
         </div>
         <div class="highlight">
             <i class="fa-solid fa-headset"></i>
-            <h2> Test </h2>
-            <p> This is a example of test</p>
+            <h2> great support </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quo, totam repellat velit, dignissimos sequi error a minima architecto fugit nisi dolorum repellendus?
+            </p>
         </div>
     </div>
 </section>

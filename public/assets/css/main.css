@@ -7,6 +7,8 @@
   list-style: none;
   text-decoration: none;
   scroll-behavior: smooth;
+  letter-spacing: 0.01rem;
+  line-height: 1.8;
 }
 
 body {
@@ -125,14 +127,14 @@ li:hover a.link-menu::before {
 section {
   max-width: 92.75rem;
   margin: 0 auto;
-  padding: 4rem 1rem;
+  padding: 3rem 1rem;
 }
 
 .section-title {
   font-size: 1.2rem;
   color: gray;
   font-weight: 300;
-  margin-bottom: 6rem;
+  margin: 6rem 0;
   text-align: center;
   text-transform: uppercase;
 }
@@ -140,6 +142,12 @@ section {
 .cart-main,
 .cart-footer {
   padding: 2rem;
+}
+
+.swiper-pagination {
+  bottom: -20px; /* Adjust the position as needed */
+  text-align: center;
+  width: 100%;
 }
 
 header {
@@ -798,11 +806,26 @@ section#about #company-about {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  align-items: center;
 }
 section#about #company-about img {
   width: 100%;
+  height: 26rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section#about #company-about #history h2 {
+  margin-bottom: 2.5rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+section#about #company-about #history p {
+  margin-bottom: 1.25rem;
 }
 
+section#testimonials {
+  position: relative;
+}
 section#testimonials h3 {
   margin-bottom: 0;
 }
@@ -839,33 +862,40 @@ section#testimonials .swiper #testimonials-wrapper .testimonial .traveler-data d
   flex-direction: column;
   gap: 1.25rem;
 }
-section#testimonials .swiper .swiper-pagination {
-  margin-top: 1rem;
-}
 section#testimonials .swiper .control {
   color: #1d1d19;
+}
+section#testimonials .swiper-pagination {
+  z-index: 1;
+  color: #000000;
+}
+section#testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #000000;
 }
 
 section#facts {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: column;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://ahoyclub.com/ix/charter-destinations/bahamas/assets/region_bahamas-2-scaled.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1534008897995-27a23e859048?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center/cover no-repeat;
   background-position: bottom;
   background-repeat: no-repeat;
   max-width: 100%;
   padding: 0;
-  min-height: 90vh;
+  min-height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
   color: #fff;
   text-transform: uppercase;
   gap: 2rem;
+  margin-top: 6rem;
+  padding: 4rem 2rem;
 }
 section#facts h3 {
   font-size: 1.4rem;
+  margin-bottom: 3rem;
 }
 section#facts h2 {
   font-size: 2rem;
@@ -874,8 +904,7 @@ section#facts #highlights {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
-  gap: 0.5rem;
+  flex-wrap: wrap;
   margin-top: 4rem;
   gap: 5rem;
 }
@@ -889,6 +918,11 @@ section#facts #highlights .highlight {
 }
 section#facts #highlights .highlight i {
   font-size: 3rem;
+}
+section#facts #highlights .highlight p {
+  font-size: 0.9rem;
+  max-width: 22rem;
+  text-align: justify;
 }
 
 footer#footer {
@@ -1033,5 +1067,22 @@ footer#footer #footer-wrapper #newsletter-container #newsletter button:hover {
 @media screen and (max-width: 675px) {
   section.form-section .form-header {
     width: 90%;
+  }
+  section#testimonials .swiper {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 900px) {
+  :root {
+    font-size: 90%;
+  }
+  section#about #company-about {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  section#about #company-about img {
+    height: 100%;
+  }
+  section#about #company-about img {
+    height: 100%;
   }
 }/*# sourceMappingURL=main.css.map */

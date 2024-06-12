@@ -18,7 +18,8 @@ export default function toogleNavbarCart() {
         bodyElement.style.overflow = 'hidden';
     });
 
-    closeCartIcon.addEventListener('click', () =>
-        navbarCart.classList.remove('active')
-    );
+    closeCartIcon.addEventListener('click', () => {
+        navbarCart.classList.remove('active');
+        bodyElement.style.overflow = '';
+    });
 }

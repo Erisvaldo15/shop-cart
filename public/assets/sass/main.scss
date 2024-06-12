@@ -99,7 +99,7 @@ header {
                         position: relative;
 
                         &::before {
-                            content: "";
+                            content: '';
                             position: absolute;
                             width: 0;
                             height: 0.15rem;
@@ -110,8 +110,8 @@ header {
                         }
                     }
 
-                    &:hover a::before {  
-                        width: 100%;      
+                    &:hover a::before {
+                        width: 100%;
                     }
                 }
             }
@@ -683,20 +683,35 @@ section.image {
 }
 
 section#about {
-
     #company-about {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
+        align-items: center;
 
         img {
             width: 100%;
+            height: 26rem;
+            object-fit: cover;
+        }
+
+        #history {
+            h2 {
+                margin-bottom: 2.5rem;
+                text-transform: capitalize;
+                text-align: center;
+            }
+
+            p {
+                margin-bottom: 1.25rem;
+            }
         }
     }
-
 }
 
 section#testimonials {
+    position: relative;
+
     h3 {
         margin-bottom: 0;
     }
@@ -735,41 +750,50 @@ section#testimonials {
             }
         }
 
-        .swiper-pagination {
-            margin-top: 1rem;
-        }
-
         .control {
             color: $black-color;
+        }
+    }
+
+    .swiper-pagination {
+        z-index: 1;
+        color: $dark-black-color;
+
+        .swiper-pagination-bullet-active {
+            background-color: $dark-black-color;
         }
     }
 }
 
 section#facts {
-    @include flex(center, center);
+    @include flex(center, center, wrap);
     flex-direction: column;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://ahoyclub.com/ix/charter-destinations/bahamas/assets/region_bahamas-2-scaled.jpg") center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://images.unsplash.com/photo-1534008897995-27a23e859048?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+            center/cover no-repeat;
     background-position: bottom;
     background-repeat: no-repeat;
     max-width: 100%;
     padding: 0;
-    min-height: 90vh;
+    min-height: 100vh;
     object-fit: cover;
     color: $white-color;
     text-transform: uppercase;
     gap: 2rem;
+    margin-top: 6rem;
+    padding: 4rem 2rem;
 
     h3 {
         font-size: 1.4rem;
+        margin-bottom: 3rem;
     }
 
     h2 {
         font-size: 2rem;
     }
-   
+
     #highlights {
-        @include flex(center, center);
-        gap: 0.5rem;
+        @include flex(center, center, wrap);
         margin-top: 4rem;
         gap: 5rem;
 
@@ -781,9 +805,14 @@ section#facts {
             i {
                 font-size: 3rem;
             }
+
+            p {
+                font-size: 0.9rem;
+                max-width: 22rem;
+                text-align: justify;
+            }
         }
     }
-    
 }
 
 footer#footer {
