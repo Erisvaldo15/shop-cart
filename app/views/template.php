@@ -19,15 +19,9 @@
 <body>
     <?php $thereIsNavbarCart ? require_once "../app/views/components/navbarCart.php" : ""; ?>
     <?php $thereIsHeader ? require_once "../app/views/components/header.php" : ""; ?>
-    <?php if (isset($mainId)) : ?>
-        <main id="login">
-            <?php require_once "../app/views/" . $controllerInstance->view; ?>
-        </main>
-    <?php else : ?>
-        <main>
-            <?php require_once "../app/views/" . $controllerInstance->view; ?>
-        </main>
-    <?php endif; ?>
+    <main <?= isset($attribute) ? $attribute : '' ?>>
+        <?php require_once "../app/views/" . $controllerInstance->view; ?>
+    </main>
     <?php $thereIsFooter ? require_once "../app/views/components/footer.php" : ""; ?>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="./assets/js/app.js"></script>

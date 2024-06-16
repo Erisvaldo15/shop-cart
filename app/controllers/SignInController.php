@@ -20,7 +20,7 @@ class SignInController
             "thereIsNavbarCart" => false,
             "thereIsHeader" => false,
             "thereIsFooter" => false,
-            "mainId" => "login",
+            "attribute" => "id='login'",
         ];
     }
 

@@ -34,10 +34,10 @@ class Routes
             ],
 
             "post" => [
-                "/send/email" => "EmailController:index",
                 "/signin/store" => "SignInController:store",
                 "/signup/store" => "SignUpController:store",
                 "/logout" => "SignInController:destroy",
+                "/send/contact" => "ContactController:store",
             ],
 
             "put" => [
@@ -78,7 +78,6 @@ class Routes
 
     public static function filter($actualUri, $routes)
     {
-
         $router = self::staticRoute($actualUri, $routes);
 
         if ($router) {

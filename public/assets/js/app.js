@@ -9,6 +9,7 @@ import { increase, decrease } from './cart/edit.js';
 import signIn from './user/signin.js';
 import signUp from './user/signup.js';
 import dropdownUserOptions from './dropdownUserOptions.js';
+import sendContact from './contact.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const travelsInCart = async () => {
@@ -114,4 +115,5 @@ window.addEventListener('DOMContentLoaded', async () => {
     signIn();
     signUp();
     dropdownUserOptions();
+    sendContact();
 });
