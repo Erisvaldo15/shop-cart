@@ -19,7 +19,7 @@ class PHPMailerService implements EmailServiceInterface
         $this->mailer->SMTPAuth =  $_ENV['MAIL_AUTH'];
         $this->mailer->Username = $_ENV['MAIL_USERNAME'];
         $this->mailer->Password = $_ENV['MAIL_PASSWORD'];
-        $this->mailer->SMTPSecure = $_ENV['MAIL_SECURE'];
+        $this->mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $this->mailer->Port = $_ENV['MAIL_PORT'];
     }
 

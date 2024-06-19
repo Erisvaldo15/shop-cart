@@ -39,11 +39,11 @@ export default class Validate {
     }
 
     #required(value) {
-        return value ? true : 'Required field';
+        return value ? true : 'Required Field';
     }
 
     #email(value) {
-        return !this.#regexForEmail.test(value) ? 'Email invalid' : true;
+        return !this.#regexForEmail.test(value) ? 'Email Invalid' : true;
     }
 
     #password(value) {

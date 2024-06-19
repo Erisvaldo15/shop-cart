@@ -4,9 +4,7 @@ export default function sendContact() {
     const contactForm = document.querySelector('#contact-form') ?? null;
 
     if (contactForm) {
-
         contactForm.addEventListener('submit', async (event) => {
-
             event.preventDefault();
 
             const nameInput = document.querySelector('#contact-name');
@@ -51,35 +49,73 @@ export default function sendContact() {
                     label.style.color = '#000000';
                 } else {
                     label.textContent = firstFoundError[prop];
-                    label.style.color = '#000000';
+                    label.style.color = '#8d0707';
                 }
             }
 
             if (validationClass.errors.length > 0) return;
 
-            console.log('here')
+            contactForm.reset();
 
             try {
-                const requestSettings = new Request('http://localhost:8000/send/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
+                const requestSettings = new Request(
+                    'http://localhost:8000/send/contact',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: nameInput.value,
+                            email: emailInput.value,
+                            subject: subjectInput.value,
+                            message: messageInput.value,
+                        }),
+                    }
+                );
+
+                let loadingAlert = new Notyf({
+                    duration: 1800,
+                    position: {
+                        x: 'right',
+                        y: 'top',
                     },
-                    body: JSON.stringify({
-                        name: nameInput.value,
-                        email: emailInput.value,
-                        subject: subjectInput.value,
-                        message: messageInput.value,
-                    }),
+                    types: [
+                        {
+                            type: 'info',
+                            background: 'orange',
+                            icon: {
+                              className: 'fa-solid fa-circle-info',
+                              tagName: 'i',
+                              color: 'white',
+                            }
+                        },
+                    ],
+                });
+
+                loadingAlert.open({
+                    type: 'info',
+                    message: 'Sending email',
                 });
 
                 let resultOfSent = await fetch(requestSettings);
                 resultOfSent = await resultOfSent.json();
 
-                console.log(resultOfSent);
+                let notyf = new Notyf({
+                    position: {
+                        x: 'right',
+                        y: 'top',
+                    },
+                    duration: 1800,
+                });
 
+                if (resultOfSent.success === true) {
+                    notyf.success(resultOfSent.message);
+                } else {
+                    notyf.error(resultOfSent.message);
+                }
             } catch (error) {
-                console.log("Error to sent contact", error);
+                console.log('Error to sent contact', error);
             }
         });
     }

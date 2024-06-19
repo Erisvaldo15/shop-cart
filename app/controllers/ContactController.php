@@ -39,6 +39,27 @@ class ContactController
             return jsonFormat($errors);
         }
 
-        echo json_encode("success");
+        $mailer = new Email(new PHPMailerService());
+
+        $mailer->emailService->from($data["email"], $data["name"]);
+        $mailer->emailService->to('erisvaldosilvadesousa38@gmail.com', 'Barber Shop');
+        $mailer->emailService->subject($data["subject"]);
+        $mailer->emailService->message($data["message"]);
+           
+        $result = $mailer->emailService->send();
+
+        if($result) {
+            echo json_encode([
+                "success" => true,
+                "message" => "Email sent successfully",
+            ]);
+        }
+
+        else {
+            echo json_encode([
+                "success" => false,
+                "message" => "Error",
+            ]);
+        }
     }
 }

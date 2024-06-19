@@ -5,7 +5,7 @@
 header {
     @include flex();
     padding: 1.25rem 8rem;
-    background-color: $black-color;
+    background-color: $dark-black-color;
 
     &.scroll-header {
         position: fixed;
@@ -14,7 +14,7 @@ header {
     }
 
     &.activate {
-        background-color: $dark-black-color;
+        background-color: $light-black-color;
     }
 
     nav ul#menu {
@@ -572,7 +572,7 @@ main#contact {
     #contact-wrapper {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        max-width: 82rem;
+        max-width: 75rem;
         padding: 2rem;
 
         img {
@@ -609,6 +609,14 @@ main#contact {
 
             .fields {
                 padding: 0.5rem 0;
+
+                input, textarea {
+                    color: $black-color;
+                }
+
+                textarea {
+                    text-align: center;
+                }
             }
         }
     }
@@ -617,7 +625,7 @@ main#contact {
 main#login {
     display: flex;
     font-size: 0.825rem;
-    height: 100%;
+    height: 100vh;
     background: $black-color;
 }
 
@@ -845,7 +853,7 @@ section#facts {
 }
 
 footer#footer {
-    background-color: $black-color;
+    background-color: $dark-black-color;
     color: $white-color;
     padding: 112px 0;
 
