@@ -697,17 +697,17 @@ main#contact #contact-wrapper img {
      object-position: center;
   border-radius: 0.25rem;
 }
-main#contact #contact-wrapper #contact-form {
+main#contact #contact-wrapper div {
   background-color: #fff;
   width: 100%;
   padding: 2rem;
   border-radius: 0.25rem;
 }
-main#contact #contact-wrapper #contact-form h2 {
+main#contact #contact-wrapper div h2 {
   position: relative;
   text-align: center;
 }
-main#contact #contact-wrapper #contact-form h2::after {
+main#contact #contact-wrapper div h2::after {
   content: "";
   position: absolute;
   background-color: #FFC632;
@@ -718,13 +718,13 @@ main#contact #contact-wrapper #contact-form h2::after {
   height: 0.2rem;
   border-radius: 0.25rem;
 }
-main#contact #contact-wrapper #contact-form .fields {
+main#contact #contact-wrapper div .fields {
   padding: 0.5rem 0;
 }
-main#contact #contact-wrapper #contact-form .fields input, main#contact #contact-wrapper #contact-form .fields textarea {
+main#contact #contact-wrapper div .fields input, main#contact #contact-wrapper div .fields textarea {
   color: #1d1d19;
 }
-main#contact #contact-wrapper #contact-form .fields textarea {
+main#contact #contact-wrapper div .fields textarea {
   text-align: center;
 }
 

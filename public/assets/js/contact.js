@@ -15,34 +15,32 @@ export default function sendContact() {
             const validationClass = new Validate();
 
             let firstFoundError = {
-                name:
-                    validationClass.validate(
-                        'required|name',
-                        nameInput.value
-                    )[0] ?? null,
-                email:
-                    validationClass.validate(
-                        'required|email',
-                        emailInput.value
-                    )[0] ?? null,
-                subject:
-                    validationClass.validate(
-                        'required',
-                        subjectInput.value
-                    )[0] ?? null,
-                message:
-                    validationClass.validate(
-                        'required',
-                        messageInput.value
-                    )[0] ?? null,
+                name: validationClass.validate(
+                    'required|name',
+                    nameInput.value
+                ),
+                email: validationClass.validate(
+                    'required|email',
+                    emailInput.value
+                ),
+                subject: validationClass.validate(
+                    'required',
+                    subjectInput.value
+                ),
+                message: validationClass.validate(
+                    'required',
+                    messageInput.value
+                ),
             };
+
+            let isThereError = false;
 
             for (const prop in firstFoundError) {
                 let label = document.querySelector(
                     `label[for="contact-${prop}"]`
                 );
 
-                if (firstFoundError[prop] === null) {
+                if (firstFoundError[prop] === true) {
                     label.textContent = `${prop
                         .charAt(0)
                         .toUpperCase()}${prop.slice(1)}`;
@@ -50,12 +48,11 @@ export default function sendContact() {
                 } else {
                     label.textContent = firstFoundError[prop];
                     label.style.color = '#8d0707';
+                    isThereError = true;
                 }
             }
 
-            if (validationClass.errors.length > 0) return;
-
-            contactForm.reset();
+            if (isThereError) return;
 
             try {
                 const requestSettings = new Request(
@@ -74,6 +71,8 @@ export default function sendContact() {
                     }
                 );
 
+                contactForm.reset();
+
                 let loadingAlert = new Notyf({
                     duration: 1800,
                     position: {
@@ -85,17 +84,17 @@ export default function sendContact() {
                             type: 'info',
                             background: 'orange',
                             icon: {
-                              className: 'fa-solid fa-circle-info',
-                              tagName: 'i',
-                              color: 'white',
-                            }
+                                className: 'fa-solid fa-circle-info',
+                                tagName: 'i',
+                                color: 'white',
+                            },
                         },
                     ],
                 });
 
                 loadingAlert.open({
                     type: 'info',
-                    message: 'Sending email',
+                    message: 'Sending email...',
                 });
 
                 let resultOfSent = await fetch(requestSettings);
@@ -115,7 +114,7 @@ export default function sendContact() {
                     notyf.error(resultOfSent.message);
                 }
             } catch (error) {
-                console.log('Error to sent contact', error);
+                console.log('Failed to send contact', error);
             }
         });
     }

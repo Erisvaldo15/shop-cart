@@ -1,41 +1,35 @@
 export default class Validate {
     #regexForEmail =
-        /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[A-Za-z0-9.-]+.[A-Za-z]{2,}$/;
+        /^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     errors = [];
 
     validate(rules, value) {
 
-        this.errors = [];
-    
+        let result = null;
         let splittedRules = rules.split('|');
 
-        splittedRules.some((rule) => {
-            let result = null;
-
+        for (const rule of splittedRules) {
             switch (rule) {
                 case 'required':
                     result = this.#required(value);
-                    result !== true ? this.errors.push(result) : '';
                     break;
                 case 'email':
                     result = this.#email(value);
-                    result !== true ? this.errors.push(result) : '';
                     break;
                 case 'password':
                     result = this.#password(value);
-                    result !== true ? this.errors.push(result) : '';
                     break;
                 case 'name':
                     result = this.#name(value);
-                    result !== true ? this.errors.push(result) : '';
-                    break;
-                default:
-                    result = true;
                     break;
             }
-        });
 
-        return this.errors;
+            if (result !== true) {
+                break;
+            }
+        }
+
+        return result;
     }
 
     #required(value) {
@@ -53,6 +47,8 @@ export default class Validate {
     }
 
     #name(value) {
-        return value.length >= 3 ? true : 'Name must have at least 3 characters';
+        return value.length >= 3
+            ? true
+            : 'Name must have at least 3 characters';
     }
 }

@@ -51,14 +51,14 @@ class ContactController
         if($result) {
             echo json_encode([
                 "success" => true,
-                "message" => "Email sent successfully",
+                "message" => "The email was sent successfully",
             ]);
         }
 
         else {
             echo json_encode([
                 "success" => false,
-                "message" => "Error",
+                "message" => "Failed to send email",
             ]);
         }
     }
