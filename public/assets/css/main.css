@@ -90,18 +90,23 @@ textarea {
 }
 
 button,
-#view-more {
-  background-color: #FFC632;
+.button {
+  background-color: #000000;
+  color: #fff;
   width: 100%;
   padding: 0.85rem 2.5rem;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
-  transition: var(--transition);
+  transition: 0.25s ease-in-out;
 }
-
-button:hover {
-  background-color: #ffbb32;
+button i,
+.button i {
+  margin-left: 0.5rem;
+}
+button:hover,
+.button:hover {
+  background-color: #282927;
 }
 
 li a.link-menu {
@@ -147,6 +152,19 @@ section {
   bottom: -20px; /* Adjust the position as needed */
   text-align: center;
   width: 100%;
+  z-index: 1;
+  color: #000000;
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #000000;
+}
+
+.travels-slider .control {
+  padding: 2rem;
+}
+
+.control {
+  color: #000000;
 }
 
 header {
@@ -504,27 +522,19 @@ section#travels {
   margin: 0 auto;
   padding: 6rem 1rem;
 }
-section#travels #travels-section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+section#travels #travels-wrapper {
+  display: grid;
+  grid-template-columns: 0.75fr 2.25fr;
   margin-bottom: 1rem;
+  gap: 4rem;
 }
-section#travels #travels-section-header h2 {
+section#travels #travels-wrapper h2 {
   font-size: 28.8px;
 }
-section#travels #travels-section-header #filters {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-section#travels #travels-section-header #filters #search-bar input {
+section#travels #travels-wrapper #filters #search-bar input {
   color: #000000;
 }
-section#travels #travels-section-header #filters #filter {
+section#travels #travels-wrapper #filters #filter {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -535,73 +545,63 @@ section#travels #travels-section-header #filters #filter {
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
 }
-section#travels .travels {
+section#travels #travels-wrapper .travels {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
-  place-items: center;
   gap: 2rem;
-  min-height: 10rem;
 }
-section#travels .travels .travel {
+section#travels #travels-wrapper .travels .travel {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
   position: relative;
   overflow: hidden;
   width: 100%;
   transition: all 0.3s ease-in-out;
 }
-section#travels .travels .travel.shadow {
-  box-shadow: 0 0 18px -4px rgb(57, 57, 57);
-}
-section#travels .travels .travel img {
+section#travels #travels-wrapper .travels .travel img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: bottom;
      object-position: bottom;
+  border-radius: 1.4rem;
 }
-section#travels .travels .travel::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background: linear-gradient(to bottom, transparent 0%, transparent 18%, rgba(0, 0, 0, 0.8) 99%, rgba(0, 0, 0, 0.8) 100%);
+section#travels #travels-wrapper .travels .travel .travel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-section#travels .travels .travel:hover .travel-content {
-  transform: translateY(0);
+section#travels #travels-wrapper .travels .travel .travel-content .travel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
 }
-section#travels .travels .travel .travel-content {
-  position: absolute;
-  z-index: 2;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  color: #fff;
-  padding: 1rem;
-  transform: translateY(78%);
-  transition: all 0.3s ease-in-out;
-}
-section#travels .travels .travel .travel-content .content {
-  min-height: 8rem;
+section#travels #travels-wrapper .travels .travel .travel-content .travel-description {
+  max-width: 34.77rem;
   word-wrap: break-word;
 }
-section#travels .travels .travel .travel-content .actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
+section#travels #travels-wrapper .travels .travel .travel-content .travel-extra a {
+  width: 0;
+  position: relative;
+  color: #000000;
 }
-section#travels .travels .travel .travel-content .actions button,
-section#travels .travels .travel .travel-content .actions a {
-  width: auto;
+section#travels #travels-wrapper .travels .travel .travel-content .travel-extra a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0.25rem;
+  background-color: #FFC632;
+  transition: 0.4s ease-in-out;
+  top: 100%;
+  margin-top: 0.25rem;
 }
-section#travels .travels .travel .travel-content .actions button i,
-section#travels .travels .travel .travel-content .actions a i {
+section#travels #travels-wrapper .travels .travel .travel-content .travel-extra a i {
   margin-left: 0.25rem;
+}
+section#travels #travels-wrapper .travels .travel .travel-content .travel-extra:hover a:before {
+  width: 100%;
 }
 
 section#travel #travel-details-wrapper {
@@ -721,7 +721,8 @@ main#contact #contact-wrapper div h2::after {
 main#contact #contact-wrapper div .fields {
   padding: 0.5rem 0;
 }
-main#contact #contact-wrapper div .fields input, main#contact #contact-wrapper div .fields textarea {
+main#contact #contact-wrapper div .fields input,
+main#contact #contact-wrapper div .fields textarea {
   color: #1d1d19;
 }
 main#contact #contact-wrapper div .fields textarea {
@@ -890,16 +891,6 @@ section#testimonials .swiper #testimonials-wrapper .testimonial .traveler-data d
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-}
-section#testimonials .swiper .control {
-  color: #1d1d19;
-}
-section#testimonials .swiper-pagination {
-  z-index: 1;
-  color: #000000;
-}
-section#testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #000000;
 }
 
 section#facts {

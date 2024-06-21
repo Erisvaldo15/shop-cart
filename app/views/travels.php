@@ -13,15 +13,12 @@
         </div>
     </div>
     <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev control"></div>
+    <div class="swiper-button-next control"></div>
 </div>
 <section id="travels">
     <h3 class="section-title"> KNOW ABOUT SOME PLACES BEFORE YOUR TRAVEL </h3>
-    <div id="travels-section-header">
-        <h2>
-            All places
-        </h2>
+    <div id="travels-wrapper">
         <div id="filters">
             <div id="search-bar">
                 <input type="text" name="search">
@@ -30,6 +27,6 @@
                 <i class="fa-solid fa-filter"></i>
             </div>
         </div>
+        <div class="travels"></div>
     </div>
-    <div class="travels"></div>
 </section>
