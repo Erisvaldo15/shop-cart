@@ -14,20 +14,24 @@ class TravelController
 
     public function index()
     {
+        $continents = [
+            "Europe", "Africa", "South America", "North America",
+            "Central America", "Oceania", "Asia",
+        ];
+
         $this->data = [
             "title" => "Diary - Travels",
             "travels" => Travel::all(),
+            "continents" => $continents,
             "thereIsNavbarCart" => true,
             "thereIsHeader" => true,
             "thereIsFooter" => true,
             "scrollHeader" => true,
-            "total" => Cart::total(),
         ];
     }
 
     public function show($travel)
     {
-
         $this->view = "travel.php";
 
         $travel = Travel::findyBy("slug", $travel[0]);

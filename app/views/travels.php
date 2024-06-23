@@ -21,10 +21,18 @@
     <div id="travels-wrapper">
         <div id="filters">
             <div id="search-bar">
-                <input type="text" name="search">
+                <input type="text" name="search" placeholder="Search by name">
             </div>
-            <div id="filter">
-                <i class="fa-solid fa-filter"></i>
+            <div id="wrapper-continents">
+                <h3> Continents </h3>
+                <div id="continents">
+                    <?php foreach ($continents as $continent) : ?>
+                        <div class="continent">
+                            <?= $continent; ?>
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
         <div class="travels"></div>

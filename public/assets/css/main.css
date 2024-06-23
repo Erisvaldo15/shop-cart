@@ -520,30 +520,54 @@ section#home #home-content a#explore i {
 section#travels {
   max-width: 83.75rem;
   margin: 0 auto;
-  padding: 6rem 1rem;
+  padding: 4rem 2rem;
 }
 section#travels #travels-wrapper {
   display: grid;
-  grid-template-columns: 0.75fr 2.25fr;
+  grid-template-columns: 1fr 2fr;
   margin-bottom: 1rem;
   gap: 4rem;
 }
 section#travels #travels-wrapper h2 {
   font-size: 28.8px;
 }
+section#travels #travels-wrapper #filters {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 section#travels #travels-wrapper #filters #search-bar input {
   color: #000000;
 }
-section#travels #travels-wrapper #filters #filter {
+section#travels #travels-wrapper #filters #continents {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+section#travels #travels-wrapper #filters #continents .continent {
+  display: flex;
   align-items: center;
-  flex-wrap: nowrap;
-  width: 3rem;
-  height: 2rem;
-  border-radius: 0.25rem;
+  gap: 0.5rem;
+  background-color: #282927;
+  color: #fff;
+  height: 3rem;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+}
+section#travels #travels-wrapper #filters #continents .continent i {
+  display: none;
+}
+section#travels #travels-wrapper #filters #continents .continent:hover {
+  background-color: #000000;
+}
+section#travels #travels-wrapper #filters #continents .continent.active {
+  background-color: #000000;
+}
+section#travels #travels-wrapper #filters #continents .continent.active i {
+  display: block;
 }
 section#travels #travels-wrapper .travels {
   display: grid;
@@ -581,6 +605,15 @@ section#travels #travels-wrapper .travels .travel .travel-content .travel-header
 section#travels #travels-wrapper .travels .travel .travel-content .travel-description {
   max-width: 34.77rem;
   word-wrap: break-word;
+}
+section#travels #travels-wrapper .travels .travel .travel-content .travel-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+section#travels #travels-wrapper .travels .travel .travel-content .travel-data i {
+  color: #282927;
 }
 section#travels #travels-wrapper .travels .travel .travel-content .travel-extra a {
   width: 0;

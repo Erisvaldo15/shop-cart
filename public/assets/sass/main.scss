@@ -366,11 +366,11 @@ section#home {
 section#travels {
     max-width: 83.75rem;
     margin: 0 auto;
-    padding: 6rem 1rem;
+    padding: 4rem 2rem;
 
     #travels-wrapper {
         display: grid;
-        grid-template-columns: 0.75fr 2.25fr;
+        grid-template-columns: 1fr 2fr;
         margin-bottom: 1rem;
         gap: 4rem;
 
@@ -379,17 +379,48 @@ section#travels {
         }
 
         #filters {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
             #search-bar input {
                 color: $dark-black-color;
             }
 
-            #filter {
-                @include flex(center, center, nowrap);
-                width: 3rem;
-                height: 2rem;
-                border-radius: 0.25rem;
-                cursor: pointer;
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+            #continents {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-top: 0.75rem;
+
+                .continent {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    background-color: $light-black-color;
+                    color: $white-color;
+                    height: 3rem;
+                    padding: 0 1rem;
+                    border-radius: 0.5rem;
+                    transition: all 0.2s ease-in-out;
+                    cursor: pointer;
+
+                    i {
+                        display: none;
+                    }
+
+                    &:hover {
+                        background-color: $dark-black-color;
+                    }
+
+                    &.active {
+                        background-color: $dark-black-color;
+
+                        i {
+                            display: block;
+                        }
+                    }
+                }
             }
         }
 
@@ -426,6 +457,16 @@ section#travels {
                     .travel-description {
                         max-width: 34.77rem;
                         word-wrap: break-word;
+                    }
+
+                    .travel-data {
+
+                        @include flex(space-between, center, wrap);
+
+                        i {
+                            color: $light-black-color;
+                        }
+
                     }
 
                     .travel-extra a {

@@ -25,6 +25,9 @@ export default function renderTravels(travels) {
                     </div>
                     <hr>
                     <div class="travel-data"> 
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <i class="fa-solid fa-hotel"></i>
+                        <i class="fa-solid fa-credit-card"></i>
                     </div>
                     <hr>
                     <div class="travel-extra"> 

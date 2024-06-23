@@ -112,6 +112,15 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    // begin active continent filter
+
+    const continentFilters = document.querySelectorAll('.continent');
+
+    continentFilters.forEach(continentFilter => {
+        continentFilter.addEventListener('click', () => continentFilter.classList.toggle('active'));
+    })
+
+
     signIn();
     signUp();
     dropdownUserOptions();

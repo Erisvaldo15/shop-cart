@@ -11,8 +11,6 @@ export default async function searchTravel(value) {
         }
     );
 
-    // depois ver para que serve o request class.
-
     const searchedValue = async () => {
         try {
             const travel = await fetch(requestSettings);
