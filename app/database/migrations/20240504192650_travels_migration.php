@@ -26,6 +26,19 @@ final class TravelsMigration extends AbstractMigration
             "null" => false,
         ]);
 
+        $table->addColumn("country", "string", [
+            "limit" => 255,
+            "null" => true,
+        ]);
+
+        $table->addColumn("continent", "enum", [
+            "values" => [
+                "Europe", "Africa", "South America", "North America",
+                "Central America", "Oceania", "Asia"
+            ],
+            "null" => false,
+        ]);
+
         $table->addColumn("slug", "string", [
             "limit" => 255,
             "null" => false,
@@ -40,6 +53,20 @@ final class TravelsMigration extends AbstractMigration
         ]);
 
         $table->addColumn("price", "decimal", [
+            "null" => false,
+            "precision" => 10,
+            "scale" => 3,
+        ]);
+
+        $table->addColumn("hotel", "enum", [
+            "values" => ["1", "0"],
+        ]);
+
+        $table->addColumn("startDate", "date", [
+            "null" => false,
+        ]);
+
+        $table->addColumn("returnDate", "date", [
             "null" => false,
         ]);
 

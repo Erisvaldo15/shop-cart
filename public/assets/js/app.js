@@ -3,13 +3,13 @@ import render from './cart/render.js';
 import add from './cart/add.js';
 import remove from './cart/remove.js';
 import toogleNavbarCart from './navbarCart.js';
-import renderTravels from './travel/travels.js';
-import searchTravel from './travel/searchTravel.js';
+import { getAllTravels } from './travel/travels.js';
 import { increase, decrease } from './cart/edit.js';
 import signIn from './user/signin.js';
 import signUp from './user/signup.js';
 import dropdownUserOptions from './dropdownUserOptions.js';
 import sendContact from './contact.js';
+import { filterByTravelName } from './travel/filterTravel.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const travelsInCart = async () => {
@@ -28,10 +28,26 @@ window.addEventListener('DOMContentLoaded', async () => {
     const searchField = document.querySelector('#search-bar input');
 
     if (searchField) {
-        searchField.addEventListener(
-            'input',
-            debounce(() => searchTravel(searchField.value), 1000)
-        );
+
+        searchField.addEventListener('input', () => {
+
+            const travelsDiv = document.querySelector('.travels');
+
+            travelsDiv.innerHTML = `
+                <div class="loader-inner ball-grid-pulse">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            `;
+
+            searchField.addEventListener(
+                'input',
+                debounce(() => filterByTravelName(searchField.value), 1000)
+            );
+        })
+
+        
     }
 
     window.addEventListener('scroll', () => {
@@ -51,25 +67,6 @@ window.addEventListener('DOMContentLoaded', async () => {
             description.textContent = `${limitedContent}...view more.`;
         }
     });
-
-    if (window.location.pathname === '/travels') {
-        const getAllTravels = async () => {
-            try {
-                const travels = await fetch(
-                    new Request('http://localhost:8000/get/travels', {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json', // Set the Content-Type header to JSON
-                        },
-                    })
-                );
-                return await travels.json();
-            } catch (error) {
-                console.log('Error to fetching travels data', error);
-            }
-        };
-        renderTravels(await getAllTravels());
-    }
 
     function debounce(func, timeout = 300) {
         let timer;
@@ -116,11 +113,13 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     const continentFilters = document.querySelectorAll('.continent');
 
-    continentFilters.forEach(continentFilter => {
-        continentFilter.addEventListener('click', () => continentFilter.classList.toggle('active'));
-    })
+    continentFilters.forEach((continentFilter) => {
+        continentFilter.addEventListener('click', () =>
+            continentFilter.classList.toggle('active')
+        );
+    });
 
-
+    getAllTravels();
     signIn();
     signUp();
     dropdownUserOptions();

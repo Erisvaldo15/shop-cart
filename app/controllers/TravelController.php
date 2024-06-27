@@ -34,7 +34,9 @@ class TravelController
     {
         $this->view = "travel.php";
 
-        $travel = Travel::findyBy("slug", $travel[0]);
+        $travel = Travel::findBy("slug", $travel[0]);
+
+        dd("heree");
 
         if (!$travel) {
             $this->view = "travelDoesNotExist.php";
@@ -54,10 +56,21 @@ class TravelController
         echo json_encode(Travel::all());
     }
 
-    public function searchByTravel()
+    public function filterTravel()
     {
-        $text = filter_var($_GET["text"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $result = Travel::like($text, ["name", "description"]);
+        $typeOfFilters = [
+            "search" => isset($_GET["search"]) ? strip_tags($_GET["search"]) : null,
+            "continent" => isset($_GET["continent"]) ? strip_tags($_GET["continent"]) : null,
+        ];
+
+        if($typeOfFilters["search"]) {
+            $result = Travel::like($typeOfFilters["search"], ["name", "description"]);
+        }
+        
+        else {
+            $result = null;
+        }
+
         echo json_encode($result);
     }
 }

@@ -109,12 +109,12 @@ abstract class Model
 
             Transaction::open();
 
-            $query = "SELECT {$fields} FROM " . static::$table . " WHERE ";
+            $query = "SELECT {$fields} FROM " . static::$table . " WHERE";
 
             $connection = Transaction::getConnection();
 
-            foreach ($fieldsForSearch as $field) {
-                $query .= " {$field} LIKE CONCAT(" % ",:{$field}," % ") OR";
+            foreach ($fieldsForSearch as $field) {  
+                $query .= " {$field} LIKE CONCAT('%', :{$field}, '%') OR";
             }
 
             $query = rtrim($query, "OR");
@@ -124,6 +124,8 @@ abstract class Model
             foreach ($fieldsForSearch as $field) {
                 $prepare->bindValue(":{$field}", $searchBy, PDO::PARAM_STR);
             }
+
+        
 
             $prepare->execute();
 

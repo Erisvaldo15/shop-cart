@@ -103,4 +103,14 @@
     section#about #company-about img {
         height: 100%;
     }
+
+    section#travels #travels-wrapper {
+
+        grid-template-columns: 1fr;
+
+        .travels .travel {
+            grid-template-columns: 1fr;
+        }
+
+    }
 }

@@ -35,6 +35,12 @@
                 </div>
             </div>
         </div>
-        <div class="travels"></div>
+        <div class="travels">
+            <div class="loader-inner ball-grid-pulse">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
     </div>
 </section>

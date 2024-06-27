@@ -364,15 +364,15 @@ section#home {
 }
 
 section#travels {
-    max-width: 83.75rem;
     margin: 0 auto;
     padding: 4rem 2rem;
 
     #travels-wrapper {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 0.8fr 2.20fr;
         margin-bottom: 1rem;
         gap: 4rem;
+        min-height: 75vh;
 
         h2 {
             font-size: 28.8px;
@@ -435,6 +435,7 @@ section#travels {
                 position: relative;
                 overflow: hidden;
                 width: 100%;
+                min-height: 20rem;
                 transition: all 0.3s ease-in-out;
 
                 img {
@@ -461,7 +462,14 @@ section#travels {
 
                     .travel-data {
 
-                        @include flex(space-between, center, wrap);
+                        display: grid;
+                        gap: 1rem;
+
+                        & > div {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                        }
 
                         i {
                             color: $light-black-color;
