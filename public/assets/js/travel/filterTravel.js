@@ -1,43 +1,71 @@
 import { getAllTravels, renderTravels } from './travels.js';
 
+
 function filterRequest() {
 
+    try {
+        
+        const requestSettings = new Request(
+            `http://localhost:8000/travel/search?${filter}=${value}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
 
+    } 
+    
+    
+    catch (error) {
+        // stopped here.
+    }
 
-    const requestSettings = new Request(
-        `http://localhost:8000/travel/search?${filter}=${value}`,
-        {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-    );
+   
 
     return requestSettings;
 }
 
-async function filterByContinent(value) {
-    try {
+function loadContinentsFilter() {
 
-        const getContinents = window.sessionStorage.getItem('continent');
+    const continentsFilter = document.querySelectorAll('.continent');
+    const storagedContinents = JSON.parse(window.sessionStorage.getItem('continents')) ?? [];
 
-        if(!getContinents) {
-            window.sessionStorage.setItem('continent', JSON.stringify([value])); 
-        }
+    continentsFilter.forEach(continentFilter => 
+        storagedContinents.includes(continentFilter.getAttribute('data-continent')) ? continentFilter.classList.add('active') : ""
+    );
+}
 
-        else {
-            let updateContinents = JSON.parse(window.sessionStorage.getItem('continent'));
-            updateContinents.push(value);
-        }
+async function toggleContinent() {
 
-        const requestSettings = filterRequest('continent', value);
-        const travel = await fetch(requestSettings);
-        const result = await travel.json();
-        console.log(result);
-    } catch (error) {
-        console.log('Error to filtering for travel', error);
-    }
+    const filtersOfContinents = document.querySelectorAll('.continent');
+
+    filtersOfContinents.forEach((filterOfContinent) => {
+
+        filterOfContinent.addEventListener('click', () => {
+
+            filterOfContinent.classList.toggle('active');
+
+            const nameOfContinent = filterOfContinent.getAttribute('data-continent');
+            const storagedContinents = JSON.parse(window.sessionStorage.getItem('continents')) ?? [];
+
+            if(!filterOfContinent.classList.contains('active')) {
+                const keptValues = storagedContinents.filter(storagedContinent => storagedContinent !== nameOfContinent);
+                window.sessionStorage.setItem('continents', JSON.stringify(keptValues));
+                filterOfContinent.classList.remove('active');
+            }
+
+            else {
+                storagedContinents.push(nameOfContinent);
+                window.sessionStorage.setItem('continents', JSON.stringify(storagedContinents));
+                filterOfContinent.classList.add('active');
+            }
+  
+            // filterByContinent(filterOfContinent.getAttribute('data-continent'));
+        });
+    });
+
 }
 
 async function filterByTravelName(value) {
@@ -67,4 +95,4 @@ async function filterByHotel() {
     
 }
 
-export { filterByTravelName, filterByContinent, filterByPrice };
+export { filterByTravelName, loadContinentsFilter, filterByContinent, filterByPrice };

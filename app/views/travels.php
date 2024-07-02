@@ -27,7 +27,7 @@
                 <h3> Continents: </h3>
                 <div id="continents">
                     <?php foreach ($continents as $continent) : ?>
-                        <div class="continent">
+                        <div class="continent" data-continent="<?= $continent; ?>">
                             <?= $continent; ?>
                             <i class="fa-regular fa-circle-xmark"></i>
                         </div>

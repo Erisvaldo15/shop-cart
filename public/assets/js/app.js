@@ -9,7 +9,7 @@ import signIn from './user/signin.js';
 import signUp from './user/signup.js';
 import dropdownUserOptions from './dropdownUserOptions.js';
 import sendContact from './contact.js';
-import { filterByTravelName } from './travel/filterTravel.js';
+import { filterByContinent, filterByTravelName, loadContinentsFilter } from './travel/filterTravel.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const travelsInCart = async () => {
@@ -28,9 +28,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const searchField = document.querySelector('#search-bar input');
 
     if (searchField) {
-
         searchField.addEventListener('input', () => {
-
             const travelsDiv = document.querySelector('.travels');
 
             travelsDiv.innerHTML = `
@@ -45,15 +43,12 @@ window.addEventListener('DOMContentLoaded', async () => {
                 'input',
                 debounce(() => filterByTravelName(searchField.value), 1000)
             );
-        })
-
-        
+        });
     }
 
     window.addEventListener('scroll', () => {
         const headerElement = document.querySelector('.scroll-header');
         if (headerElement) {
-            console.log('hereee');
             if (window.scrollY > 0) headerElement?.classList.add('activate');
             else headerElement?.classList.remove('activate');
         }
@@ -109,15 +104,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // begin active continent filter
-
-    const continentFilters = document.querySelectorAll('.continent');
-
-    continentFilters.forEach((continentFilter) => {
-        continentFilter.addEventListener('click', () =>
-            continentFilter.classList.toggle('active')
-        );
-    });
+    loadContinentsFilter();
 
     getAllTravels();
     signIn();
