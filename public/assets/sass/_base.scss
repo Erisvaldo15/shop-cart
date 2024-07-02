@@ -39,7 +39,7 @@ i {
     cursor: pointer;
 }
 
-input {
+input:not(#hotel) {
     background: none;
     margin-top: 0.25rem;
     width: 100%;
@@ -167,11 +167,12 @@ section {
 }
 
 .travels .ball-grid-pulse {
-    width: 5rem;
+    width: 4rem;
+    place-self: center;
 }
 
 .travels .ball-grid-pulse div {
     background-color: $dark-black-color;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1rem;
+    height: 1rem;
 }

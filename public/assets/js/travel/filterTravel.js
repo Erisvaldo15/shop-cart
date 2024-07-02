@@ -1,6 +1,9 @@
 import { getAllTravels, renderTravels } from './travels.js';
 
-function filterRequest(filter, value) {
+function filterRequest() {
+
+
+
     const requestSettings = new Request(
         `http://localhost:8000/travel/search?${filter}=${value}`,
         {
@@ -14,8 +17,20 @@ function filterRequest(filter, value) {
     return requestSettings;
 }
 
-async function continentFilter(value) {
+async function filterByContinent(value) {
     try {
+
+        const getContinents = window.sessionStorage.getItem('continent');
+
+        if(!getContinents) {
+            window.sessionStorage.setItem('continent', JSON.stringify([value])); 
+        }
+
+        else {
+            let updateContinents = JSON.parse(window.sessionStorage.getItem('continent'));
+            updateContinents.push(value);
+        }
+
         const requestSettings = filterRequest('continent', value);
         const travel = await fetch(requestSettings);
         const result = await travel.json();
@@ -42,4 +57,14 @@ async function filterByTravelName(value) {
     }
 }
 
-export { filterByTravelName, continentFilter };
+async function filterByPrice() {
+
+
+
+}
+
+async function filterByHotel() {
+    
+}
+
+export { filterByTravelName, filterByContinent, filterByPrice };

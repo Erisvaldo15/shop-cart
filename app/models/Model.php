@@ -125,8 +125,6 @@ abstract class Model
                 $prepare->bindValue(":{$field}", $searchBy, PDO::PARAM_STR);
             }
 
-        
-
             $prepare->execute();
 
             $result = $prepare->fetchAll(PDO::FETCH_CLASS, static::class);

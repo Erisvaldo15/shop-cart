@@ -81,7 +81,7 @@ function renderTravels(travels) {
                        
                         <div class="travel-price"> 
                             <i class="fa-solid fa-credit-card"></i>
-                            <p> R$${travel.fields.price} or 12x de R$${(
+                            <p> USD $${travel.fields.price} or 12x de USD $${(
             (travel.fields.price / 12) *
             1000
         ).toFixed(2)}  </p>
