@@ -9,7 +9,7 @@ import signIn from './user/signin.js';
 import signUp from './user/signup.js';
 import dropdownUserOptions from './dropdownUserOptions.js';
 import sendContact from './contact.js';
-import { filterByContinent, filterByTravelName, loadContinentsFilter } from './travel/filterTravel.js';
+import { filterBySearch, loadFilters, toggleContinent } from './travel/filterTravel.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const travelsInCart = async () => {
@@ -24,27 +24,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     const travelsDescriptions = document.querySelectorAll(
         '.travel-content .content p'
     );
-
-    const searchField = document.querySelector('#search-bar input');
-
-    if (searchField) {
-        searchField.addEventListener('input', () => {
-            const travelsDiv = document.querySelector('.travels');
-
-            travelsDiv.innerHTML = `
-                <div class="loader-inner ball-grid-pulse">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            `;
-
-            searchField.addEventListener(
-                'input',
-                debounce(() => filterByTravelName(searchField.value), 1000)
-            );
-        });
-    }
 
     window.addEventListener('scroll', () => {
         const headerElement = document.querySelector('.scroll-header');
@@ -62,16 +41,6 @@ window.addEventListener('DOMContentLoaded', async () => {
             description.textContent = `${limitedContent}...view more.`;
         }
     });
-
-    function debounce(func, timeout = 300) {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => {
-                func.apply(this, args);
-            }, timeout);
-        };
-    }
 
     render(await travelsInCart());
     toogleNavbarCart();
@@ -104,7 +73,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    loadContinentsFilter();
+    loadFilters();
+    toggleContinent();
+    filterBySearch();
 
     getAllTravels();
     signIn();
