@@ -18,7 +18,6 @@ class Routes
                 "/" => "HomeController:index",
                 "/travels" => "TravelController:index",
                 "/get/travels" => "TravelController:getAllTravels",
-                "/travel/search" => "TravelController:filterTravel",
                 "/travel/[a-z]+(?:-[a-z]+)*$" => "TravelController:show",
                 "/cart" => "CartController:index",
                 "/cart/add/[a-z]+(?:-[a-z]+)*$" => "CartController:add",
@@ -38,6 +37,7 @@ class Routes
                 "/signup/store" => "SignUpController:store",
                 "/logout" => "SignInController:destroy",
                 "/send/contact" => "ContactController:store",
+                "/travel/search" => "TravelController:filterTravel",
             ],
 
             "put" => [

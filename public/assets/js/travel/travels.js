@@ -1,6 +1,4 @@
 async function getAllTravels() {
-    console.log('heree');
-
     if (window.location.pathname === '/travels') {
         const getAllTravels = async () => {
             try {

@@ -9,7 +9,7 @@ import signIn from './user/signin.js';
 import signUp from './user/signup.js';
 import dropdownUserOptions from './dropdownUserOptions.js';
 import sendContact from './contact.js';
-import { filterBySearch, loadFilters, toggleContinent } from './travel/filterTravel.js';
+import { filterByHotel, filterByMaximunValue, filterByMinimunValue, filterBySearch, filterByContinent } from './travel/filterTravel.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const travelsInCart = async () => {
@@ -73,9 +73,11 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    loadFilters();
-    toggleContinent();
+    filterByContinent();
     filterBySearch();
+    filterByMinimunValue();
+    filterByMaximunValue();
+    filterByHotel();
 
     getAllTravels();
     signIn();

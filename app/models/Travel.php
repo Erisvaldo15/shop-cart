@@ -10,40 +10,51 @@ use app\logs\LoggerFile;
 class Travel extends Model
 {
     private static array $filters = [];
+    private static array $binds = [];
     public static string $table = "travels";
 
     public static function nameFilter(string $value): void
     {
-        self::$filters[] = " name LIKE CONCAT('%', :name, '%')";
+        self::$filters[] = "name LIKE CONCAT('%', :name, '%')";
+        self::$binds[":name"] = $value;
     }
 
-    public static function continentFilter()
+    public static function continentFilter(array $values): void
     {
-        self::$filters[] = "continent = :continent";
+        foreach($values as $key => $value) {
+            self::$filters[] = "continent = :continent{$key}";
+            self::$binds[":continent{$key}"] = $value;
+        }
     }
 
     public static function priceFilter(int|float|null $minValue, int|float|null $maxValue)
     {
-        $query = "price";
-
         if ($minValue && $maxValue) {
-            $query .= " between :minValue and :maxValue";
+            self::$filters[] = "price between :minValue and :maxValue";
+            self::$binds[":minValue"] = $minValue;
+            self::$binds[":maxValue"] = $maxValue;
         }
 
         else if($minValue) {
-            $query .= " price >= :minValue";
+            self::$filters[]  = "price >= :minValue";
+            self::$binds[] = $minValue;
         }
 
         else {
-            $query .= " price <= :maxValue";
+            self::$filters[] = "price <= :maxValue";
+            self::$binds[] = $maxValue;
         }
-
-        self::$filters[] = $query;
     }
 
-    public static function hotelFilter()
+    public static function hotelFilter(bool $hotel)
     {
-        self::$filters[] = " name LIKE CONCAT('%', :name, '%')";
+        $convert = [
+            true => "1",
+            false => "0",
+        ];
+
+        self::$filters[] = "hotel = :hotel";
+        self::$binds[":hotel"] = $convert[$hotel];
     }
 
     public static function buildQuery()
@@ -51,7 +62,7 @@ class Travel extends Model
 
         try {
 
-            self::$filters[] = " name LIKE CONCAT('%', :name, '%')";
+            
 
 
         } catch (PDOException $e) {

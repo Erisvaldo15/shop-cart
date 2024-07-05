@@ -1,7 +1,7 @@
 import { debounce } from '../helpers.js';
 import { getAllTravels, renderTravels } from './travels.js';
 
-function filter() {
+async function filter() {
     try {
         const requestBody = {
             searchFilter: window.sessionStorage.getItem('search'),
@@ -21,53 +21,51 @@ function filter() {
                 body: JSON.stringify(requestBody),
             }
         );
-    } catch (error) {
 
-    }
+        const result = await fetch(requestSettings);
+        console.log(await result.json());
+
+    } catch (error) {}
 }
 
-function loadFilters() {
-
+function filterBySearch() {
     const searchField = document.querySelector('#search-bar input');
-    const continentsFilter = document.querySelectorAll('.continent');
 
     searchField.value = window.sessionStorage.getItem('search');
+
+    const debouncedFilter = debounce((event) => {
+        window.sessionStorage.setItem('search', event.target.value);
+        filter();
+    }, 1000);
+
+    searchField.addEventListener('input', (event) => {
+        const travelsDiv = document.querySelector('.travels');
+
+        travelsDiv.innerHTML = `
+            <div class="loader-inner ball-grid-pulse">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        `;
+
+        debouncedFilter(event);
+    });
+}
+
+function filterByContinent() {
+    const filtersOfContinents = document.querySelectorAll('.continent');
 
     const storagedContinents =
         JSON.parse(window.sessionStorage.getItem('continents')) ?? [];
 
-    continentsFilter.forEach((continentFilter) =>
+    filtersOfContinents.forEach((continentFilter) =>
         storagedContinents.includes(
             continentFilter.getAttribute('data-continent')
         )
             ? continentFilter.classList.add('active')
             : ''
     );
-}
-
-function filterBySearch() {
-    const searchField = document.querySelector('#search-bar input');
-
-    if (searchField) {
-        searchField.addEventListener('input', event => {
-            const travelsDiv = document.querySelector('.travels');
-
-            travelsDiv.innerHTML = `
-                <div class="loader-inner ball-grid-pulse">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            `;
-
-            window.sessionStorage.setItem('search', event.target.value);
-            debounce(() => filter(), 1000)
-        });
-    }
-}
-
-function toggleContinent() {
-    const filtersOfContinents = document.querySelectorAll('.continent');
 
     filtersOfContinents.forEach((filterOfContinent) => {
         filterOfContinent.addEventListener('click', () => {
@@ -102,32 +100,42 @@ function toggleContinent() {
 }
 
 function filterByMinimunValue() {
-
-
-
+    const minimunValueField = document.querySelector('#minimunValue');
+    minimunValueField.value = window.sessionStorage.getItem('minimunValue');
+    minimunValueField.addEventListener(
+        'input',
+        debounce((event) => {
+            window.sessionStorage.setItem('minimunValue', event.target.value);
+            filter();
+        }, 1000)
+    );
 }
 
 function filterByMaximunValue() {
-
-
-    
-}
-
-async function filterByPrice() {
-
-    const minimunValueField = document.querySelector('#minimunValue');
     const maximunValueField = document.querySelector('#maximunValue');
-
-    minimunValueField.addEventListener('input', event => {
-
-    })
-
-    maximunValueField.addEventListener('input', event => {
-
-    })
-
+    maximunValueField.value = window.sessionStorage.getItem('maximunValue');
+    maximunValueField.addEventListener(
+        'input',
+        debounce((event) => {
+            window.sessionStorage.setItem('maximunValue', event.target.value);
+            filter();
+        }, 1000)
+    );
 }
 
-async function filterByHotel() {}
+function filterByHotel() {
+    const hotelField = document.querySelector('#hotel');
+    hotelField.value = window.sessionStorage.getItem('hotel');
+    hotelField.addEventListener('change', event => {
+        window.sessionStorage.setItem('hotel', event.target.checked);
+        filter();
+    });
+}
 
-export { filterBySearch, loadFilters, toggleContinent };
+export {
+    filterByContinent,
+    filterBySearch,
+    filterByMinimunValue,
+    filterByMaximunValue,
+    filterByHotel,
+};

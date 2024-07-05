@@ -5,3 +5,4 @@ todo.todo
 public/logs.txt
 phinx.php
 .env
+example.php

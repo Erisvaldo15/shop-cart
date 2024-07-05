@@ -58,19 +58,43 @@ class TravelController
 
     public function filterTravel()
     {
-        $typeOfFilters = [
-            "search" => isset($_GET["search"]) ? strip_tags($_GET["search"]) : null,
-            "continent" => isset($_GET["continent"]) ? strip_tags($_GET["continent"]) : null,
-        ];
+        $filters = json_decode(file_get_contents('php://input'));
 
-        if($typeOfFilters["search"]) {
-            $result = Travel::like($typeOfFilters["search"], ["name", "description"]);
+        $validatedFilters = [];
+
+        foreach($filters as $filter => $value) {
+
+            if(is_array($filters->$filter) && count($filters->$filter) > 0) {
+
+                foreach($filters->$filter as $valueOfArray) {
+                    $validatedFilters[$filter][] = strip_tags($valueOfArray);
+                }
+
+            }
+
+            else {
+
+                if(!empty($value)) {
+                    $validatedFilters[$filter] = strip_tags($value);
+                }
+
+            }
+
         }
+
+        // $typeOfFilters = [
+        //     "search" => isset($_GET["search"]) ? strip_tags($_GET["search"]) : null,
+        //     "continent" => isset($_GET["continent"]) ? strip_tags($_GET["continent"]) : null,
+        // ];
+
+        // if($typeOfFilters["search"]) {
+        //     $result = Travel::like($typeOfFilters["search"], ["name", "description"]);
+        // }
         
-        else {
-            $result = null;
-        }
+        // else {
+        //     $result = null;
+        // }
 
-        echo json_encode($result);
+        echo json_encode($validatedFilters);
     }
 }
