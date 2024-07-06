@@ -67,14 +67,14 @@ class TravelController
             if(is_array($filters->$filter) && count($filters->$filter) > 0) {
 
                 foreach($filters->$filter as $valueOfArray) {
-                    $validatedFilters[$filter][] = strip_tags($valueOfArray);
+                    $validatedFilters[$filter][] = stripslashes(strip_tags($valueOfArray));
                 }
 
             }
 
             else {
 
-                if(!empty($value)) {
+                if($value) {
                     $validatedFilters[$filter] = strip_tags($value);
                 }
 
@@ -82,19 +82,22 @@ class TravelController
 
         }
 
-        // $typeOfFilters = [
-        //     "search" => isset($_GET["search"]) ? strip_tags($_GET["search"]) : null,
-        //     "continent" => isset($_GET["continent"]) ? strip_tags($_GET["continent"]) : null,
-        // ];
+        if(isset($validatedFilters["searchFilter"])) {
+            Travel::searchFilter($validatedFilters["searchFilter"]);
+        }
 
-        // if($typeOfFilters["search"]) {
-        //     $result = Travel::like($typeOfFilters["search"], ["name", "description"]);
-        // }
-        
-        // else {
-        //     $result = null;
-        // }
+        if(isset($validatedFilters["continentsFilter"])) {
+            Travel::continentFilter(json_decode($validatedFilters["continentsFilter"], true));
+        }   
 
-        echo json_encode($validatedFilters);
+        if(isset($validatedFilters["minimunValueFilter"]) || isset($validatedFilters["maximunValueFilter"])) {
+            Travel::priceFilter($validatedFilters["minimunValueFilter"], $validatedFilters["maximunValueFilter"]);
+        }
+
+        if(isset($validatedFilters["hotelFilter"])) {
+            Travel::hotelFilter($validatedFilters["hotelFilter"]);
+        }
+
+        echo json_encode(Travel::buildQuery());
     }
 }

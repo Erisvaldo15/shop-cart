@@ -1,7 +1,7 @@
 import { debounce } from '../helpers.js';
 import { getAllTravels, renderTravels } from './travels.js';
 
-async function filter() {
+async function getResultOfFilters() {
     try {
         const requestBody = {
             searchFilter: window.sessionStorage.getItem('search'),
@@ -11,20 +11,31 @@ async function filter() {
             hotelFilter: window.sessionStorage.getItem('hotel'),
         };
 
-        const requestSettings = new Request(
-            'http://localhost:8000/travel/search',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestBody),
+        for (const key in object) {
+
+            if (Object.hasOwnProperty.call(object, key)) {
+
             }
-        );
 
-        const result = await fetch(requestSettings);
-        console.log(await result.json());
+        }
 
+        if (hasAtLeastOneValue()) {
+            const requestSettings = new Request(
+                'http://localhost:8000/travel/search',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestBody),
+                }
+            );
+
+            const result = await fetch(requestSettings);
+            renderTravels(await result.json());
+        } else {
+            renderTravels(await getAllTravels());
+        }
     } catch (error) {}
 }
 
@@ -35,7 +46,7 @@ function filterBySearch() {
 
     const debouncedFilter = debounce((event) => {
         window.sessionStorage.setItem('search', event.target.value);
-        filter();
+        getResultOfFilters();
     }, 1000);
 
     searchField.addEventListener('input', (event) => {
@@ -94,7 +105,7 @@ function filterByContinent() {
                 filterOfContinent.classList.add('active');
             }
 
-            filter();
+            getResultOfFilters();
         });
     });
 }
@@ -106,7 +117,7 @@ function filterByMinimunValue() {
         'input',
         debounce((event) => {
             window.sessionStorage.setItem('minimunValue', event.target.value);
-            filter();
+            getResultOfFilters();
         }, 1000)
     );
 }
@@ -118,7 +129,7 @@ function filterByMaximunValue() {
         'input',
         debounce((event) => {
             window.sessionStorage.setItem('maximunValue', event.target.value);
-            filter();
+            getResultOfFilters();
         }, 1000)
     );
 }
@@ -126,13 +137,14 @@ function filterByMaximunValue() {
 function filterByHotel() {
     const hotelField = document.querySelector('#hotel');
     hotelField.value = window.sessionStorage.getItem('hotel');
-    hotelField.addEventListener('change', event => {
+    hotelField.addEventListener('change', (event) => {
         window.sessionStorage.setItem('hotel', event.target.checked);
-        filter();
+        getResultOfFilters();
     });
 }
 
 export {
+    getResultOfFilters,
     filterByContinent,
     filterBySearch,
     filterByMinimunValue,
