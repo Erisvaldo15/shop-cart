@@ -20,7 +20,7 @@ class MyApp implements MyAppInterface
         $actualUri = Uri::extract();
         $request = Request::extract();
 
-        if (!isset($routes[$request][$actualUri])) {
+        if (!isset($routes[$request][$actualUri]) && !Routes::filter($actualUri, $routes)) {
             Log::create(new LoggerFile("Problem with request type", EnumLog::RouterError));
             return Redirect::to("/");
         }

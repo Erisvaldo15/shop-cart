@@ -7,6 +7,9 @@ export default function swiperRender() {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+        autoplay: {
+            delay: 5000,
+        },
     });
 
     const testimonialsSlider = new Swiper('.testimonials-slider', {

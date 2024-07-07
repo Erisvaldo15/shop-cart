@@ -3,7 +3,7 @@ export default function render(travels) {
 
     const titleHeaderCart = document.querySelector('#cart-header h3');
     const infoProduct = document.querySelector('.cart-main');
-    const totalOfQuantity = document.querySelector('#total-products-in-cart');
+    const totalOfQuantity = document.querySelector('.total-products-in-cart');
     const total = document.querySelector('.total-price span');
 
     if (!titleHeaderCart || !infoProduct || !totalOfQuantity || !total) {

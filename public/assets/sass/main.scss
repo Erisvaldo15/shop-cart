@@ -37,7 +37,7 @@ header {
         gap: 1.75rem;
         position: relative;
 
-        li #total-products-in-cart {
+        li .total-products-in-cart {
             font-size: 0.8rem;
             @include flex(center, center, nowrap);
             position: absolute;
@@ -476,7 +476,6 @@ section#travels {
                     }
 
                     .travel-extra a {
-                        width: 0;
                         position: relative;
                         color: $dark-black-color;
 

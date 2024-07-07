@@ -25,7 +25,7 @@
         </nav>
         <div class="user-actions">
             <li>
-                <span id="total-products-in-cart">0</span>
+                <span class="total-products-in-cart">0</span>
                 <i class="view-cart fa-solid fa-basket-shopping" id="icon-cart-desktop"></i>
             </li>
             <li class="account" id="account-desktop">
@@ -79,7 +79,7 @@
                 <hr>
                 <div class="user-actions">
                     <li>
-                        <span id="total-products-in-cart">0</span>
+                        <span class="total-products-in-cart">0</span>
                         <i class="view-cart fa-solid fa-basket-shopping" id="icon-cart-mobile"></i>
                     </li>
                     <li class="account" id="account-mobile">

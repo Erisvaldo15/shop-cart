@@ -36,8 +36,6 @@ class TravelController
 
         $travel = Travel::findBy("slug", $travel[0]);
 
-        dd("heree");
-
         if (!$travel) {
             $this->view = "travelDoesNotExist.php";
         }
@@ -49,11 +47,6 @@ class TravelController
             "thereIsFooter" => false,
             "travel" => $travel,
         ];
-    }
-
-    public function getAllTravels()
-    {
-        echo json_encode(Travel::all());
     }
 
     public function filterTravel()
@@ -91,7 +84,7 @@ class TravelController
         }   
 
         if(isset($validatedFilters["minimunValueFilter"]) || isset($validatedFilters["maximunValueFilter"])) {
-            Travel::priceFilter($validatedFilters["minimunValueFilter"], $validatedFilters["maximunValueFilter"]);
+            Travel::priceFilter(number_format($validatedFilters["minimunValueFilter"], 2), number_format($validatedFilters["maximunValueFilter"], 2));
         }
 
         if(isset($validatedFilters["hotelFilter"])) {

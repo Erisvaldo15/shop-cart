@@ -17,8 +17,7 @@ class Routes
             "get" => [
                 "/" => "HomeController:index",
                 "/travels" => "TravelController:index",
-                "/get/travels" => "TravelController:getAllTravels",
-                "/travel/[a-z]+(?:-[a-z]+)*$" => "TravelController:show",
+                "/travel/[a-z]+(?:-[a-z]+)*" => "TravelController:show",
                 "/cart" => "CartController:index",
                 "/cart/add/[a-z]+(?:-[a-z]+)*$" => "CartController:add",
                 "/cart/remove/[a-z]+(?:-[a-z]+)*$" => "CartController:remove",

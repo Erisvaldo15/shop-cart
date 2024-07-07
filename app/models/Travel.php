@@ -37,18 +37,18 @@ class Travel extends Model
             self::$binds[":maxValue"] = $maxValue;
         } else if ($minValue) {
             self::$filters["price"]  = "price >= :minValue";
-            self::$binds[] = $minValue;
+            self::$binds[":minValue"] = $minValue;
         } else {
             self::$filters["price"] = "price <= :maxValue";
-            self::$binds[] = $maxValue;
+            self::$binds[":maxValue"] = $maxValue;
         }
     }
 
-    public static function hotelFilter(bool $hotel)
+    public static function hotelFilter(string $hotel)
     {
         $convert = [
-            true => "1",
-            false => "0",
+            "true" => "1",
+            "false" => "0",
         ];
 
         self::$filters["hotel"] = "hotel = :hotel";
@@ -59,42 +59,35 @@ class Travel extends Model
     {
         try {
             $table = self::$table;
-            $buildedQuery = "SELECT * FROM {$table} WHERE ";
+            $buildedQuery = "SELECT * FROM {$table}";
 
-            if (count(self::$filters) > 0) {
+            $buildedQuery .= " WHERE ";
 
-                foreach (self::$filters as $typeOfFilter => $filter) {
+            foreach (self::$filters as $typeOfFilter => $filter) {
 
-                    if($typeOfFilter === "continents") {
+                if ($typeOfFilter === "continents") {
 
-                        $buildedQuery .= "(";
+                    $buildedQuery .= "(";
 
-                        foreach($filter as $eachContinent) {
-                            $buildedQuery .= "{$eachContinent} OR ";
-                        }
-
-                        $buildedQuery = rtrim($buildedQuery, "OR ");
-                        $buildedQuery .= ") AND";
+                    foreach ($filter as $eachContinent) {
+                        $buildedQuery .= "{$eachContinent} OR ";
                     }
 
-                    else {
-                        $buildedQuery .= " $filter AND";
-                    }
-              
+                    $buildedQuery = rtrim($buildedQuery, "OR ");
+                    $buildedQuery .= ") AND";
+                } else {
+                    $buildedQuery .= " $filter AND";
                 }
-
-                $buildedQuery = rtrim($buildedQuery, "AND");
-
-                $connection = Connection::connection();
-                $statement = $connection->prepare($buildedQuery);
-
-                $statement->execute(self::$binds);
-                $result = $statement->fetchAll(PDO::FETCH_CLASS, static::class);
-
-                return $result;
             }
 
-            return false;
+            $buildedQuery = rtrim($buildedQuery, "AND");
+
+            $connection = Connection::connection();
+            $statement = $connection->prepare($buildedQuery);
+            $statement->execute(self::$binds);
+            $result = $statement->fetchAll(PDO::FETCH_CLASS, static::class);
+
+            return $result;
         } catch (PDOException $e) {
             Log::create(new LoggerFile($e->getMessage(), EnumLog::DatabaseError));
         }

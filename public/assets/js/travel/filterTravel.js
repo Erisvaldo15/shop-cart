@@ -1,42 +1,32 @@
 import { debounce } from '../helpers.js';
-import { getAllTravels, renderTravels } from './travels.js';
+import renderTravels from './renderTravels.js';
 
-async function getResultOfFilters() {
+async function getTravels() {
     try {
         const requestBody = {
             searchFilter: window.sessionStorage.getItem('search'),
             continentsFilter: window.sessionStorage.getItem('continents'),
             minimunValueFilter: window.sessionStorage.getItem('minimunValue'),
             maximunValueFilter: window.sessionStorage.getItem('maximunValue'),
-            hotelFilter: window.sessionStorage.getItem('hotel'),
+            hotelFilter: window.sessionStorage.getItem('hotel') ?? 'false',
         };
 
-        for (const key in object) {
-
-            if (Object.hasOwnProperty.call(object, key)) {
-
+        const requestSettings = new Request(
+            'http://localhost:8000/travel/search',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody),
             }
+        );
 
-        }
-
-        if (hasAtLeastOneValue()) {
-            const requestSettings = new Request(
-                'http://localhost:8000/travel/search',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(requestBody),
-                }
-            );
-
-            const result = await fetch(requestSettings);
-            renderTravels(await result.json());
-        } else {
-            renderTravels(await getAllTravels());
-        }
-    } catch (error) {}
+        const result = await fetch(requestSettings);
+        renderTravels(await result.json());
+    } catch (error) {
+        console.log('Error to fetching travels data', error);
+    }
 }
 
 function filterBySearch() {
@@ -105,7 +95,7 @@ function filterByContinent() {
                 filterOfContinent.classList.add('active');
             }
 
-            getResultOfFilters();
+            getTravels();
         });
     });
 }
@@ -117,7 +107,7 @@ function filterByMinimunValue() {
         'input',
         debounce((event) => {
             window.sessionStorage.setItem('minimunValue', event.target.value);
-            getResultOfFilters();
+            getTravels();
         }, 1000)
     );
 }
@@ -129,22 +119,23 @@ function filterByMaximunValue() {
         'input',
         debounce((event) => {
             window.sessionStorage.setItem('maximunValue', event.target.value);
-            getResultOfFilters();
+            getTravels();
         }, 1000)
     );
 }
 
 function filterByHotel() {
     const hotelField = document.querySelector('#hotel');
-    hotelField.value = window.sessionStorage.getItem('hotel');
+    hotelField.checked =
+        window.sessionStorage.getItem('hotel') === 'true' ? true : false;
     hotelField.addEventListener('change', (event) => {
         window.sessionStorage.setItem('hotel', event.target.checked);
-        getResultOfFilters();
+        getTravels();
     });
 }
 
 export {
-    getResultOfFilters,
+    getTravels,
     filterByContinent,
     filterBySearch,
     filterByMinimunValue,

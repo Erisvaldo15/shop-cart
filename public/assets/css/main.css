@@ -43,7 +43,7 @@ input:not(#hotel) {
   background: none;
   margin-top: 0.25rem;
   width: 100%;
-  height: 1.25 0.25rem;
+  height: 2.25rem;
   border: 0.1rem solid #868686;
   outline: none;
   color: #fff;
@@ -217,7 +217,7 @@ header .user-actions {
   gap: 1.75rem;
   position: relative;
 }
-header .user-actions li #total-products-in-cart {
+header .user-actions li .total-products-in-cart {
   font-size: 0.8rem;
   display: flex;
   justify-content: center;
@@ -630,7 +630,6 @@ section#travels #travels-wrapper .travels .travel .travel-content .travel-data i
   color: #282927;
 }
 section#travels #travels-wrapper .travels .travel .travel-content .travel-extra a {
-  width: 0;
   position: relative;
   color: #000000;
 }

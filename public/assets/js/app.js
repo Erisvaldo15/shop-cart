@@ -3,13 +3,19 @@ import render from './cart/render.js';
 import add from './cart/add.js';
 import remove from './cart/remove.js';
 import toogleNavbarCart from './navbarCart.js';
-import { getAllTravels } from './travel/travels.js';
 import { increase, decrease } from './cart/edit.js';
 import signIn from './user/signin.js';
 import signUp from './user/signup.js';
 import dropdownUserOptions from './dropdownUserOptions.js';
 import sendContact from './contact.js';
-import { filterByHotel, filterByMaximunValue, filterByMinimunValue, filterBySearch, filterByContinent, getResultOfFilters } from './travel/filterTravel.js';
+import {
+    filterByHotel,
+    filterByMaximunValue,
+    filterByMinimunValue,
+    filterBySearch,
+    filterByContinent,
+    getTravels,
+} from './travel/filterTravel.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
     const travelsInCart = async () => {
@@ -47,7 +53,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     swiperRender();
 
     const travelsDiv = document.querySelector('.travels');
-    if (travelsDiv) travelsDiv.addEventListener('click', (event) => add(event));
+    if (travelsDiv)
+        travelsDiv.addEventListener('click', async (event) => add(event));
 
     function handleCartMainClick(event) {
         increase(event);
@@ -73,12 +80,14 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    filterByContinent();
-    filterBySearch();
-    filterByMinimunValue();
-    filterByMaximunValue();
-    filterByHotel();
-    getResultOfFilters();
+    if (window.location.pathname === '/travels') {
+        filterByContinent();
+        filterBySearch();
+        filterByMinimunValue();
+        filterByMaximunValue();
+        filterByHotel();
+        getTravels();
+    }
 
     signIn();
     signUp();

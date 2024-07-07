@@ -19,10 +19,9 @@ class Cart implements CartInterface
 
     public static function add($travel)
     {
-
         self::init();
 
-        $travel = Travel::findyBy("slug", $travel, "=", "id,image_path,name,price,description,slug");
+        $travel = Travel::findBy("slug", $travel, "=", "id,image_path,name,price,description,slug");
 
         if (!$travel) {
             return;
@@ -62,7 +61,7 @@ class Cart implements CartInterface
     public static function remove($travel)
     {
 
-        $travel = Travel::findyBy("slug", $travel, "=", "slug");
+        $travel = Travel::findBy("slug", $travel, "=", "slug");
 
         if (empty($travel) || !Cart::cart()) {
             return;
