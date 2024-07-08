@@ -59,7 +59,7 @@ export default function renderTravels(travels) {
                                 <i class="fa-solid fa-credit-card"></i>
                                 <p> USD $${
                                     travel.fields.price
-                                } or 12x de USD $${(
+                                } | 12x de USD $${(
                 (travel.fields.price / 12) *
                 1000
             ).toFixed(2)}  </p>
@@ -67,7 +67,7 @@ export default function renderTravels(travels) {
                         </div>
                         <hr/>
                         <div class="travel-extra"> 
-                            <a href="/contact"> 
+                            <a href="/travel/${travel.fields.slug}"> 
                                 Explore More 
                                 <i class="fa-solid fa-arrow-right"></i>
                             </a>

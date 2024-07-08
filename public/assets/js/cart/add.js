@@ -1,7 +1,6 @@
 import render from './render.js';
 
 export default async function add(event) {
-    event.preventDefault();
 
     if (event.target.classList.contains('add-to-cart')) {
         const buttonSlug = event.target.getAttribute('data-slug');

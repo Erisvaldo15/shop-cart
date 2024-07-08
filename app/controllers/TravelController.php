@@ -30,11 +30,11 @@ class TravelController
         ];
     }
 
-    public function show($travel)
+    public function show(array $travel)
     {
         $this->view = "travel.php";
 
-        $travel = Travel::findBy("slug", $travel[0]);
+        $travel = (object) Travel::findBy("slug", $travel[0])->fields;
 
         if (!$travel) {
             $this->view = "travelDoesNotExist.php";
