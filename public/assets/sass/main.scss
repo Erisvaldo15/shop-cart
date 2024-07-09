@@ -290,20 +290,7 @@ section#home {
         max-width: 48rem;
         animation: home 1s backwards;
 
-        &::before {
-            content: '';
-            background-color: rgba(
-                255,
-                255,
-                255,
-                0.15
-            ); /* Cor de fundo com transparência */
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-        }
+  
 
         h6,
         h2,
@@ -372,7 +359,7 @@ section#travels {
         grid-template-columns: 0.8fr 2.2fr;
         margin-bottom: 1rem;
         gap: 4rem;
-        min-height: 50vh;
+        min-height: 65vh;
 
         h2 {
             font-size: 28.8px;

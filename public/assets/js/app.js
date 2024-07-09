@@ -18,6 +18,9 @@ import {
 } from './travel/filterTravel.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
+
+    AOS.init();
+
     const travelsInCart = async () => {
         try {
             const travels = await fetch('http://localhost:8000/cart');

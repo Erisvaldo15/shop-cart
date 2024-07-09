@@ -36,7 +36,7 @@ function filterBySearch() {
 
     const debouncedFilter = debounce((event) => {
         window.sessionStorage.setItem('search', event.target.value);
-        getResultOfFilters();
+        getTravels();
     }, 1000);
 
     searchField.addEventListener('input', (event) => {
@@ -103,34 +103,61 @@ function filterByContinent() {
 function filterByMinimunValue() {
     const minimunValueField = document.querySelector('#minimunValue');
     minimunValueField.value = window.sessionStorage.getItem('minimunValue');
-    minimunValueField.addEventListener(
-        'input',
-        debounce((event) => {
-            window.sessionStorage.setItem('minimunValue', event.target.value);
-            getTravels();
-        }, 1000)
-    );
+    const debouncedFilter = debounce((event) => {
+        window.sessionStorage.setItem('minimunValue', event.target.value);
+        getTravels();
+    }, 1000);
+    minimunValueField.addEventListener('input', (event) => {
+        const travelsDiv = document.querySelector('.travels');
+        travelsDiv.innerHTML = `
+                    <div class="loader-inner ball-grid-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                `;
+        debouncedFilter(event);
+    });
 }
 
 function filterByMaximunValue() {
     const maximunValueField = document.querySelector('#maximunValue');
     maximunValueField.value = window.sessionStorage.getItem('maximunValue');
-    maximunValueField.addEventListener(
-        'input',
-        debounce((event) => {
-            window.sessionStorage.setItem('maximunValue', event.target.value);
-            getTravels();
-        }, 1000)
-    );
+    const debouncedFilter = debounce((event) => {
+        window.sessionStorage.setItem('maximunValue', event.target.value);
+        getTravels();
+    }, 1000);
+    maximunValueField.addEventListener('input', (event) => {
+        const travelsDiv = document.querySelector('.travels');
+        travelsDiv.innerHTML = `
+                    <div class="loader-inner ball-grid-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                `;
+        debouncedFilter(event);
+    });
 }
 
 function filterByHotel() {
     const hotelField = document.querySelector('#hotel');
+    const debouncedFilter = debounce((event) => {
+        window.sessionStorage.setItem('hotel', event.target.checked);
+        getTravels();
+    }, 500);
     hotelField.checked =
         window.sessionStorage.getItem('hotel') === 'true' ? true : false;
     hotelField.addEventListener('change', (event) => {
-        window.sessionStorage.setItem('hotel', event.target.checked);
-        getTravels();
+        const travelsDiv = document.querySelector('.travels');
+        travelsDiv.innerHTML = `
+                    <div class="loader-inner ball-grid-pulse">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                `;
+        debouncedFilter(event);
     });
 }
 
