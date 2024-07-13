@@ -2,12 +2,11 @@
 
 namespace app\controllers;
 
-use app\classes\Cart;
+use app\models\TravelImages;
 use app\models\Travel;
 
 class TravelController
 {
-
     public string $template = "template.php";
     public string $view = "travels.php";
     public array $data = [];
@@ -35,7 +34,8 @@ class TravelController
         $this->view = "travel.php";
 
         $travel = (object) Travel::findBy("slug", $travel[0])->fields;
-
+        $imagesReferencedInThisTrip = TravelImages::where("travel_id", $travel->id, "=", "image, image_description");
+    
         if (!$travel) {
             $this->view = "travelDoesNotExist.php";
         }
@@ -46,6 +46,7 @@ class TravelController
             "thereIsHeader" => true,
             "thereIsFooter" => false,
             "travel" => $travel,
+            "images" => $imagesReferencedInThisTrip,
         ];
     }
 

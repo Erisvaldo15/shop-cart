@@ -764,6 +764,11 @@ section#travel .swiper-slide img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  filter: contrast(50%);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+section#travel .swiper-slide .informations, section#travel .swiper-slide .details-bar {
+  position: absolute;
 }
 section#travel body {
   background: #000;

@@ -7,7 +7,6 @@ use PDO;
 
 class Transaction
 {
-
     private static ?PDO $connection = null; // "?" allow that the "PDO" being null
 
     public static function open(): void

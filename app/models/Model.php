@@ -137,4 +137,25 @@ abstract class Model
             Transaction::rollback();
         }
     }
+
+    public static function where(string $field, string $value, string $logic = "=", string $fields = "*")
+    {
+        try {
+
+            Transaction::open();
+
+            $instanceOfPDO = Transaction::getConnection();
+
+            $instanceOfPDO = $instanceOfPDO->prepare("SELECT {$fields} FROM " . static::$table . " WHERE {$field} {$logic} :{$field}");
+            $instanceOfPDO->execute([":{$field}" => $value]);
+            $result = $instanceOfPDO->fetchAll(PDO::FETCH_CLASS, static::class);
+
+            Transaction::close();
+
+            return $result;
+        } catch (PDOException $e) {
+            Log::create(new LoggerFile($e->getMessage(), EnumLog::DatabaseError));
+            Transaction::rollback();
+        }
+    }
 }
