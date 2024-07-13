@@ -12,6 +12,29 @@ export default function swiperRender() {
         },
     });
 
+    const thumbnailsSwiper = new Swiper('.mySwiper', {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        freeMode: true,
+        watchSlidesProgress: true,
+    });
+
+    const travelSwiper = new Swiper('.mySwiper2', {
+        loop: true,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+            swiper: thumbnailsSwiper,
+        },
+    });
+
     const testimonialsSlider = new Swiper('.testimonials-slider', {
         slidesPerView: 3,
         spaceBetween: 30,

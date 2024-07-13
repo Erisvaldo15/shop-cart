@@ -1,3 +1,5 @@
+import { formatterDate } from "../helpers.js";
+
 export default function renderTravels(travels) {
     const quantityOfTravls = travels?.length;
     const travelDiv = document.querySelector('.travels');
@@ -18,7 +20,6 @@ export default function renderTravels(travels) {
                 : '<i class="fa-solid fa-xmark"></i>';
 
             const travelHtml = `
-            <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="400">
                 <div class="travel"> 
                     <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
                     <div class="travel-content">
@@ -28,7 +29,7 @@ export default function renderTravels(travels) {
                                 <h4> ${subtitle} </h4>
                             </div>
                             <div class="actions">
-                                <a class="add-to-cart button" data-slug="${
+                                <a class="add-to-cart" data-slug="${
                                     travel.fields.slug
                                 }">
                                     Add Cart
@@ -61,12 +62,9 @@ export default function renderTravels(travels) {
                            
                             <div class="travel-price"> 
                                 <i class="fa-solid fa-credit-card"></i>
-                                <p> USD $${
-                                    travel.fields.price
-                                } | 12x de USD $${(
-                (travel.fields.price / 12) *
-                1000
-            ).toFixed(2)}  </p>
+                                <p> USD $${travel.fields.price} | 12x de USD $${(
+                                    (travel.fields.price / 12) * 1000).toFixed(2)}  
+                                </p>
                             </div>
                         </div>
                         <hr/>
@@ -79,29 +77,12 @@ export default function renderTravels(travels) {
                     </div>
                 </div>
                 ${quantityOfTravls === parseInt(index) ? '<hr>' : ''}
-            </div>
             `;
 
             travelDiv.innerHTML += travelHtml;
         });
     } else {
         travelDiv.style.placeItems = 'center';
-        travelDiv.innerHTML = `
-        <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="400">
-            <img style="width: 30rem;" src="../assets/img/data_not_found.svg">
-        </div>
-        `;
+        travelDiv.innerHTML = `<img style="width: 30rem;" src="../assets/img/data_not_found.svg">`;
     }
-}
-
-function formatterDate(year, month, day) {
-    const date = new Date(year, month, day);
-
-    let formatter = new Intl.DateTimeFormat('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    });
-
-    return formatter.format(date);
 }

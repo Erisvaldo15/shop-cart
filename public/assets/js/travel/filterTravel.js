@@ -95,7 +95,19 @@ function filterByContinent() {
                 filterOfContinent.classList.add('active');
             }
 
-            getTravels();
+            const travelsDiv = document.querySelector('.travels');
+
+            travelsDiv.innerHTML = `
+                <div class="loader-inner ball-grid-pulse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            `;
+
+            setTimeout(() => {
+                getTravels();
+            }, 500);
         });
     });
 }

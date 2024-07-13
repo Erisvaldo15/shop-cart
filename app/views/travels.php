@@ -5,11 +5,9 @@
         </div>
         <div class="swiper-slide">
             <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-
         </div>
         <div class="swiper-slide">
             <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-
         </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -56,11 +54,13 @@
                 </div>
             </div>
         </div>
-        <div class="travels">
-            <div class="loader-inner ball-grid-pulse">
-                <div></div>
-                <div></div>
-                <div></div>
+        <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="400">
+            <div class="travels">
+                <div class="loader-inner ball-grid-pulse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
         </div>
     </div>
