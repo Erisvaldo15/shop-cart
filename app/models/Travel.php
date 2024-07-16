@@ -81,7 +81,7 @@ class Travel extends Model
             }
 
             $buildedQuery = rtrim($buildedQuery, "AND");
-
+            
             $connection = Connection::connection();
             $statement = $connection->prepare($buildedQuery);
             $statement->execute(self::$binds);

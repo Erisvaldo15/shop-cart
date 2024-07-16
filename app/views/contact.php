@@ -20,7 +20,10 @@
                     <label for="contact-message"> Message </label>
                     <textarea name="message" placeholder="Type your message" id="contact-message"></textarea>
                 </div>
-                <button type="submit" class="form-button"> Send e-mail </button>
+                <button type="submit" class="form-button">
+                    Send e-mail
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </button>
             </form>
         </div>
     </div>

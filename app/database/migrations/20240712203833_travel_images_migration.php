@@ -14,6 +14,11 @@ final class TravelImagesMigration extends AbstractMigration
             "null" => false,
         ]);
 
+        $table->addColumn("place", "string", [
+            "null" => false,
+            "limit" => 255,
+        ]);
+
         $table->addColumn("image_description", "string", [
             "null" => false,
             "limit" => 255,

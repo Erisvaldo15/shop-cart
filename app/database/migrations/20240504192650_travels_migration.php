@@ -52,14 +52,35 @@ final class TravelsMigration extends AbstractMigration
             "null" => false,
         ]);
 
-        $table->addColumn("price", "decimal", [
+        $table->addColumn("price", "decimal", [ 
             "null" => false,
             "precision" => 10,
-            "scale" => 3,
+            "scale" => 2,
         ]);
 
         $table->addColumn("hotel", "enum", [
             "values" => ["1", "0"],
+        ]);
+
+        $table->addColumn("population", "integer", [ 
+            "null" => false,
+            "signed" => false,
+        ]);
+
+        $table->addColumn("extension", "decimal", [
+            "null" => false,
+            "precision" => 10,
+            "scale" => 2,
+        ]);
+
+        $table->addColumn("weather", "string", [
+            "limit" => 50,
+            "null" => false,
+        ]);
+
+        $table->addColumn("nativeLanguage", "string", [
+            "limit" => 50,
+            "null" => false,
         ]);
 
         $table->addColumn("startDate", "date", [

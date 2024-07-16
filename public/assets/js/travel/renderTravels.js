@@ -1,4 +1,4 @@
-import { formatterDate } from "../helpers.js";
+import { formatterDate } from '../helpers.js';
 
 export default function renderTravels(travels) {
     const quantityOfTravls = travels?.length;
@@ -18,6 +18,8 @@ export default function renderTravels(travels) {
             const isThereHotel = parseInt(travel.fields.hotel)
                 ? '<i class="fa-solid fa-check"></i>'
                 : '<i class="fa-solid fa-xmark"></i>';
+            const total = travel.fields.price;
+            const installments = (total / 12).toFixed(2);
 
             const travelHtml = `
                 <div class="travel"> 
@@ -62,8 +64,10 @@ export default function renderTravels(travels) {
                            
                             <div class="travel-price"> 
                                 <i class="fa-solid fa-credit-card"></i>
-                                <p> USD $${travel.fields.price} | 12x de USD $${(
-                                    (travel.fields.price / 12) * 1000).toFixed(2)}  
+                                <p> 
+                                    USD $${
+                                        travel.fields.price
+                                    } | 12x de USD $${installments}  
                                 </p>
                             </div>
                         </div>
@@ -83,6 +87,6 @@ export default function renderTravels(travels) {
         });
     } else {
         travelDiv.style.placeItems = 'center';
-        travelDiv.innerHTML = `<img style="width: 30rem;" src="../assets/img/data_not_found.svg">`;
+        travelDiv.innerHTML = `<img style="width: 30rem; max-width: 100%;" src="../assets/img/data_not_found.svg">`;
     }
 }

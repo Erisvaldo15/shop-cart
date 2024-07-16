@@ -34,7 +34,7 @@ class TravelController
         $this->view = "travel.php";
 
         $travel = (object) Travel::findBy("slug", $travel[0])->fields;
-        $imagesReferencedInThisTrip = TravelImages::where("travel_id", $travel->id, "=", "image, image_description");
+        $imagesReferencedInThisTrip = TravelImages::where("travel_id", $travel->id, "=", "image, place, image_description");
     
         if (!$travel) {
             $this->view = "travelDoesNotExist.php";
@@ -85,7 +85,7 @@ class TravelController
         }   
 
         if(isset($validatedFilters["minimunValueFilter"]) || isset($validatedFilters["maximunValueFilter"])) {
-            Travel::priceFilter(number_format($validatedFilters["minimunValueFilter"], 2), number_format($validatedFilters["maximunValueFilter"], 2));
+            Travel::priceFilter($validatedFilters["minimunValueFilter"], $validatedFilters["maximunValueFilter"]);
         }
 
         if(isset($validatedFilters["hotelFilter"])) {

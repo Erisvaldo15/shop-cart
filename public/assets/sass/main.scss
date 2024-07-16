@@ -446,7 +446,7 @@ section#travels {
                     gap: 1rem;
 
                     .travel-header {
-                        @include flex(space-between);
+                        @include flex(space-between, center, wrap);
 
                         .actions .add-to-cart {
                             @include customizedButton();
@@ -618,45 +618,63 @@ section#travel {
     .swiper {
         width: 100%;
         height: 100%;
-    }
 
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: contrast(50%);
-        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-    }
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: contrast(40%);
+                box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+            }
 
-    .swiper-slide .informations, .swiper-slide .details-bar {
-        position: absolute;
-    }
+            .informations,
+            .details-bar {
+                position: absolute;
+            }
 
-    body {
-        background: #000;
-        color: #000;
-    }
+            .informations {
+                h1 {
+                    font-size: 2.5rem;
+                }
 
-    .swiper {
-        width: 100%;
-        height: 300px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+                h2 {
+                    font-size: 1.5rem;
+                }
+            }
 
-    .swiper-slide {
-        background-size: cover;
-        background-position: center;
+            .details-bar {
+                @include flex(space-between, center, wrap);
+                background-color: $white-color;
+                width: 80%;
+                padding: 2rem 4rem;
+                bottom: 6.25rem;
+                border-radius: 1rem;
+
+                .place-details {
+                    width: 75%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .place-detail {
+                        @include flex(start, baseline, wrap);
+                        gap: 1rem;
+                    }
+                }
+
+                button {
+                    @include customizedButton($dark-black-color, $white-color, $light-black-color, 8rem);
+                }
+            }
+        }
     }
 
     .mySwiper2 {
@@ -678,13 +696,6 @@ section#travel {
 
     .mySwiper .swiper-slide-thumb-active {
         opacity: 1;
-    }
-
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
     }
 }
 
@@ -756,6 +767,13 @@ main#contact {
                 textarea {
                     text-align: center;
                 }
+            }
+
+            button {
+                @include flex(center, center);
+                gap: 0.25rem;
+                @include customizedButton($dark-black-color, $white-color, $light-black-color, 12rem);
+                margin-left: auto;
             }
         }
     }
