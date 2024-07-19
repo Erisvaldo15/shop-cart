@@ -7,9 +7,9 @@ export default function signUp() {
         formOfSignUp.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            const nameInput = document.querySelector('#nameForSignUp');
-            const emailInput = document.querySelector('#emailForSignUp');
-            const passwordInput = document.querySelector('#passwordForSignUp');
+            const nameInput = document.querySelector('#signup-name');
+            const emailInput = document.querySelector('#signup-email');
+            const passwordInput = document.querySelector('#signup-password');
 
             const validationClass = new Validate();
 
@@ -18,25 +18,27 @@ export default function signUp() {
                     validationClass.validate(
                         'required|name',
                         nameInput.value
-                    )[0] ?? null,
+                    ),
                 email:
                     validationClass.validate(
                         'required|email',
                         emailInput.value
-                    )[0] ?? null,
+                    ),
                 password:
                     validationClass.validate(
                         'required|password',
                         passwordInput.value
-                    )[0] ?? null,
+                    ),
             };
+
+            let isThereError = false;
 
             for (const prop in firstFoundError) {
                 let label = document.querySelector(
-                    `label[for="${prop}ForSignUp"]`
+                    `label[for="signup-${prop}"]`
                 );
 
-                if (firstFoundError[prop] === null) {
+                if (firstFoundError[prop] === true) {
                     label.textContent = `${prop
                         .charAt(0)
                         .toUpperCase()}${prop.slice(1)}`;
@@ -44,10 +46,11 @@ export default function signUp() {
                 } else {
                     label.textContent = firstFoundError[prop];
                     label.style.color = '#FFC632';
+                    isThereError = true;
                 }
             }
-
-            if (validationClass.errors.length > 0) return;
+  
+            if (isThereError) return;
 
             try {
                 const requestSettings = new Request(

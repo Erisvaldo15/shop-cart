@@ -12,16 +12,16 @@
         </div>
         <form method="post" id="signup">
             <div class="fields">
-                <label for="nameForSignUp"> Name </label>
-                <input type="text" name="name" placeholder="Type your name" id="nameForSignUp">           
+                <label for="signup-name"> Name </label>
+                <input type="text" name="name" placeholder="Type your name" id="signup-name">           
             </div>
             <div class="fields">
-                <label for="emailForSignUp"> Email </label>
-                <input type="text" name="email" placeholder="Type your e-mail" id="emailForSignUp">        
+                <label for="signup-email"> Email </label>
+                <input type="text" name="email" placeholder="Type your e-mail" id="signup-email">        
             </div>
             <div class="fields">
-                <label for="passwordForSignUp"> Password </label>
-                <input type="password" name="password" placeholder="Type your password" id="passwordForSignUp">     
+                <label for="signup-password"> Password </label>
+                <input type="password" name="password" placeholder="Type your password" id="signup-password">     
             </div>
             <button type="submit" class="form-button"> Sign Up </button>
             <a href="/signin" class="other-link"> Already have an account? <span> Sign In </span> </a>

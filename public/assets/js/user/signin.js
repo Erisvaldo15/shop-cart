@@ -7,8 +7,8 @@ export default function signIn() {
         formOfSignIn.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            const emailInput = document.querySelector('#emailForSignIn');
-            const passwordInput = document.querySelector('#passwordForSignIn');
+            const emailInput = document.querySelector('#signin-email');
+            const passwordInput = document.querySelector('#signin-password');
 
             const validationClass = new Validate();
 
@@ -17,20 +17,22 @@ export default function signIn() {
                     validationClass.validate(
                         'required|email',
                         emailInput.value
-                    )[0] ?? null,
+                    ),
                 password:
                     validationClass.validate(
                         'required|password',
                         passwordInput.value
-                    )[0] ?? null,
+                    ),
             };
+
+            let isThereError = false;
 
             for (const prop in firstFoundError) {
                 let label = document.querySelector(
-                    `label[for="${prop}ForSignIn"]`
+                    `label[for="signin-${prop}"]`
                 );
 
-                if (firstFoundError[prop] === null) {
+                if (firstFoundError[prop] === true) {
                     label.textContent = `${prop
                         .charAt(0)
                         .toUpperCase()}${prop.slice(1)}`;
@@ -38,10 +40,11 @@ export default function signIn() {
                 } else {
                     label.textContent = firstFoundError[prop];
                     label.style.color = '#FFC632';
+                    isThereError = true;
                 }
             }
 
-            if (validationClass.errors.length > 0) return;
+            if (isThereError) return;
 
             try {
                 const requestSettings = new Request(

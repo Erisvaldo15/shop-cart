@@ -15,12 +15,12 @@
         </div>
         <form method="post" id="signin">
             <div class="fields">
-                <label for="emailForSignIn"> Email </label>
-                <input type="text" name="email" placeholder="Type your e-mail" id="emailForSignIn">
+                <label for="signin-email"> Email </label>
+                <input type="text" name="email" placeholder="Type your e-mail" id="signin-email">
             </div>
             <div class="fields" id="password">
-                <label for="passwordForSignIn"> Password </label>
-                <input type="password" name="password" placeholder="Type your password" id="passwordForSignIn">
+                <label for="signin-password"> Password </label>
+                <input type="password" name="password" placeholder="Type your password" id="signin-password">
             </div>
             <div id="help">
                 <a href="#"> <span> Redeem password </span> </a>

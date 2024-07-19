@@ -779,7 +779,7 @@ main#contact {
     }
 }
 
-main#login {
+main#login, main#register {
     display: flex;
     font-size: 0.825rem;
     height: 100vh;
@@ -858,6 +858,10 @@ section.form-section {
             #help {
                 display: flex;
                 justify-content: center;
+            }
+
+            button {
+                @include customizedButton($yellow-color, $dark-black-color, $dark-yellow-color, 100%);
             }
 
             a {

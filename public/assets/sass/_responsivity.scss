@@ -77,6 +77,11 @@
 }
 
 @media screen and (max-width: 675px) {
+
+    section#home {
+        padding: 2rem;
+    }
+
     section.form-section .form-header {
         width: 90%;
     }
@@ -109,6 +114,18 @@
 
         .travels .travel {
             grid-template-columns: 1fr;
+        }
+
+    }
+
+    main#login, main#register {
+
+        section.form-section {
+            width: 100%;
+
+            .form-div {
+                padding: 2rem;
+            }
         }
 
     }
