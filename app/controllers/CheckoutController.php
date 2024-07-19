@@ -9,15 +9,16 @@ use Stripe\StripeClient;
 
 class CheckoutController
 {
+    public array $data = [];
+    private string $template = "";
 
     public function checkout()
     {
-
         $buyOneTravel = filter_input(INPUT_GET, "travel", FILTER_SANITIZE_SPECIAL_CHARS);
 
         if ($buyOneTravel) {
 
-            $travel = Travel::findyBy("slug", $buyOneTravel);
+            $travel = Travel::findBy("slug", $buyOneTravel);
 
             if (Cart::cart()) {
                 Cart::clearCart();
@@ -26,8 +27,8 @@ class CheckoutController
             Cart::add($travel->slug);
         }
 
-        if (!count(Cart::cart())) {
-            Redirect::back();
+        if (!count(Cart::cart()) > 0) {
+            return Redirect::to("/travels#travels");
         }
 
         $private_key = $_ENV["STRIPE_SECRET_KEY"];

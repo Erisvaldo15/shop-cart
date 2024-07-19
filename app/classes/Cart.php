@@ -60,15 +60,13 @@ class Cart implements CartInterface
 
     public static function remove($travel)
     {
-
         $travel = Travel::findBy("slug", $travel, "=", "slug");
 
         if (empty($travel) || !Cart::cart()) {
             return;
         }
-
+        
         foreach (Cart::cart() as $key => $travelInCart) {
-
             if ($travelInCart["slug"] === $travel->slug) {
                 unset($_SESSION["cart"]["products"][$key]);
             }
@@ -101,7 +99,11 @@ class Cart implements CartInterface
 
     public static function setQuantity(int $key, int $quantity, string $typeOperation)
     {
-        if ($typeOperation === "increase") $_SESSION["cart"]["products"][$key]["quantity"] += $quantity;
-        else $_SESSION["cart"]["products"][$key]["quantity"] -= $quantity;
+        if($_SESSION["cart"]["products"][$key]["quantity"] > 0) {
+            if ($typeOperation === "increase") $_SESSION["cart"]["products"][$key]["quantity"] += $quantity;
+            else $_SESSION["cart"]["products"][$key]["quantity"] -= $quantity;
+        }
+
+        if($_SESSION["cart"]["products"][$key]["quantity"] === 0) unset($_SESSION["cart"]["products"][$key]);
     }
 }

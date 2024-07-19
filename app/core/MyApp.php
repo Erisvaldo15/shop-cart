@@ -15,7 +15,6 @@ class MyApp implements MyAppInterface
 
     public function execute()
     {
-
         $routes = Routes::extract();
         $actualUri = Uri::extract();
         $request = Request::extract();
@@ -51,7 +50,6 @@ class MyApp implements MyAppInterface
         }
 
         if (isset($controllerInstance->template) && isset($controllerInstance->view)) {
-
             try {
                 require_once "../app/views/{$controllerInstance->template}";
             } catch (\Throwable $th) {

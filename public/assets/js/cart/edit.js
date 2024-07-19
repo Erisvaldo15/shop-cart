@@ -42,6 +42,21 @@ async function decrease(event) {
             let decreaseResult = await fetch(requestSettings);
             decreaseResult = await decreaseResult.json();
 
+            if (decreaseResult.error) {
+                
+                let notyf = new Notyf({
+                    position: {
+                        x: 'right',
+                        y: 'top',
+                    },
+                    duration: 1800,
+                });
+
+                notyf.success(decreaseResult.message);
+
+                return;
+            }
+
             render(decreaseResult);
         } catch (error) {
             console.log('Error to decrease travel: ', error);
