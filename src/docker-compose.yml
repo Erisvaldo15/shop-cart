@@ -1,0 +1,49 @@
+networks:
+    diarynetwork:
+        driver: bridge
+services: 
+    php-fpm:
+        build:
+            context: ../docker/php-fpm
+            dockerfile: Dockerfile
+        container_name: php-fpm-container
+        working_dir: /var/www/html
+        volumes:
+            - ./:/var/www/html
+        networks:
+            - diarynetwork
+        restart: unless-stopped
+
+    nginx:
+        build:
+            context: ../docker/nginx
+            dockerfile: Dockerfile
+        container_name: nginx-container
+        working_dir: /var/www/html
+        volumes: 
+            - ./:/var/www/html
+        networks:
+            - diarynetwork
+        ports:
+            - 8000:80
+        depends_on:
+            - php-fpm
+        restart: unless-stopped
+
+    mysql:
+        build:
+            context: ../docker/mysql
+            dockerfile: Dockerfile
+        container_name:
+            mysql-container
+        working_dir: /var/lib/mysql
+        volumes: 
+            - ../docker/mysql/data:/var/lib/mysql
+        ports:
+            - 3307:3306
+        networks: 
+            - diarynetwork
+        restart: unless-stopped
+        environment: 
+            MYSQL_ROOT_PASSWORD: root
+        

@@ -6,3 +6,4 @@ public/logs.txt
 phinx.php
 .env
 example.php
+/docker/mysql/data
